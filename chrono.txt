@@ -1,0 +1,9 @@
+Examen 1: 25% semana 7
+Examen 2: 25% semana 14
+Proyecto 1:
+	5% Avance 1 semana 9
+	5% Avance 2 semana 12
+	20% Proyecto final semana 15
+Quices : 10%
+Practicas: 10%
+Total: 100%

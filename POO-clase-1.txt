@@ -1,0 +1,82 @@
+Clase: 	Una clase es una forma en la que podemos combinar/funcionar varias cualidades o caracteristicas.
+	Una clase se puede consumar en dos partes las cuales son atributos y metodos.
+Atributos:	Son propiedades o caracteristicas del objeto en si guardados en diferentes tipos de datos.
+		ejemplo, un carro, el cual tendria, poder de motor, color, modelo ,anho, etc...
+Metodos:	Son acciones o funciones de las clases, utilizando el mismo ejemplo del carro, una funcion podria ser arrancar, avanzar, etc
+		existe diferentes tipos de metodos, privados publicos y protegidos.
+
+		Private: 	Solo pueden ser usados por la clase en si y dentro de la clase.
+		Public:  	Pueden ser usado por lo que sea y quien sea.
+		Protected:	Puede ser usado por la clase de tal forma como los private pero son heredables a subclases.	
+
+
+
+Ejemplo en Ruby:
+
+class Carro
+	attr_accessor	:color,:type       *atributos en ruby de forma en la que podemos leer y escribir sobre ellos
+	
+	def beep
+		puts "beeeep"    *puts es la como se ejecuta un print en ruby
+	end
+end 
+
+
+Objetos:Un objeto seria el espacio en la memoria ocupado a la hora de crear una clase, en forma de metafora un clase es el
+	molde y el objeto el resultado que nos da al usar dicho molde. Para esto ocuparemos constructores, en la mayoria de
+	los lenguajes dichos constructores ya vienen incluidos al simplemente declarar la clase, pero se pueden crear metodos
+	que funcionen como constructores y que hagan algo extra dependiendo de nuestras necesidades.
+
+Un ejemplo seria:
+def initialize(c_color,c_type)
+	@color=c_color
+	@type=c_type
+end
+
+Kia = Carro.new("red","Toyota")
+
+
+Resumen:en palabras ticas, las clases son los moldes y los objetos los queques del molde
+	en forma mas tecnica, podemos verlo como si crearamos un nuevo tipo de dato, el cual posee atributos y metodos,
+	mientras que los objetos son el resultado de cuando usamos las clases.
+
+
+
+Notas Ruby:
+Si queremos acceder a los atributos y metodos, simplemente ponemos punto y el nombre de dicho atributo o metodo que queremos acceder
+ejemplo:
+	kia.beep
+
+
+
+Herencia: Papi y mami se querian mucho y tuvieron a una nueva clase, la cual tiene propiedades de ambas
+	Tal como dice la propiedad en si, se hereda los metodos y atributos de la clase madre a la subclase.
+ejemplo: 
+
+
+class Transaccion
+	attr_accessor	:date, :amount
+end
+
+class Factura < Transaccion    *Asi declaramos la herencia
+	attr_accessor 	:numero
+end
+
+
+Modulos: Otra de las formas que hay para reciclar codigos, utilizada para reutilizar metodos sin andar copiando y pegando el codigo en todo lado
+por ejemplo un modulo de alertas el cual envie mensajes cuando se use
+
+ejemplo:
+module Mensajes:
+	def msm_email
+	end
+	def msm_whatsapp
+	end
+end
+
+class Usuario
+	include Mensajes       *con esto ahora usuario sera capas de usar los metodos del modulo como si fuera herencia
+end
+
+
+ATTENTION: LOS MODULOS Y CLASES TIENEN QUE TENER LA LETRA INICIAL MAYUSCULA

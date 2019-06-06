@@ -1,0 +1,15 @@
+class Carro
+	attr_accesor :color, :type
+	def beep
+		puts "Beeep"
+	end
+end
+
+kia= Carro.new
+puts kia
+
+kia.color="Red"
+kia.type="4x4"
+
+puts kia.color
+put kia.type

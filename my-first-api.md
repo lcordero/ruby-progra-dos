@@ -8,8 +8,13 @@ $ gem update rails
 ## >> Setup del Proyecto
 $ rails new todos-api --api -T
 ```
+** AQUI VA A FALLAR **
 
 ### --> Cambios en el Gemfile
+Reemplazar la linea de ```gem 'sqlite3'``` por:
+gem 'sqlite3', git: "gem 'sqlite3', git: "https://github.com/sparklemotion/sqlite3-ruby"
+
+
 ```
 # Gemfile
 group :development, :test do

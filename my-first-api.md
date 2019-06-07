@@ -12,8 +12,13 @@ $ rails new todos-api --api -T
 
 ### --> Cambios en el Gemfile
 Reemplazar la linea de ```gem 'sqlite3'``` por:
+```gem 'sqlite3', git: "https://github.com/sparklemotion/sqlite3-ruby"```
+
 ```
-gem 'sqlite3', git: "https://github.com/sparklemotion/sqlite3-ruby"
+$ cd todos-api
+$ bundle install
+```
+
 ```
 # Gemfile
 group :development, :test do

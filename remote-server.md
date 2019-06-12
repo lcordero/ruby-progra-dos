@@ -69,4 +69,87 @@ $ git clone git@github.com:lcordero/ruby-progra-dos.git && cd ruby-progra-dos/
 $ git checkout <branch>
 ```
 
+## 4) Actualizar branch
+4.1) Revisamos que nuestro branch está limpio y no hay cambios en el aire
+```
+$ git branch
+```
+Debemos ver como resultado:
+```     
+* leandro-c <<-- En su caso debe ser su branch
+  master
+```
+Luego revisamos el estado del branch:
+```
+$ git status
+```
+Resultado:
+```
+nothing to commit, working tree clean
+```
+Si el resultado es diferente de ```nothing to commit, working tree clean``` debemos correr:
+```
+$ git checkout .
+```
 
+4.2) Nos movemos al branch **leandro-c** para jalar nuevos cambios.
+```
+$ git checkout leandro-c
+```
+```
+$ git pull origin leandro-c
+```
+
+4.3) No movemos a nuestro branch para actualizarlo con los cambios del branch **leandro-c**:
+```
+$ git checkout <branch>
+```
+```
+$ git merge leandro-c
+```
+
+4.4) Nos movemos al folder que se creó nuevo:
+```
+$ cd ~/progra2/ruby-progra-dos/my-api
+```
+
+## 5) Instalar dependencias y levantar server
+5.1) Recreamos Gemfile.lock, para esto es necesario eliminarlo
+```
+$ rm Gemfile.lock
+```
+
+5.2) Ejecutamos bundle install, para instalar todas las gemas
+```
+$ bundle install
+```
+Resultado:
+```
+...
+...
+Bundle complete! X Gemfile dependencies, XX gems now installed.
+Bundled gems are installed into `./vendor/bundle`
+```
+
+5.3) Correr las migraciones de Bases de Datos:
+```
+$ rails db:migrate
+```
+
+5.4) Crear las rutas/endpoints de nuestra App
+```
+$ rails routes
+```
+
+5.5) A este punto podemos ver nuestra API en acción (**NOTA:** reemplazar *<**port**>* por el puerto de cada uno en la tabla del inicio de este documento):
+```
+$ rails s -b 0.0.0.0 -p <port>
+```
+
+5.6) Nos vamos al navegador, abrimos un nuevo tab y accesamos a (**NOTA:** Recuerden reemplazar *<**port**>* por el número usado en el paso 5.5): 
+http://35.209.175.42:<port>/todos
+
+Como resultado deben obtener un array vacío:
+```
+[]
+```

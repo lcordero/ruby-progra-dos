@@ -16,6 +16,7 @@ Esta tabla hace referencia a cada usuario y branch que tienen que usar. **POR FA
 | roy-u       | roy-u       |
 | sebas-v     | sebas-v     |
 
+**NOTA:** En los siguientes comandos reemplazar donde dice _<user>_ por sus respectivos usuarios de la tabla anterior; lo mismo cuando se encuentren _<branch>_
 
 
 ## 1) Accesar a VM Remota
@@ -38,12 +39,12 @@ Welcome to Ubuntu 18.04.2 LTS (GNU/Linux 4.15.0-1032-gcp x86_64)
 
 ## 2) Crear mi RSA key para github.com
 
-2.1) Generar RSA key (Presionan "Enter" hasta que aparezca la siguiente línea: ```"+----[SHA256]-----+"):```
+2.1) Generar RSA key (NOTA: Después de correr el siguiente comando, presionan "Enter" como unas 3 ó 4 veces; hasta que aparezca la siguiente línea: ```"+----[SHA256]-----+"):```
 ```
 $ ssh-keygen
 ```
 
-2.2) Copiar contenido de la key pública (Copiar el resultado del comando):
+2.2) Copiar contenido de la key pública (NOTA: Tienen que copiar desde donde dice: ```ssh-rsa AAA...``` HASTA ```...@progra2```):
 ```
 $ cat ~/.ssh/id_rsa.pub
 ```

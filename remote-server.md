@@ -147,7 +147,7 @@ $ rails s -b 0.0.0.0 -p <port>
 ```
 
 5.6) Nos vamos al navegador, abrimos un nuevo tab y accesamos a (**NOTA:** Recuerden reemplazar *<**port**>* por el número usado en el paso 5.5): 
-http://35.209.175.42:<port>/todos
+http://35.209.175.42:*<**port**>*/todos
 
 Como resultado deben obtener un array vacío:
 ```

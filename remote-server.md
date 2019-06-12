@@ -1,20 +1,21 @@
 ## Información General
 Esta tabla hace referencia a cada usuario y branch que tienen que usar. **POR FAVOR** recuerden que estamos utilizando un servicio compartido con todos sus compañer@s; por lo tanto, mantengamos el respeto del espacio de cada compañer@ y **ÚNICA** y **EXCLUSIVAMENTE** usemos **NUESTRO** acceso y branch.
 
-| user        | branch      |
-|-------------|-------------|
-| alejandro-z | alejandro-z |
-| alonso-v    | alonso-v    |
-| anthony-r   | anthony-r   |
-| david-z     | david-z     |
-| gabriel-m   | gabriel-m   |
-| isacc-m     | isacc-m     |
-| jairo-v     | jairo-v     |
-| katherine-g | katherine-g |
-| kervin-v    | kervin-v    |
-| minor-g     | minor-g     |
-| roy-u       | roy-u       |
-| sebas-v     | sebas-v     |
+| user        | branch      | port |
+|-------------|-------------|------|
+| alejandro-z | alejandro-z | 3001 |
+| alonso-v    | alonso-v    | 3002 |
+| anthony-r   | anthony-r   | 3003 |
+| david-z     | david-z     | 3004 |
+| gabriel-m   | gabriel-m   | 3005 |
+| isacc-m     | isacc-m     | 3006 |
+| jairo-v     | jairo-v     | 3007 |
+| katherine-g | katherine-g | 3008 |
+| kervin-v    | kervin-v    | 3009 |
+| leandro-c   | leandro-c   | 3010 |
+| minor-g     | minor-g     | 3011 |
+| roy-u       | roy-u       | 3012 |
+| sebas-v     | sebas-v     | 3013 |
 
 **NOTA:** En los siguientes comandos reemplazar donde dice *<**user**>* por sus respectivos usuarios de la tabla anterior; lo mismo cuando se encuentren *<**branch**>*
 

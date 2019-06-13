@@ -121,7 +121,7 @@ $ rm Gemfile.lock
 
 5.2) Ejecutamos bundle install, para instalar todas las gemas
 ```
-$ bundle install
+$ bundle install --path vendor/bundle
 ```
 Resultado:
 ```

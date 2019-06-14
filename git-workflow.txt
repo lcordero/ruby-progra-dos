@@ -1,3 +1,5 @@
+=== Git commands ===
+
 # Nos movemos al branch de master
 git checkout master
 
@@ -39,3 +41,6 @@ git push origin my-branch-name
 
 # Revisamos el estado actual
 git status
+
+# Eliminar un branch
+git branch -D my-branch-name

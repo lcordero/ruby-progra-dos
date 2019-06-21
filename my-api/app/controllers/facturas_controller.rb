@@ -39,4 +39,5 @@ class FacturasController < ApplicationController
 
   def set_factura
     @factura = Factura.find(params[:id])
+  end
 end

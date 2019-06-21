@@ -38,11 +38,13 @@ ActiveRecord::Schema.define(version: 2019_06_20_163212) do
   end
 
   create_table "productos", force: :cascade do |t|
+    t.integer "factura_id"
     t.string "nombre"
     t.integer "cantidad"
     t.integer "precio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["factura_id"], name: "index_productos_on_factura_id"
   end
 
   create_table "tests", force: :cascade do |t|

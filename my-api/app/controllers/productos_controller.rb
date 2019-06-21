@@ -16,6 +16,7 @@ class ProductosController < ApplicationController
   def create
     @factura.productos.create!(producto_params)
     json_response(@factura, :created)
+    @factura[:total]=@factura[:total]+(producto_params[:precio]*producto_params[:cantidad])
   end
 
   # PUT /facturas/:factura_id/productos/:id

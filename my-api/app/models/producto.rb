@@ -1,3 +1,3 @@
 class Producto < ApplicationRecord
-	belongs_to :factura
+  belongs_to :factura
 end

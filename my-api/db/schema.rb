@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_12_075315) do
+ActiveRecord::Schema.define(version: 2019_06_20_233241) do
+
+  create_table "demos", force: :cascade do |t|
+    t.string "usuario"
+    t.string "titulo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "facturas", force: :cascade do |t|
+    t.string "titulo"
+    t.string "creada_por"
+    t.date "fecha"
+    t.integer "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "items", force: :cascade do |t|
     t.string "name"
@@ -19,6 +35,16 @@ ActiveRecord::Schema.define(version: 2019_06_12_075315) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["todo_id"], name: "index_items_on_todo_id"
+  end
+
+  create_table "productos", force: :cascade do |t|
+    t.integer "factura_id"
+    t.string "nombre"
+    t.integer "cantidad"
+    t.integer "precio"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["factura_id"], name: "index_productos_on_factura_id"
   end
 
   create_table "todos", force: :cascade do |t|

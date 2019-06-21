@@ -40,8 +40,5 @@ class FacturasController < ApplicationController
   def set_factura
     @factura = Factura.find(params[:id])
   end
-  def update_price
-    @factura.productos.each do |product|
-    end	    
-  end
+
 end

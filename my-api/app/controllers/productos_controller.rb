@@ -1,9 +1,9 @@
 class ProductosController < ApplicationController
   before_action :set_factura
   before_action :set_factura_producto, only: [:show, :update, :destroy]
-  
-  # after_action :set_factura_total, only: [:update, :create, :destroy]
 
+  after_action :set_factura_total, only: [:update, :create, :destroy, :show]
+  before_action :check_item, only: [:update, :create, :show]
   # GET /facturas/:factura_id/productos
   def index
     json_response(@factura.productos)
@@ -15,7 +15,7 @@ class ProductosController < ApplicationController
   end
 
   # POST /facturas/:factura_id/productos
-  def create
+  def create	  
     @producto_temp = @factura.productos.find_by(nombre: producto_params[:nombre])
 
 
@@ -27,7 +27,6 @@ class ProductosController < ApplicationController
 	    @producto_temp.save
     end
     
-    # @factura.productos.create!(producto_params)
     json_response(@factura, :created)
   end
 
@@ -39,14 +38,15 @@ class ProductosController < ApplicationController
 
   # DELETE /facturas/:factura_id/productos/:id
   def destroy
-    @producto.destroy
+    @producto[:activo]=false
+    @producto.save
     head :no_content
   end
 
   private
 
   def producto_params
-    params.permit(:nombre, :cantidad, :precio)
+    params.permit(:nombre, :cantidad, :precio, :activo)
   end
 
   def set_factura
@@ -55,17 +55,32 @@ class ProductosController < ApplicationController
 
   def set_factura_producto
     @producto = @factura.productos.find_by!(id: params[:id]) if @factura
+
   end
 
-#  def set_factura_total
-#    @factura_sub_total = 0
-#
-#    @factura.productos.each do |producto|
-#      @factura_sub_total = @factura_sub_total + (producto.cantidad * producto.precio)
-#    end
-#    @factura.total = @factura_sub_total
-#
-#    @factura = @factura.save
-#  end
+  def set_factura_total
+    @factura_sub_total = 0
+    json_response(@factura.productos)
+    @factura.productos.each do |producto|
+      @factura_sub_total = @factura_sub_total + (producto.cantidad * producto.precio)
+    end
+    @factura.total = @factura_sub_total
+
+    @factura=@factura.save
+  end
+
+  def check_item
+    json_response(@factura.productos)
+    @factura.productos.each do |producto|
+      if producto.cantidad>0 then
+        producto.activo=true
+      else
+	producto.activo=false
+      end
+      producto.save
+    end      
+    @factura=@factura.save
+  end
+
 
 end

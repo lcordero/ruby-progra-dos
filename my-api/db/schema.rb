@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_19_042205) do
+ActiveRecord::Schema.define(version: 2019_06_22_221911) do
 
   create_table "facturas", force: :cascade do |t|
     t.string "titulo"
@@ -37,14 +37,8 @@ ActiveRecord::Schema.define(version: 2019_06_19_042205) do
     t.integer "precio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "activo"
     t.index ["factura_id"], name: "index_productos_on_factura_id"
-  end
-
-  create_table "tests", force: :cascade do |t|
-    t.string "name"
-    t.string "lastname"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "todos", force: :cascade do |t|

@@ -17,14 +17,7 @@ class ProductosController < ApplicationController
 
   # POST /facturas/:factura_id/productos
   def create	  
-    @producto_temp = @factura.productos.find_by(nombre: producto_params[:nombre])
-    if @producto_temp.nil?
-      @factura.productos.create!(producto_params) 
-    else
-      @producto_temp[:cantidad] = @producto_temp[:cantidad] + producto_params[:cantidad].to_i
-      @producto_temp[:precio] = producto_params[:precio]
-      @producto_temp.save
-    end
+    @factura.productos.create!(producto_params)
     json_response(@factura, :created)
   end
 
@@ -63,7 +56,7 @@ class ProductosController < ApplicationController
     end
     @factura.total = @factura_sub_total
 
-    @factura =@factura.save
+    @factura=@factura.save
   end
 
   def check_item

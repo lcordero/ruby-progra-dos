@@ -1,7 +1,8 @@
 class ProductosController < ApplicationController
   before_action :set_factura
   before_action :set_factura_producto, only: [:show, :update, :destroy]
-  after_action :set_factura_total, only: [:update, :create, :destroy, :show]
+
+  after_action :set_factura_total, only: [:update, :create, :destroy]
   after_action :check_item, only: [:update, :create, :destroy, :show]
   # GET /facturas/:factura_id/productos
   def index
@@ -23,6 +24,7 @@ class ProductosController < ApplicationController
       @producto_temp[:precio] = producto_params[:precio]
       @producto_temp.save
     end
+    json_response(@factura, :created)
   end
 
   # PUT /facturas/:factura_id/productos/:id
@@ -33,7 +35,9 @@ class ProductosController < ApplicationController
 
   # DELETE /facturas/:factura_id/productos/:id
   def destroy
-    @producto.destroy
+    @producto.activo=false
+    @producto=@producto.save
+#    @producto.destroy
     head :no_content
   end
 
@@ -63,7 +67,7 @@ class ProductosController < ApplicationController
   end
 
   def check_item
-    @factura.productos.each do |producto|
+    @factura.producto.each do |producto|
       if producto.cantidad>0 then
         producto.activo=true
       else

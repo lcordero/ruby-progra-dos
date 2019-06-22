@@ -34,7 +34,7 @@ class FacturasController < ApplicationController
 
   def factura_params
     # whitelist params
-    params.permit(:titulo, :creada_por, :fecha, :total)
+    params.permit(:titulo, :creada_por, :fecha, :productos, :total)
   end
 
   def set_factura

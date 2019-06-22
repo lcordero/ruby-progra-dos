@@ -34,15 +34,19 @@ class FacturasController < ApplicationController
 
   def factura_params
     # whitelist params
-    params.permit(:titulo, :creada_por, :fecha, :total)
+    params.permit(:titulo, :creada_por, :fecha, :productos, :total)
   end
 
   def set_factura
     @factura = Factura.find(params[:id])
   end
+<<<<<<< HEAD
   def update_price
     @factura.productos.each do |producto|
 	  @Factura.total=@Factura.total+(producto.precio*producto.cantidad)
     end	    
   end
+=======
+
+>>>>>>> cef8767f8aa0b2b9800d407aa0ebd863e7986317
 end

@@ -3,7 +3,7 @@ class ProductosController < ApplicationController
   before_action :set_factura_producto, only: [:show, :update, :destroy]
 
   after_action :set_factura_total, only: [:update, :create, :destroy, :show]
-  before_action :check_item, only: [:update, :create, :show]
+  after_action :check_item, only: [:update, :create]
   # GET /facturas/:factura_id/productos
   def index
     json_response(@factura.productos)
@@ -15,7 +15,7 @@ class ProductosController < ApplicationController
   end
 
   # POST /facturas/:factura_id/productos
-  def create	  
+  def create
     @producto_temp = @factura.productos.find_by(nombre: producto_params[:nombre])
 
 
@@ -59,8 +59,8 @@ class ProductosController < ApplicationController
   end
 
   def set_factura_total
+    @factura = Factura.find(params[:factura_id])
     @factura_sub_total = 0
-    json_response(@factura.productos)
     @factura.productos.each do |producto|
       @factura_sub_total = @factura_sub_total + (producto.cantidad * producto.precio)
     end
@@ -70,7 +70,6 @@ class ProductosController < ApplicationController
   end
 
   def check_item
-    json_response(@factura.productos)
     @factura.productos.each do |producto|
       if producto.cantidad>0 then
         producto.activo=true

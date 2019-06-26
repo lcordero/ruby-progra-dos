@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_21_013026) do
+ActiveRecord::Schema.define(version: 2019_06_26_001034) do
 
   create_table "demos", force: :cascade do |t|
     t.string "titulo"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2019_06_21_013026) do
     t.integer "precio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "activo"
     t.index ["factura_id"], name: "index_productos_on_factura_id"
   end
 

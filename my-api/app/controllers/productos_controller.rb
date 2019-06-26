@@ -24,6 +24,7 @@ class ProductosController < ApplicationController
     else
 	    @producto_temp[:cantidad] = @producto_temp[:cantidad] + producto_params[:cantidad].to_i
 	    @producto_temp[:precio] = producto_params[:precio]
+	    @producto_temp[:activo] = true
 	    @producto_temp.save
     end
     
@@ -38,6 +39,7 @@ class ProductosController < ApplicationController
 
   # DELETE /facturas/:factura_id/productos/:id
   def destroy
+    @producto[:cantidad]=0
     @producto[:activo]=false
     @producto.save
     head :no_content
@@ -62,7 +64,7 @@ class ProductosController < ApplicationController
     @factura = Factura.find(params[:factura_id])
     @factura_sub_total = 0
     @factura.productos.each do |producto|
-      @factura_sub_total = @factura_sub_total + (producto.cantidad * producto.precio)
+	    @factura_sub_total = @factura_sub_total + (producto.cantidad * producto.precio)
     end
     @factura.total = @factura_sub_total
 

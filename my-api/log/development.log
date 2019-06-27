@@ -1,0 +1,1820 @@
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:4
+  [1m[35m (10.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:4
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateTodos (20190612075304)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "todos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "created_by" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190612075304_create_todos.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190612075304"]]
+  ↳ bin/rails:4
+  [1m[35m (6.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateItems (20190612075315)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "items" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "done" boolean, "todo_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_c01e6b449d"
+FOREIGN KEY ("todo_id")
+  REFERENCES "todos" ("id")
+)[0m
+  ↳ db/migrate/20190612075315_create_items.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_items_on_todo_id" ON "items" ("todo_id")[0m
+  ↳ db/migrate/20190612075315_create_items.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190612075315"]]
+  ↳ bin/rails:4
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateFacturas (20190619042154)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "facturas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar, "creada_por" varchar, "fecha" date, "total" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190619042154_create_facturas.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190619042154"]]
+  ↳ bin/rails:4
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateProductos (20190619042205)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "productos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "factura_id" integer, "nombre" varchar, "cantidad" integer, "precio" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_d61a8cb563"
+FOREIGN KEY ("factura_id")
+  REFERENCES "facturas" ("id")
+)[0m
+  ↳ db/migrate/20190619042205_create_productos.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_productos_on_factura_id" ON "productos" ("factura_id")[0m
+  ↳ db/migrate/20190619042205_create_productos.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190619042205"]]
+  ↳ bin/rails:4
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-06-22 22:00:46.516093"], ["updated_at", "2019-06-22 22:00:46.516093"]]
+  ↳ bin/rails:4
+  [1m[35m (3.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Started GET "/todos" for 186.159.182.65 at 2019-06-22 22:01:26 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (No route matches [GET] "/todos"):
+  
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/todos" for 186.159.182.65 at 2019-06-22 22:01:58 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/todos"):
+  
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/todos" for 186.159.182.65 at 2019-06-22 22:01:59 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/todos"):
+  
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/favicon.ico" for 186.159.182.65 at 2019-06-22 22:02:02 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/todos" for 186.159.182.65 at 2019-06-22 22:02:22 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/todos"):
+  
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for 186.159.182.65 at 2019-06-22 22:04:47 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as */*
+  Rendering vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb (3.2ms)
+Completed 200 OK in 16ms (Views: 10.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/todos" for 186.159.182.65 at 2019-06-22 22:05:04 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/todos"):
+  
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/todo" for 186.159.182.65 at 2019-06-22 22:06:23 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (No route matches [GET] "/todo"):
+  
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Started GET "/facturas" for 186.159.182.65 at 2019-06-22 22:10:49 +0000
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by FacturasController#index as */*
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT "facturas".* FROM "facturas"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 6ms (Views: 1.5ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/facturas?titulo=PC&creda_por=Juanito%20Perez&fecha=22/06/2019&total=0" for 186.159.182.65 at 2019-06-22 22:15:50 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by FacturasController#create as */*
+  Parameters: {"titulo"=>"PC", "creda_por"=>"Juanito Perez", "fecha"=>"22/06/2019", "total"=>"0"}
+Unpermitted parameter: :creda_por
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/facturas_controller.rb:12
+  [1m[36mFactura Create (1.8ms)[0m  [1m[32mINSERT INTO "facturas" ("titulo", "fecha", "total", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["titulo", "PC"], ["fecha", "2019-06-22"], ["total", 0], ["created_at", "2019-06-22 22:15:50.738435"], ["updated_at", "2019-06-22 22:15:50.738435"]]
+  ↳ app/controllers/facturas_controller.rb:12
+  [1m[35m (59.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/facturas_controller.rb:12
+Completed 201 Created in 79ms (Views: 1.3ms | ActiveRecord: 61.8ms)
+
+
+Started GET "/facturas" for 186.159.182.65 at 2019-06-22 22:16:40 +0000
+Processing by FacturasController#index as */*
+  [1m[36mFactura Load (0.3ms)[0m  [1m[34mSELECT "facturas".* FROM "facturas"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/facturas/1" for 186.159.182.65 at 2019-06-22 22:16:51 +0000
+Processing by FacturasController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mFactura Load (0.3ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/facturas_controller.rb:41
+Completed 200 OK in 4ms (Views: 0.7ms | ActiveRecord: 0.3ms)
+
+
+Started PUT "/facturas/1?creada_por=Peter%20Pan" for 186.159.182.65 at 2019-06-22 22:17:19 +0000
+Processing by FacturasController#update as */*
+  Parameters: {"creada_por"=>"Peter Pan", "id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/facturas_controller.rb:41
+Unpermitted parameter: :id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/facturas_controller.rb:23
+  [1m[36mFactura Update (1.1ms)[0m  [1m[33mUPDATE "facturas" SET "creada_por" = ?, "updated_at" = ? WHERE "facturas"."id" = ?[0m  [["creada_por", "Peter Pan"], ["updated_at", "2019-06-22 22:17:19.293531"], ["id", 1]]
+  ↳ app/controllers/facturas_controller.rb:23
+  [1m[35m (5.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/facturas_controller.rb:23
+Completed 204 No Content in 17ms (ActiveRecord: 7.3ms)
+
+
+Started GET "/facturas/1" for 186.159.182.65 at 2019-06-22 22:17:24 +0000
+Processing by FacturasController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/facturas_controller.rb:41
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/facturas/1/productos?nombre=SSD&cantidad=1&precio=30000" for 186.159.182.65 at 2019-06-22 22:18:22 +0000
+Processing by ProductosController#create as */*
+  Parameters: {"nombre"=>"SSD", "cantidad"=>"1", "precio"=>"30000", "factura_id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:44
+Unpermitted parameter: :factura_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:20
+  [1m[36mProducto Create (1.2ms)[0m  [1m[32mINSERT INTO "productos" ("factura_id", "nombre", "cantidad", "precio", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["factura_id", 1], ["nombre", "SSD"], ["cantidad", 1], ["precio", 30000], ["created_at", "2019-06-22 22:18:22.589777"], ["updated_at", "2019-06-22 22:18:22.589777"]]
+  ↳ app/controllers/productos_controller.rb:20
+  [1m[35m (49.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:20
+  [1m[36mProducto Load (0.3ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/productos_controller.rb:63
+Completed 500 Internal Server Error in 84ms (Views: 0.8ms | ActiveRecord: 52.1ms)
+
+
+  
+NoMethodError (undefined method `activo=' for #<Producto:0x00007fab50dc3950>):
+  
+app/controllers/productos_controller.rb:65:in `block in check_item'
+app/controllers/productos_controller.rb:63:in `check_item'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to AddActivoToProductos (20190622221911)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "productos" ADD "activo" boolean[0m
+  ↳ db/migrate/20190622221911_add_activo_to_productos.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190622221911"]]
+  ↳ bin/rails:4
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Started POST "/facturas/1/productos?nombre=SSD&cantidad=1&precio=30000" for 186.159.182.65 at 2019-06-22 22:19:34 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#create as */*
+  Parameters: {"nombre"=>"SSD", "cantidad"=>"1", "precio"=>"30000", "factura_id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:44
+Unpermitted parameter: :factura_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:20
+  [1m[36mProducto Create (0.4ms)[0m  [1m[32mINSERT INTO "productos" ("factura_id", "nombre", "cantidad", "precio", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["factura_id", 1], ["nombre", "SSD"], ["cantidad", 1], ["precio", 30000], ["created_at", "2019-06-22 22:19:34.334865"], ["updated_at", "2019-06-22 22:19:34.334865"]]
+  ↳ app/controllers/productos_controller.rb:20
+  [1m[35m (15.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:20
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/productos_controller.rb:63
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:69
+  [1m[36mProducto Update (0.2ms)[0m  [1m[33mUPDATE "productos" SET "activo" = ?, "updated_at" = ? WHERE "productos"."id" = ?[0m  [["activo", 1], ["updated_at", "2019-06-22 22:19:34.356447"], ["id", 1]]
+  ↳ app/controllers/productos_controller.rb:69
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:69
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:69
+  [1m[36mProducto Update (0.3ms)[0m  [1m[33mUPDATE "productos" SET "created_at" = ?, "updated_at" = ?, "activo" = ? WHERE "productos"."id" = ?[0m  [["created_at", "2019-06-22 22:19:34.334865"], ["updated_at", "2019-06-22 22:19:34.334865"], ["activo", 1], ["id", 2]]
+  ↳ app/controllers/productos_controller.rb:69
+  [1m[35m (4.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:69
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:71
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:71
+Completed 500 Internal Server Error in 68ms (Views: 0.7ms | ActiveRecord: 26.9ms)
+
+
+  
+NoMethodError (undefined method `productos' for true:TrueClass):
+  
+app/controllers/productos_controller.rb:54:in `set_factura_total'
+Started POST "/facturas/1/productos?nombre=SSD&cantidad=1&precio=30000" for 186.159.182.65 at 2019-06-22 22:27:30 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#create as */*
+  Parameters: {"nombre"=>"SSD", "cantidad"=>"1", "precio"=>"30000", "factura_id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:44
+Unpermitted parameter: :factura_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:20
+  [1m[36mProducto Create (0.3ms)[0m  [1m[32mINSERT INTO "productos" ("factura_id", "nombre", "cantidad", "precio", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["factura_id", 1], ["nombre", "SSD"], ["cantidad", 1], ["precio", 30000], ["created_at", "2019-06-22 22:27:30.312774"], ["updated_at", "2019-06-22 22:27:30.312774"]]
+  ↳ app/controllers/productos_controller.rb:20
+  [1m[35m (22.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:20
+  [1m[36mProducto Load (0.3ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/productos_controller.rb:55
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:60
+  [1m[36mFactura Update (0.3ms)[0m  [1m[33mUPDATE "facturas" SET "total" = ?, "updated_at" = ? WHERE "facturas"."id" = ?[0m  [["total", 90000], ["updated_at", "2019-06-22 22:27:30.342182"], ["id", 1]]
+  ↳ app/controllers/productos_controller.rb:60
+  [1m[35m (21.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:60
+Completed 201 Created in 82ms (Views: 0.8ms | ActiveRecord: 45.7ms)
+
+
+Started GET "/facturas/1/productos?nombre=SSD&cantidad=1&precio=30000" for 186.159.182.65 at 2019-06-22 22:27:52 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"nombre"=>"SSD", "cantidad"=>"1", "precio"=>"30000", "factura_id"=>"1"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:44
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/facturas/1" for 186.159.182.65 at 2019-06-22 22:28:10 +0000
+Processing by FacturasController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/facturas_controller.rb:41
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/facturas/1/productos" for 186.159.182.65 at 2019-06-22 22:31:06 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 30ms (Views: 10.8ms | ActiveRecord: 1.4ms)
+
+
+Started DELETE "/facturas/1/productos/2" for 186.159.182.65 at 2019-06-22 22:32:11 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#destroy as */*
+  Parameters: {"factura_id"=>"1", "id"=>"2"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:54
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:58
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:43
+  [1m[36mProducto Destroy (0.7ms)[0m  [1m[31mDELETE FROM "productos" WHERE "productos"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/productos_controller.rb:43
+  [1m[35m (4.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:43
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/productos_controller.rb:65
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:70
+  [1m[36mFactura Update (0.2ms)[0m  [1m[33mUPDATE "facturas" SET "total" = ?, "updated_at" = ? WHERE "facturas"."id" = ?[0m  [["total", 60000], ["updated_at", "2019-06-22 22:32:11.819378"], ["id", 1]]
+  ↳ app/controllers/productos_controller.rb:70
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:70
+Completed 204 No Content in 48ms (ActiveRecord: 11.5ms)
+
+
+Started DELETE "/facturas/1/productos/3" for 186.159.182.65 at 2019-06-22 22:32:18 +0000
+Processing by ProductosController#destroy as */*
+  Parameters: {"factura_id"=>"1", "id"=>"3"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:54
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:58
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:43
+  [1m[36mProducto Destroy (0.6ms)[0m  [1m[31mDELETE FROM "productos" WHERE "productos"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/productos_controller.rb:43
+  [1m[35m (21.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:43
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/productos_controller.rb:65
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:70
+  [1m[36mFactura Update (0.2ms)[0m  [1m[33mUPDATE "facturas" SET "total" = ?, "updated_at" = ? WHERE "facturas"."id" = ?[0m  [["total", 30000], ["updated_at", "2019-06-22 22:32:19.010056"], ["id", 1]]
+  ↳ app/controllers/productos_controller.rb:70
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:70
+Completed 204 No Content in 35ms (ActiveRecord: 26.7ms)
+
+
+Started GET "/facturas/1/productos/" for 186.159.182.65 at 2019-06-22 22:32:23 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:54
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/facturas/1/productos/?nombre=RAM&cantidad=1&precio=20000" for 186.159.182.65 at 2019-06-22 22:32:56 +0000
+Processing by ProductosController#create as */*
+  Parameters: {"nombre"=>"RAM", "cantidad"=>"1", "precio"=>"20000", "factura_id"=>"1"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:54
+Unpermitted parameter: :factura_id
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."nombre" = ? LIMIT ?[0m  [["factura_id", 1], ["nombre", "RAM"], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:19
+Unpermitted parameter: :factura_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:23
+  [1m[36mProducto Create (0.8ms)[0m  [1m[32mINSERT INTO "productos" ("factura_id", "nombre", "cantidad", "precio", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["factura_id", 1], ["nombre", "RAM"], ["cantidad", 1], ["precio", 20000], ["created_at", "2019-06-22 22:32:56.749317"], ["updated_at", "2019-06-22 22:32:56.749317"]]
+  ↳ app/controllers/productos_controller.rb:23
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:23
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/productos_controller.rb:65
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:70
+  [1m[36mFactura Update (0.3ms)[0m  [1m[33mUPDATE "facturas" SET "total" = ?, "updated_at" = ? WHERE "facturas"."id" = ?[0m  [["total", 50000], ["updated_at", "2019-06-22 22:32:56.761757"], ["id", 1]]
+  ↳ app/controllers/productos_controller.rb:70
+  [1m[35m (5.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:70
+Completed 201 Created in 26ms (Views: 0.7ms | ActiveRecord: 13.7ms)
+
+
+Started GET "/facturas/1/productos" for 186.159.182.65 at 2019-06-22 22:33:22 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:54
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/facturas/1/productos?nombre=RAM&cantidad=1&precio=20000" for 186.159.182.65 at 2019-06-22 22:34:15 +0000
+Processing by ProductosController#create as */*
+  Parameters: {"nombre"=>"RAM", "cantidad"=>"1", "precio"=>"20000", "factura_id"=>"1"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:54
+Unpermitted parameter: :factura_id
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."nombre" = ? LIMIT ?[0m  [["factura_id", 1], ["nombre", "RAM"], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:19
+Unpermitted parameter: :factura_id
+Unpermitted parameter: :factura_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:27
+  [1m[36mProducto Update (0.7ms)[0m  [1m[33mUPDATE "productos" SET "cantidad" = ?, "updated_at" = ? WHERE "productos"."id" = ?[0m  [["cantidad", 2], ["updated_at", "2019-06-22 22:34:15.843880"], ["id", 4]]
+  ↳ app/controllers/productos_controller.rb:27
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:27
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/productos_controller.rb:65
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:70
+  [1m[36mFactura Update (0.2ms)[0m  [1m[33mUPDATE "facturas" SET "total" = ?, "updated_at" = ? WHERE "facturas"."id" = ?[0m  [["total", 70000], ["updated_at", "2019-06-22 22:34:15.853381"], ["id", 1]]
+  ↳ app/controllers/productos_controller.rb:70
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:70
+Completed 201 Created in 20ms (Views: 0.5ms | ActiveRecord: 10.2ms)
+
+
+Started GET "/facturas/1/productos" for 186.159.182.65 at 2019-06-22 22:34:37 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"1"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:54
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/facturas/1/" for 186.159.182.65 at 2019-06-22 22:34:50 +0000
+Processing by FacturasController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/facturas_controller.rb:41
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/facturas/1" for 186.159.182.65 at 2019-06-22 22:34:55 +0000
+Processing by FacturasController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/facturas_controller.rb:41
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/facturas/1" for 186.159.182.65 at 2019-06-22 22:37:11 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by FacturasController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/facturas_controller.rb:41
+Completed 200 OK in 13ms (Views: 0.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/facturas/1/productos" for 186.159.182.65 at 2019-06-22 22:37:19 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"1"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 19ms (Views: 10.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/facturas/1/productos" for 186.159.182.65 at 2019-06-22 22:37:34 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/facturas/1/productos" for 186.159.182.65 at 2019-06-22 22:38:28 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 30ms (Views: 10.5ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/facturas/1/productos" for 186.159.182.65 at 2019-06-22 22:38:32 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/facturas/1/productos/4" for 186.159.182.65 at 2019-06-22 22:38:40 +0000
+Processing by ProductosController#show as */*
+  Parameters: {"factura_id"=>"1", "id"=>"4"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:57
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/productos_controller.rb:73
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[36mProducto Update (0.7ms)[0m  [1m[33mUPDATE "productos" SET "activo" = ?, "updated_at" = ? WHERE "productos"."id" = ?[0m  [["activo", 1], ["updated_at", "2019-06-22 22:38:40.719175"], ["id", 4]]
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[35m (38.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+Completed 500 Internal Server Error in 51ms (Views: 0.5ms | ActiveRecord: 40.1ms)
+
+
+  
+NoMethodError (undefined method `productos' for true:TrueClass):
+  
+app/controllers/productos_controller.rb:64:in `set_factura_total'
+Started GET "/facturas/1/productos/4" for 186.159.182.65 at 2019-06-22 22:40:12 +0000
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#show as */*
+  Parameters: {"factura_id"=>"1", "id"=>"4"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:57
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/productos_controller.rb:74
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:80
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:80
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:80
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:80
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:82
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:82
+Completed 500 Internal Server Error in 35ms (Views: 0.5ms | ActiveRecord: 1.9ms)
+
+
+  
+NoMethodError (undefined method `productos' for true:TrueClass):
+  
+app/controllers/productos_controller.rb:64:in `set_factura_total'
+Started GET "/facturas/1/productos/4" for 186.159.182.65 at 2019-06-22 22:41:38 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#show as */*
+  Parameters: {"factura_id"=>"1", "id"=>"4"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:57
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:80
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:80
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:80
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:80
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:82
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:82
+Filter chain halted as :check_item rendered or redirected
+Completed 200 OK in 34ms (Views: 2.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/facturas/1/productos/4" for 186.159.182.65 at 2019-06-23 03:09:17 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#show as */*
+  Parameters: {"factura_id"=>"1", "id"=>"4"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:54
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:58
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:83
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:83
+Filter chain halted as :check_item rendered or redirected
+Completed 200 OK in 34ms (Views: 2.1ms | ActiveRecord: 1.8ms)
+
+
+Started DELETE "/facturas/1/productos/1" for 186.159.182.65 at 2019-06-23 03:09:34 +0000
+Processing by ProductosController#destroy as */*
+  Parameters: {"factura_id"=>"1", "id"=>"1"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:54
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:58
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:43
+  [1m[36mProducto Update (1.2ms)[0m  [1m[33mUPDATE "productos" SET "activo" = ?, "cantidad" = ?, "updated_at" = ? WHERE "productos"."id" = ?[0m  [["activo", 0], ["cantidad", 0], ["updated_at", "2019-06-23 03:09:34.244972"], ["id", 1]]
+  ↳ app/controllers/productos_controller.rb:43
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:43
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 6.2ms)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/concerns/response.rb:3:in `json_response'
+app/controllers/productos_controller.rb:64:in `set_factura_total'
+Started GET "/facturas/1/productos/1" for 186.159.182.65 at 2019-06-23 03:10:26 +0000
+Processing by ProductosController#show as */*
+  Parameters: {"factura_id"=>"1", "id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:54
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:58
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:83
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:83
+Filter chain halted as :check_item rendered or redirected
+Completed 200 OK in 14ms (Views: 1.3ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/facturas/1/productos/4" for 186.159.182.65 at 2019-06-23 03:13:48 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#destroy as */*
+  Parameters: {"factura_id"=>"1", "id"=>"4"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:55
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:59
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:44
+  [1m[36mProducto Update (0.3ms)[0m  [1m[33mUPDATE "productos" SET "activo" = ?, "cantidad" = ?, "updated_at" = ? WHERE "productos"."id" = ?[0m  [["activo", 0], ["cantidad", 0], ["updated_at", "2019-06-23 03:13:48.394504"], ["id", 4]]
+  ↳ app/controllers/productos_controller.rb:44
+  [1m[35m (25.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:44
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:69
+  [1m[36mFactura Update (0.3ms)[0m  [1m[33mUPDATE "facturas" SET "total" = ?, "updated_at" = ? WHERE "facturas"."id" = ?[0m  [["total", 40000], ["updated_at", "2019-06-23 03:13:48.424073"], ["id", 1]]
+  ↳ app/controllers/productos_controller.rb:69
+  [1m[35m (3.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:69
+Completed 204 No Content in 67ms (Views: 2.1ms | ActiveRecord: 31.1ms)
+
+
+Started GET "/facturas/1/productos/" for 186.159.182.65 at 2019-06-23 03:13:53 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:55
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.3ms)
+
+
+Started PUT "/facturas/1/productos/1?cantidad=1" for 186.159.182.65 at 2019-06-23 03:14:28 +0000
+Processing by ProductosController#update as */*
+  Parameters: {"cantidad"=>"1", "factura_id"=>"1", "id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:55
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:59
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/productos_controller.rb:73
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+Unpermitted parameters: :factura_id, :id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:35
+  [1m[36mProducto Update (0.7ms)[0m  [1m[33mUPDATE "productos" SET "cantidad" = ?, "updated_at" = ? WHERE "productos"."id" = ?[0m  [["cantidad", 1], ["updated_at", "2019-06-23 03:14:28.455174"], ["id", 1]]
+  ↳ app/controllers/productos_controller.rb:35
+  [1m[35m (18.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:35
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 19.5ms)
+
+
+  
+NoMethodError (undefined method `productos' for true:TrueClass):
+  
+app/controllers/productos_controller.rb:65:in `set_factura_total'
+Started GET "/facturas/1/productos/1?cantidad=1" for 186.159.182.65 at 2019-06-23 03:15:16 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#show as */*
+  Parameters: {"cantidad"=>"1", "factura_id"=>"1", "id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:56
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:60
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/productos_controller.rb:74
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:80
+  [1m[36mProducto Update (0.3ms)[0m  [1m[33mUPDATE "productos" SET "activo" = ?, "updated_at" = ? WHERE "productos"."id" = ?[0m  [["activo", 1], ["updated_at", "2019-06-23 03:15:16.726288"], ["id", 1]]
+  ↳ app/controllers/productos_controller.rb:80
+  [1m[35m (18.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:80
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:80
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:80
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:82
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:82
+Completed 500 Internal Server Error in 57ms (Views: 0.6ms | ActiveRecord: 20.3ms)
+
+
+  
+NoMethodError (undefined method `productos' for true:TrueClass):
+  
+app/controllers/productos_controller.rb:66:in `set_factura_total'
+Started GET "/facturas/1/productos/" for 186.159.182.65 at 2019-06-23 03:15:30 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:56
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/facturas/1/productos/1" for 186.159.182.65 at 2019-06-23 03:15:39 +0000
+Processing by ProductosController#destroy as */*
+  Parameters: {"factura_id"=>"1", "id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:56
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:60
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:45
+  [1m[36mProducto Update (0.7ms)[0m  [1m[33mUPDATE "productos" SET "activo" = ?, "cantidad" = ?, "updated_at" = ? WHERE "productos"."id" = ?[0m  [["activo", 0], ["cantidad", 0], ["updated_at", "2019-06-23 03:15:39.140012"], ["id", 1]]
+  ↳ app/controllers/productos_controller.rb:45
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:45
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:70
+  [1m[36mFactura Update (0.3ms)[0m  [1m[33mUPDATE "facturas" SET "total" = ?, "updated_at" = ? WHERE "facturas"."id" = ?[0m  [["total", 30000], ["updated_at", "2019-06-23 03:15:39.147723"], ["id", 1]]
+  ↳ app/controllers/productos_controller.rb:70
+  [1m[35m (3.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:70
+Completed 204 No Content in 19ms (Views: 1.3ms | ActiveRecord: 9.5ms)
+
+
+Started GET "/facturas/1/productos/1" for 186.159.182.65 at 2019-06-23 03:15:42 +0000
+Processing by ProductosController#show as */*
+  Parameters: {"factura_id"=>"1", "id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:56
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:60
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/productos_controller.rb:74
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:80
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:80
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:80
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:80
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:82
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:82
+Completed 500 Internal Server Error in 9ms (Views: 0.4ms | ActiveRecord: 0.6ms)
+
+
+  
+NoMethodError (undefined method `productos' for true:TrueClass):
+  
+app/controllers/productos_controller.rb:66:in `set_factura_total'
+Started GET "/facturas/1/productos/1" for 186.159.182.65 at 2019-06-23 03:15:47 +0000
+Processing by ProductosController#show as */*
+  Parameters: {"factura_id"=>"1", "id"=>"1"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:56
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:60
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/productos_controller.rb:74
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:80
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:80
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:80
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:80
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:82
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:82
+Completed 500 Internal Server Error in 8ms (Views: 0.4ms | ActiveRecord: 0.6ms)
+
+
+  
+NoMethodError (undefined method `productos' for true:TrueClass):
+  
+app/controllers/productos_controller.rb:66:in `set_factura_total'
+Started GET "/facturas/1/productos/1" for 186.159.182.65 at 2019-06-23 03:16:41 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#show as */*
+  Parameters: {"factura_id"=>"1", "id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:57
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:61
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/productos_controller.rb:75
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:83
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:83
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 1.8ms)
+
+
+  
+NoMethodError (undefined method `productos' for true:TrueClass):
+  
+app/controllers/productos_controller.rb:14:in `show'
+Started GET "/facturas/1/productos/1" for 186.159.182.65 at 2019-06-23 03:16:43 +0000
+Processing by ProductosController#show as */*
+  Parameters: {"factura_id"=>"1", "id"=>"1"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:57
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:61
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/productos_controller.rb:75
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:83
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:83
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.5ms)
+
+
+  
+NoMethodError (undefined method `productos' for true:TrueClass):
+  
+app/controllers/productos_controller.rb:14:in `show'
+Started GET "/facturas/1/productos/1" for 186.159.182.65 at 2019-06-23 03:16:43 +0000
+Processing by ProductosController#show as */*
+  Parameters: {"factura_id"=>"1", "id"=>"1"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:57
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:61
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/productos_controller.rb:75
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:83
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:83
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.5ms)
+
+
+  
+NoMethodError (undefined method `productos' for true:TrueClass):
+  
+app/controllers/productos_controller.rb:14:in `show'
+Started GET "/facturas/1/productos/1" for 186.159.182.65 at 2019-06-23 03:16:44 +0000
+Processing by ProductosController#show as */*
+  Parameters: {"factura_id"=>"1", "id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:57
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:61
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/productos_controller.rb:75
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:83
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:83
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.6ms)
+
+
+  
+NoMethodError (undefined method `productos' for true:TrueClass):
+  
+app/controllers/productos_controller.rb:14:in `show'
+Started GET "/facturas/1/productos/1" for 186.159.182.65 at 2019-06-23 03:16:45 +0000
+Processing by ProductosController#show as */*
+  Parameters: {"factura_id"=>"1", "id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:57
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:61
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/productos_controller.rb:75
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:83
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:83
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.6ms)
+
+
+  
+NoMethodError (undefined method `productos' for true:TrueClass):
+  
+app/controllers/productos_controller.rb:14:in `show'
+Started GET "/facturas/1/productos/" for 186.159.182.65 at 2019-06-23 03:16:48 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"1"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:57
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/facturas/1/productos/1" for 186.159.182.65 at 2019-06-23 03:18:44 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#show as */*
+  Parameters: {"factura_id"=>"1", "id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:57
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:61
+  [1m[36mProducto Load (0.3ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/productos_controller.rb:76
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:82
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:82
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:82
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:82
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:84
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:84
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 2.0ms)
+
+
+  
+NoMethodError (undefined method `productos' for true:TrueClass):
+  
+app/controllers/productos_controller.rb:14:in `show'
+Started GET "/facturas/1/productos/1" for 186.159.182.65 at 2019-06-23 03:19:40 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#show as */*
+  Parameters: {"factura_id"=>"1", "id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:56
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:60
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/productos_controller.rb:75
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:83
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:83
+Completed 500 Internal Server Error in 35ms (Views: 0.5ms | ActiveRecord: 1.8ms)
+
+
+  
+NoMethodError (undefined method `productos' for true:TrueClass):
+  
+app/controllers/productos_controller.rb:65:in `set_factura_total'
+Started GET "/facturas/1/productos/1" for 186.159.182.65 at 2019-06-23 03:19:41 +0000
+Processing by ProductosController#show as */*
+  Parameters: {"factura_id"=>"1", "id"=>"1"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:56
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:60
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/productos_controller.rb:75
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:83
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:83
+Completed 500 Internal Server Error in 8ms (Views: 0.4ms | ActiveRecord: 0.6ms)
+
+
+  
+NoMethodError (undefined method `productos' for true:TrueClass):
+  
+app/controllers/productos_controller.rb:65:in `set_factura_total'
+Started GET "/facturas/1/productos/1" for 186.159.182.65 at 2019-06-23 03:20:37 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#show as */*
+  Parameters: {"factura_id"=>"1", "id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:56
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:60
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:82
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:82
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:82
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:82
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:84
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:84
+Filter chain halted as :check_item rendered or redirected
+Completed 200 OK in 34ms (Views: 2.0ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/facturas/1/productos/1" for 186.159.182.65 at 2019-06-23 03:20:52 +0000
+Processing by ProductosController#show as */*
+  Parameters: {"factura_id"=>"1", "id"=>"1"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:56
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:60
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:82
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:82
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:82
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:82
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:84
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:84
+Filter chain halted as :check_item rendered or redirected
+Completed 200 OK in 7ms (Views: 1.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/facturas/1/productos/" for 186.159.182.65 at 2019-06-23 03:21:00 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:56
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/facturas/1/productos/" for 186.159.182.65 at 2019-06-23 03:22:11 +0000
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"1"}
+  [1m[36mFactura Load (0.3ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:54
+  [1m[36mProducto Load (0.3ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 45ms (Views: 14.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/facturas/1/productos/1" for 186.159.182.65 at 2019-06-23 03:22:15 +0000
+Processing by ProductosController#show as */*
+  Parameters: {"factura_id"=>"1", "id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:54
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:58
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:80
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:80
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:80
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:80
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:82
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:82
+Filter chain halted as :check_item rendered or redirected
+Completed 200 OK in 11ms (Views: 1.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/facturas/1/productos/1" for 186.159.182.65 at 2019-06-23 03:24:40 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#show as */*
+  Parameters: {"factura_id"=>"1", "id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:57
+Completed 500 Internal Server Error in 31ms (Views: 0.7ms | ActiveRecord: 1.6ms)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/concerns/response.rb:3:in `json_response'
+app/controllers/productos_controller.rb:63:in `set_factura_total'
+Started GET "/facturas/1/productos/" for 186.159.182.65 at 2019-06-23 03:24:49 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"1"}
+  [1m[36mFactura Load (0.3ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.4ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 7ms (Views: 4.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/facturas/1/productos/" for 186.159.182.65 at 2019-06-23 03:25:49 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 32ms (Views: 11.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/facturas/1/productos/1" for 186.159.182.65 at 2019-06-23 03:25:55 +0000
+Processing by ProductosController#show as */*
+  Parameters: {"factura_id"=>"1", "id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.3ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:57
+Completed 500 Internal Server Error in 6ms (Views: 1.0ms | ActiveRecord: 0.4ms)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/concerns/response.rb:3:in `json_response'
+app/controllers/productos_controller.rb:63:in `set_factura_total'
+Started GET "/facturas/1/productos/1" for 186.159.182.65 at 2019-06-23 03:26:49 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#show as */*
+  Parameters: {"factura_id"=>"1", "id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:57
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/productos_controller.rb:64
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:69
+  [1m[36mFactura Update (0.3ms)[0m  [1m[33mUPDATE "facturas" SET "total" = ?, "updated_at" = ? WHERE "facturas"."id" = ?[0m  [["total", 0], ["updated_at", "2019-06-23 03:26:49.160006"], ["id", 1]]
+  ↳ app/controllers/productos_controller.rb:69
+  [1m[35m (20.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:69
+Completed 200 OK in 56ms (Views: 0.6ms | ActiveRecord: 22.3ms)
+
+
+Started PUT "/facturas/1/productos/1?cantidad=1" for 186.159.182.65 at 2019-06-23 03:27:03 +0000
+Processing by ProductosController#update as */*
+  Parameters: {"cantidad"=>"1", "factura_id"=>"1", "id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:57
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/productos_controller.rb:74
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:80
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:80
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:80
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:80
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:82
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:82
+Unpermitted parameters: :factura_id, :id
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:35
+  [1m[36mProducto Update (0.8ms)[0m  [1m[33mUPDATE "productos" SET "cantidad" = ?, "updated_at" = ? WHERE "productos"."id" = ?[0m  [["cantidad", 1], ["updated_at", "2019-06-23 03:27:03.479002"], ["id", 1]]
+  ↳ app/controllers/productos_controller.rb:35
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:35
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 6.5ms)
+
+
+  
+NoMethodError (undefined method `productos' for true:TrueClass):
+  
+app/controllers/productos_controller.rb:64:in `set_factura_total'
+Started GET "/facturas/1/productos/1" for 186.159.182.65 at 2019-06-23 03:27:21 +0000
+Processing by ProductosController#show as */*
+  Parameters: {"factura_id"=>"1", "id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:57
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/productos_controller.rb:64
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:69
+  [1m[36mFactura Update (0.8ms)[0m  [1m[33mUPDATE "facturas" SET "total" = ?, "updated_at" = ? WHERE "facturas"."id" = ?[0m  [["total", 30000], ["updated_at", "2019-06-23 03:27:21.294654"], ["id", 1]]
+  ↳ app/controllers/productos_controller.rb:69
+  [1m[35m (4.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:69
+Completed 200 OK in 12ms (Views: 0.5ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/facturas/1/productos" for 186.159.182.65 at 2019-06-23 03:27:32 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/facturas/1/productos" for 186.159.182.65 at 2019-06-23 03:29:36 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:57
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 28ms (Views: 10.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/facturas/1/productos/1" for 186.159.182.65 at 2019-06-23 03:29:41 +0000
+Processing by ProductosController#show as */*
+  Parameters: {"factura_id"=>"1", "id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:57
+  [1m[36mProducto Load (0.3ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:61
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 500 Internal Server Error in 5ms (Views: 1.5ms | ActiveRecord: 0.6ms)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/concerns/response.rb:3:in `json_response'
+app/controllers/productos_controller.rb:15:in `show'
+Started GET "/facturas/1/productos/1" for 186.159.182.65 at 2019-06-23 03:31:24 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#show as */*
+  Parameters: {"factura_id"=>"1", "id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:57
+Completed 500 Internal Server Error in 29ms (Views: 0.6ms | ActiveRecord: 1.4ms)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/concerns/response.rb:3:in `json_response'
+app/controllers/productos_controller.rb:63:in `set_factura_total'
+Started GET "/facturas/1/productos/1" for 186.159.182.65 at 2019-06-23 03:32:42 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (undefined method `productos' for nil:NilClass):
+  
+app/controllers/productos_controller.rb:8:in `<class:ProductosController>'
+app/controllers/productos_controller.rb:1:in `<top (required)>'
+Started GET "/facturas/1/productos/1" for 186.159.182.65 at 2019-06-23 03:35:00 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#show as */*
+  Parameters: {"factura_id"=>"1", "id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+Filter chain halted as :set_factura rendered or redirected
+Completed 200 OK in 28ms (Views: 10.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/facturas/1/productos/4" for 186.159.182.65 at 2019-06-23 03:35:23 +0000
+Processing by ProductosController#show as */*
+  Parameters: {"factura_id"=>"1", "id"=>"4"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+Filter chain halted as :set_factura rendered or redirected
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/facturas/1/productos/4" for 186.159.182.65 at 2019-06-23 03:40:11 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#show as */*
+  Parameters: {"factura_id"=>"1", "id"=>"4"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:57
+  [1m[36mCACHE Factura Load (0.0ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:62
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/productos_controller.rb:64
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:69
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:69
+Completed 200 OK in 32ms (Views: 0.6ms | ActiveRecord: 1.9ms)
+
+
+Started PUT "/facturas/1/productos/4?cantidad=2" for 186.159.182.65 at 2019-06-23 03:41:06 +0000
+Processing by ProductosController#update as */*
+  Parameters: {"cantidad"=>"2", "factura_id"=>"1", "id"=>"4"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:57
+Unpermitted parameters: :factura_id, :id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:35
+  [1m[36mProducto Update (2.0ms)[0m  [1m[33mUPDATE "productos" SET "cantidad" = ?, "updated_at" = ? WHERE "productos"."id" = ?[0m  [["cantidad", 2], ["updated_at", "2019-06-23 03:41:06.294211"], ["id", 4]]
+  ↳ app/controllers/productos_controller.rb:35
+  [1m[35m (56.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:35
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/productos_controller.rb:73
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[36mProducto Update (0.2ms)[0m  [1m[33mUPDATE "productos" SET "activo" = ?, "updated_at" = ? WHERE "productos"."id" = ?[0m  [["activo", 1], ["updated_at", "2019-06-23 03:41:06.357384"], ["id", 1]]
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[36mProducto Update (0.2ms)[0m  [1m[33mUPDATE "productos" SET "activo" = ?, "updated_at" = ? WHERE "productos"."id" = ?[0m  [["activo", 1], ["updated_at", "2019-06-23 03:41:06.365462"], ["id", 4]]
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[35m (3.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:62
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/productos_controller.rb:64
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:69
+  [1m[36mFactura Update (0.2ms)[0m  [1m[33mUPDATE "facturas" SET "total" = ?, "updated_at" = ? WHERE "facturas"."id" = ?[0m  [["total", 70000], ["updated_at", "2019-06-23 03:41:06.375426"], ["id", 1]]
+  ↳ app/controllers/productos_controller.rb:69
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:69
+Completed 204 No Content in 93ms (ActiveRecord: 72.2ms)
+
+
+Started GET "/facturas/1/productos/4?cantidad=2" for 186.159.182.65 at 2019-06-23 03:41:09 +0000
+Processing by ProductosController#show as */*
+  Parameters: {"cantidad"=>"2", "factura_id"=>"1", "id"=>"4"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 1], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:57
+  [1m[36mCACHE Factura Load (0.0ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:62
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/productos_controller.rb:64
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:69
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:69
+Completed 200 OK in 6ms (Views: 0.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/facturas/1/productos/" for 186.159.182.65 at 2019-06-25 22:55:59 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 31ms (Views: 11.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/facturas/1" for 186.159.182.65 at 2019-06-25 22:56:12 +0000
+Processing by FacturasController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/facturas_controller.rb:41
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/facturas/1/productos/" for 186.159.182.65 at 2019-06-26 00:23:31 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 29ms (Views: 10.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/facturas/1" for 186.159.182.65 at 2019-06-26 01:12:23 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by FacturasController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/facturas_controller.rb:41
+Completed 200 OK in 12ms (Views: 0.7ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/facturas/1?titulo=Diario&creada_por=Juanito&fecha=25/06/2019&total=0" for 186.159.182.65 at 2019-06-26 01:20:17 +0000
+  
+ActionController::RoutingError (No route matches [POST] "/facturas/1"):
+  
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/facturas" for 186.159.182.65 at 2019-06-26 01:20:27 +0000
+Processing by FacturasController#create as */*
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/facturas_controller.rb:12
+  [1m[36mFactura Create (0.5ms)[0m  [1m[32mINSERT INTO "facturas" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2019-06-26 01:20:27.444282"], ["updated_at", "2019-06-26 01:20:27.444282"]]
+  ↳ app/controllers/facturas_controller.rb:12
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/facturas_controller.rb:12
+Completed 201 Created in 14ms (Views: 0.9ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/facturas" for 186.159.182.65 at 2019-06-26 01:20:33 +0000
+Processing by FacturasController#index as */*
+  [1m[36mFactura Load (0.3ms)[0m  [1m[34mSELECT "facturas".* FROM "facturas"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/facturas/1/productos" for 186.159.182.65 at 2019-06-26 01:21:28 +0000
+Processing by ProductosController#create as */*
+  Parameters: {"factura_id"=>"1"}
+  [1m[36mFactura Load (0.4ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+Unpermitted parameter: :factura_id
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."nombre" IS NULL LIMIT ?[0m  [["factura_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:19
+Unpermitted parameter: :factura_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:23
+  [1m[36mProducto Create (1.0ms)[0m  [1m[32mINSERT INTO "productos" ("factura_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["factura_id", 1], ["created_at", "2019-06-26 01:21:28.573171"], ["updated_at", "2019-06-26 01:21:28.573171"]]
+  ↳ app/controllers/productos_controller.rb:23
+  [1m[35m (14.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:23
+  [1m[36mProducto Load (0.3ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/productos_controller.rb:73
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:79
+Completed 500 Internal Server Error in 53ms (Views: 0.7ms | ActiveRecord: 17.8ms)
+
+
+  
+NoMethodError (undefined method `>' for nil:NilClass):
+  
+app/controllers/productos_controller.rb:74:in `block in check_item'
+app/controllers/productos_controller.rb:73:in `check_item'
+Started GET "/facturas/1/productos" for 186.159.182.65 at 2019-06-26 01:21:33 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"1"}
+  [1m[36mFactura Load (0.3ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 5ms (Views: 2.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/facturas/3/productos" for 186.159.182.65 at 2019-06-26 01:22:07 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"3"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/facturas/3/" for 186.159.182.65 at 2019-06-26 01:22:13 +0000
+Processing by FacturasController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/facturas_controller.rb:41
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/facturas/3" for 186.159.182.65 at 2019-06-26 01:22:16 +0000
+Processing by FacturasController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/facturas_controller.rb:41
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/facturas/1" for 186.159.182.65 at 2019-06-26 01:22:39 +0000
+Processing by FacturasController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/facturas_controller.rb:41
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/facturas/1/productos/" for 186.159.182.65 at 2019-06-26 01:22:48 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"1"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.3ms)
+
+

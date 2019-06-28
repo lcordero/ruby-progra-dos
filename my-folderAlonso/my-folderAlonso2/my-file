@@ -1,0 +1,17 @@
+module notificaciones
+
+        
+  def mostrar_Exitos()
+    puts "#{@exitos} did Yeah"
+  end
+
+  def mostrar_Alerta()
+    puts "#{@alerta} did Hey Hey!"
+  end
+
+  def mostrar_Error()
+    puts "#{@error} did Sorry!"
+  end
+
+end
+

@@ -1,0 +1,31 @@
+module Notificaciones
+    def Exito
+        puts "Yujuu"
+    end
+
+    def Alerta
+        puts "Hey Hey"
+    end
+
+    def Error
+        puts "Damn"
+    end
+    
+end
+
+class LlamaMosulo
+    def initializ
+     
+    end
+
+    include Notificaciones
+    
+end
+
+u= LlamaMosulo.new
+
+u.Exito()
+u.Alerta()
+u.Error()
+
+gets()

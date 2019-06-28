@@ -1,0 +1,56 @@
+class Animal
+    attr_accessor :Color, :Tamaño, :sonido, :desconocido
+
+
+    def guao
+        puts "#{sonido}guao"
+    end
+
+    def des
+        puts "#{desconocido}desconocido!"
+    end   
+end
+
+Perro = Animal.new
+
+puts Perro
+
+Perro.Color ="color"
+
+Perro.Tamaño ="tamaño"
+puts Perro.Color
+puts Perro.Tamaño
+
+Perro.guao
+
+Perro.des
+gets()
+-----------------------------------------------------
+class Animal
+    attr_accessor :Color, :Tamaño, :sonido
+
+
+    def guao
+        puts "#{sonido}guao"
+    end
+       
+end
+
+class Gato < Animal
+    attr_accessor :Raza
+
+    def initialize
+    end
+
+    def Miau
+        puts "#{sonido}miau!"
+    end
+        
+end
+
+d = Gato.new
+
+d.Raza= "Raza"
+puts d.Raza
+d.Miau
+gets()

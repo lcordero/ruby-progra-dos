@@ -1,0 +1,2058 @@
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:4
+  [1m[35m (16.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:4
+  [1m[35m (8.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateTodos (20190612075304)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "todos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "created_by" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190612075304_create_todos.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190612075304"]]
+  ↳ bin/rails:4
+  [1m[35m (6.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateItems (20190612075315)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "items" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "done" boolean, "todo_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_c01e6b449d"
+FOREIGN KEY ("todo_id")
+  REFERENCES "todos" ("id")
+)[0m
+  ↳ db/migrate/20190612075315_create_items.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_items_on_todo_id" ON "items" ("todo_id")[0m
+  ↳ db/migrate/20190612075315_create_items.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190612075315"]]
+  ↳ bin/rails:4
+  [1m[35m (9.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-06-13 22:27:40.259767"], ["updated_at", "2019-06-13 22:27:40.259767"]]
+  ↳ bin/rails:4
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Started GET "/todos" for 186.26.116.20 at 2019-06-13 22:29:42 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 6ms (Views: 1.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/favicon.ico" for 186.26.116.20 at 2019-06-13 22:29:43 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateDemos (20190614020407)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190614020407_create_demos.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "demos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar, "usuario" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190614020407_create_demos.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190614020407"]]
+  ↳ bin/rails:4
+  [1m[35m (25.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Started GET "/demo" for 170.246.148.52 at 2019-06-14 02:29:02 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (No route matches [GET] "/demo"):
+  
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateGokus (20190615063518)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateGokus (20190615063518)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateGokus (20190615063518)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateGokus (20190615063518)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateGokus (20190615063518)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateGokus (20190615063518)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateGokus (20190615063518)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreatePruebas (20190616062953)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateLalas (20190620023632)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190620023632_create_lalas.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "lalas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190620023632_create_lalas.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190620023632"]]
+  ↳ bin/rails:4
+  [1m[35m (15.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Started GET "/3001/alejandro-z" for 190.10.52.249 at 2019-06-20 03:41:30 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (No route matches [GET] "/3001/alejandro-z"):
+  
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateKakusus (20190620171640)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190620171640_create_kakusus.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "kakusus" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190620171640_create_kakusus.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190620171640"]]
+  ↳ bin/rails:4
+  [1m[35m (19.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Started GET "/kakusu" for 190.10.52.249 at 2019-06-20 17:28:11 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (No route matches [GET] "/kakusu"):
+  
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateFacturas (20190620233409)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190620233409_create_facturas.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "facturas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar, "creada_por" varchar, "fecha" date, "total" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190620233409_create_facturas.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190620233409"]]
+  ↳ bin/rails:4
+  [1m[35m (6.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateProductos (20190620233606)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "productos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "factura_id" integer, "nombre" varchar, "cantidad" integer, "precio" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190620233606_create_productos.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_productos_on_factura_id" ON "productos" ("factura_id")[0m
+  ↳ db/migrate/20190620233606_create_productos.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190620233606"]]
+  ↳ bin/rails:4
+  [1m[35m (7.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Started GET "/facturas" for 170.246.148.52 at 2019-06-21 00:21:35 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+SyntaxError (/home/alejandro-z/progra2/ruby-progra-dos/my-api/app/controllers/facturas_controller.rb:45: syntax error, unexpected keyword_end, expecting end-of-input):
+  
+app/controllers/facturas_controller.rb:45: syntax error, unexpected keyword_end, expecting end-of-input
+Started GET "/facturas" for 170.246.148.52 at 2019-06-21 00:24:07 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+SyntaxError (/home/alejandro-z/progra2/ruby-progra-dos/my-api/app/controllers/facturas_controller.rb:45: syntax error, unexpected keyword_end, expecting end-of-input):
+  
+app/controllers/facturas_controller.rb:45: syntax error, unexpected keyword_end, expecting end-of-input
+Started GET "/facturas" for 170.246.148.52 at 2019-06-21 00:28:26 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+SyntaxError (/home/alejandro-z/progra2/ruby-progra-dos/my-api/app/controllers/facturas_controller.rb:45: syntax error, unexpected keyword_end, expecting end-of-input):
+  
+app/controllers/facturas_controller.rb:45: syntax error, unexpected keyword_end, expecting end-of-input
+Started GET "/facturas" for 170.246.148.52 at 2019-06-21 00:28:32 +0000
+  
+SyntaxError (/home/alejandro-z/progra2/ruby-progra-dos/my-api/app/controllers/facturas_controller.rb:45: syntax error, unexpected keyword_end, expecting end-of-input):
+  
+app/controllers/facturas_controller.rb:45: syntax error, unexpected keyword_end, expecting end-of-input
+Started GET "/facturas" for 170.246.148.52 at 2019-06-21 00:31:38 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by FacturasController#index as */*
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/alejandro-z/progra2/ruby-progra-dos/my-api/app/models/factura.rb:3: syntax error, unexpected '|', expecting keyword_end):
+  
+app/models/factura.rb:3: syntax error, unexpected '|', expecting keyword_end
+app/controllers/facturas_controller.rb:6:in `index'
+Started GET "/facturas" for 170.246.148.52 at 2019-06-21 00:38:32 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by FacturasController#index as */*
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/alejandro-z/progra2/ruby-progra-dos/my-api/app/models/factura.rb:3: syntax error, unexpected '|', expecting keyword_end):
+  
+app/models/factura.rb:3: syntax error, unexpected '|', expecting keyword_end
+app/controllers/facturas_controller.rb:6:in `index'
+Started GET "/todos" for 170.246.148.52 at 2019-06-21 00:39:51 +0000
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 7ms (Views: 1.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/favicon.ico" for 170.246.148.52 at 2019-06-21 00:39:52 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/facturas" for 170.246.148.52 at 2019-06-21 00:39:53 +0000
+Processing by FacturasController#index as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/alejandro-z/progra2/ruby-progra-dos/my-api/app/models/factura.rb:3: syntax error, unexpected '|', expecting keyword_end):
+  
+app/models/factura.rb:3: syntax error, unexpected '|', expecting keyword_end
+app/controllers/facturas_controller.rb:6:in `index'
+Started GET "/favicon.ico" for 170.246.148.52 at 2019-06-21 00:39:55 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/facturas" for 170.246.148.52 at 2019-06-21 00:48:33 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by FacturasController#index as */*
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/alejandro-z/progra2/ruby-progra-dos/my-api/app/models/factura.rb:3: syntax error, unexpected '|', expecting keyword_end):
+  
+app/models/factura.rb:3: syntax error, unexpected '|', expecting keyword_end
+app/controllers/facturas_controller.rb:6:in `index'
+Started GET "/facturas" for 170.246.148.52 at 2019-06-21 00:49:10 +0000
+Processing by FacturasController#index as */*
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/alejandro-z/progra2/ruby-progra-dos/my-api/app/models/factura.rb:3: syntax error, unexpected '|', expecting keyword_end):
+  
+app/models/factura.rb:3: syntax error, unexpected '|', expecting keyword_end
+app/controllers/facturas_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateFacturas (20190621005623)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190621005623_create_facturas.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "facturas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar, "creada_por" varchar, "fecha" date, "total" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190621005623_create_facturas.rb:3
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+Started GET "/facturas" for 170.246.148.52 at 2019-06-21 00:59:40 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/migration.rb:579:in `check_pending!'
+vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/migration.rb:556:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/callbacks.rb:98:in `run_callbacks'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateFacturas (20190621005623)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190621005623_create_facturas.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "facturas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar, "creada_por" varchar, "fecha" date, "total" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190621005623_create_facturas.rb:3
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateFacturas (20190621005623)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190621005623_create_facturas.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "facturas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar, "creada_por" varchar, "fecha" date, "total" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190621005623_create_facturas.rb:3
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateProductos (20190620233606)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE "productos"[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.2ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20190620233606"]]
+  ↳ bin/rails:4
+  [1m[35m (28.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateProductos (20190620233606)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190620233606_create_productos.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "productos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "factura_id" integer, "nombre" varchar, "cantidad" integer, "precio" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190620233606_create_productos.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_productos_on_factura_id" ON "productos" ("factura_id")[0m
+  ↳ db/migrate/20190620233606_create_productos.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190620233606"]]
+  ↳ bin/rails:4
+  [1m[35m (5.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateFacturas (20190621005623)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "facturas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar, "creada_por" varchar, "fecha" date, "total" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190621005623_create_facturas.rb:3
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateProductos (20190620233606)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "productos"[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.1ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20190620233606"]]
+  ↳ bin/rails:4
+  [1m[35m (4.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateKakusus (20190620171640)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "kakusus"[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.1ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20190620171640"]]
+  ↳ bin/rails:4
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateKakusus (20190620171640)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190620171640_create_kakusus.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "kakusus" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190620171640_create_kakusus.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190620171640"]]
+  ↳ bin/rails:4
+  [1m[35m (17.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateProductos (20190620233606)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "productos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "factura_id" integer, "nombre" varchar, "cantidad" integer, "precio" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190620233606_create_productos.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_productos_on_factura_id" ON "productos" ("factura_id")[0m
+  ↳ db/migrate/20190620233606_create_productos.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190620233606"]]
+  ↳ bin/rails:4
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateFacturas (20190621005623)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "facturas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar, "creada_por" varchar, "fecha" date, "total" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190621005623_create_facturas.rb:3
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateTodos (20190612075304)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE "todos"[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.3ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20190612075304"]]
+  ↳ bin/rails:4
+  [1m[35m (9.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateTodos (20190612075304)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190612075304_create_todos.rb:3
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "todos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "created_by" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190612075304_create_todos.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190612075304"]]
+  ↳ bin/rails:4
+  [1m[35m (6.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateFacturas (20190621005623)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "facturas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar, "creada_por" varchar, "fecha" date, "total" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190621005623_create_facturas.rb:3
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateProductos (20190620233606)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE "productos"[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.2ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20190620233606"]]
+  ↳ bin/rails:4
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateTodos (20190612075304)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE "todos"[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.2ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20190612075304"]]
+  ↳ bin/rails:4
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateTodos (20190612075304)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190612075304_create_todos.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "todos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "created_by" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190612075304_create_todos.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190612075304"]]
+  ↳ bin/rails:4
+  [1m[35m (44.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateProductos (20190620233606)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "productos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "factura_id" integer, "nombre" varchar, "cantidad" integer, "precio" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190620233606_create_productos.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_productos_on_factura_id" ON "productos" ("factura_id")[0m
+  ↳ db/migrate/20190620233606_create_productos.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190620233606"]]
+  ↳ bin/rails:4
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateFacturas (20190621005623)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "facturas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar, "creada_por" varchar, "fecha" date, "total" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190621005623_create_facturas.rb:3
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateFacturas (20190621005623)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190621005623_create_facturas.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "facturas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar, "creada_por" varchar, "fecha" date, "total" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190621005623_create_facturas.rb:3
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateKakusus (20190620171640)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "kakusus"[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.3ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20190620171640"]]
+  ↳ bin/rails:4
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateKakusus (20190620171640)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190620171640_create_kakusus.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "kakusus" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190620171640_create_kakusus.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190620171640"]]
+  ↳ bin/rails:4
+  [1m[35m (4.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateFacturas (20190621005623)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "facturas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar, "creada_por" varchar, "fecha" date, "total" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190621005623_create_facturas.rb:3
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateFacturas (20190621005623)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190621005623_create_facturas.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "facturas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar, "creada_por" varchar, "fecha" date, "total" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190621005623_create_facturas.rb:3
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateFacturas (20190621005623)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190621005623_create_facturas.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "facturas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar, "creada_por" varchar, "fecha" date, "total" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190621005623_create_facturas.rb:3
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateFacturas (20190621005623)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateFacturas (20190621005623)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190621005623"]]
+  ↳ bin/rails:4
+  [1m[35m (5.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to DropFacturasTable (20190621012557)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190621012557"]]
+  ↳ bin/rails:4
+  [1m[35m (3.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateFacturas (20190621013026)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190621013026_create_facturas.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "facturas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar, "creada_por" varchar, "fecha" date, "total" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190621013026_create_facturas.rb:3
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:4
+  [1m[35m (45.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:4
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateTodos (20190612075304)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "todos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "created_by" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190612075304_create_todos.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190612075304"]]
+  ↳ bin/rails:4
+  [1m[35m (6.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateItems (20190612075315)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "items" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "done" boolean, "todo_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_c01e6b449d"
+FOREIGN KEY ("todo_id")
+  REFERENCES "todos" ("id")
+)[0m
+  ↳ db/migrate/20190612075315_create_items.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_items_on_todo_id" ON "items" ("todo_id")[0m
+  ↳ db/migrate/20190612075315_create_items.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190612075315"]]
+  ↳ bin/rails:4
+  [1m[35m (6.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateDemos (20190614020407)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "demos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar, "usuario" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190614020407_create_demos.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190614020407"]]
+  ↳ bin/rails:4
+  [1m[35m (6.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateLalas (20190620023632)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "lalas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190620023632_create_lalas.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190620023632"]]
+  ↳ bin/rails:4
+  [1m[35m (5.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateKakusus (20190620171640)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "kakusus" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190620171640_create_kakusus.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190620171640"]]
+  ↳ bin/rails:4
+  [1m[35m (5.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateProductos (20190620233606)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "productos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "factura_id" integer, "nombre" varchar, "cantidad" integer, "precio" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190620233606_create_productos.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_productos_on_factura_id" ON "productos" ("factura_id")[0m
+  ↳ db/migrate/20190620233606_create_productos.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190620233606"]]
+  ↳ bin/rails:4
+  [1m[35m (5.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to DropFacturasTable (20190621012557)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190621012557"]]
+  ↳ bin/rails:4
+  [1m[35m (5.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateFacturas (20190621013026)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "facturas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar, "creada_por" varchar, "fecha" date, "total" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190621013026_create_facturas.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190621013026"]]
+  ↳ bin/rails:4
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-06-21 01:40:27.478017"], ["updated_at", "2019-06-21 01:40:27.478017"]]
+  ↳ bin/rails:4
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Started GET "/facturas" for 170.246.148.52 at 2019-06-21 01:41:52 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by FacturasController#index as */*
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT "facturas".* FROM "facturas"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/facturas?title=pachosa&creado_por=Alejandro%20Z%C3%BA%C3%B1iga&fecha=20/6/2019" for 170.246.148.52 at 2019-06-21 01:46:54 +0000
+Processing by FacturasController#create as */*
+  Parameters: {"title"=>"pachosa", "creado_por"=>"Alejandro Zúñiga", "fecha"=>"20/6/2019"}
+Unpermitted parameters: :title, :creado_por
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/facturas_controller.rb:12
+  [1m[36mFactura Create (1.4ms)[0m  [1m[32mINSERT INTO "facturas" ("fecha", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["fecha", "2019-06-20"], ["created_at", "2019-06-21 01:46:54.265469"], ["updated_at", "2019-06-21 01:46:54.265469"]]
+  ↳ app/controllers/facturas_controller.rb:12
+  [1m[35m (13.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/facturas_controller.rb:12
+Completed 201 Created in 31ms (Views: 1.2ms | ActiveRecord: 15.8ms)
+
+
+Started POST "/facturas?titulo=pachosa&creada_por=Alejandro%20Z%C3%BA%C3%B1iga&fecha=20/6/2019" for 170.246.148.52 at 2019-06-21 01:47:44 +0000
+Processing by FacturasController#create as */*
+  Parameters: {"titulo"=>"pachosa", "creada_por"=>"Alejandro Zúñiga", "fecha"=>"20/6/2019"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/facturas_controller.rb:12
+  [1m[36mFactura Create (1.1ms)[0m  [1m[32mINSERT INTO "facturas" ("titulo", "creada_por", "fecha", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["titulo", "pachosa"], ["creada_por", "Alejandro Zúñiga"], ["fecha", "2019-06-20"], ["created_at", "2019-06-21 01:47:44.162614"], ["updated_at", "2019-06-21 01:47:44.162614"]]
+  ↳ app/controllers/facturas_controller.rb:12
+  [1m[35m (24.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/facturas_controller.rb:12
+Completed 201 Created in 32ms (Views: 1.1ms | ActiveRecord: 25.9ms)
+
+
+Started GET "/favicon.ico" for 170.246.148.52 at 2019-06-21 01:56:47 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/facturas?titulo=pachosa&creada_por=Alejandro%20Z%C3%BA%C3%B1iga&fecha=20/6/2019" for 170.246.148.52 at 2019-06-21 02:11:06 +0000
+Processing by FacturasController#index as */*
+  Parameters: {"titulo"=>"pachosa", "creada_por"=>"Alejandro Zúñiga", "fecha"=>"20/6/2019"}
+  [1m[36mFactura Load (0.4ms)[0m  [1m[34mSELECT "facturas".* FROM "facturas"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 21ms (Views: 18.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/facturas" for 170.246.148.52 at 2019-06-21 02:13:06 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by FacturasController#index as */*
+  [1m[36mFactura Load (0.3ms)[0m  [1m[34mSELECT "facturas".* FROM "facturas"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 10ms (Views: 7.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/facturas/2/productos" for 170.246.148.52 at 2019-06-21 02:14:06 +0000
+  
+SyntaxError (/home/alejandro-z/progra2/ruby-progra-dos/my-api/app/controllers/productos_controller.rb:47: syntax error, unexpected keyword_end, expecting end-of-input):
+  
+app/controllers/productos_controller.rb:47: syntax error, unexpected keyword_end, expecting end-of-input
+Started GET "/" for 170.246.148.52 at 2019-06-21 02:19:50 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb (3.1ms)
+Completed 200 OK in 8ms (Views: 6.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/facturas" for 170.246.148.52 at 2019-06-21 02:20:25 +0000
+Processing by FacturasController#index as HTML
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT "facturas".* FROM "facturas"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 10ms (Views: 7.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/facturas" for 170.246.148.52 at 2019-06-21 02:20:44 +0000
+Processing by FacturasController#index as */*
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT "facturas".* FROM "facturas"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/facturas/2/productos?comida=casado&precio=2000" for 170.246.148.52 at 2019-06-21 02:22:50 +0000
+  
+SyntaxError (/home/alejandro-z/progra2/ruby-progra-dos/my-api/app/controllers/productos_controller.rb:47: syntax error, unexpected keyword_end, expecting end-of-input):
+  
+app/controllers/productos_controller.rb:47: syntax error, unexpected keyword_end, expecting end-of-input
+Started GET "/facturas/2/productos?comida=casado&precio=2000" for 170.246.148.52 at 2019-06-21 02:22:58 +0000
+  
+SyntaxError (/home/alejandro-z/progra2/ruby-progra-dos/my-api/app/controllers/productos_controller.rb:47: syntax error, unexpected keyword_end, expecting end-of-input):
+  
+app/controllers/productos_controller.rb:47: syntax error, unexpected keyword_end, expecting end-of-input
+Started GET "/facturas" for 170.246.148.52 at 2019-06-21 02:23:58 +0000
+Processing by FacturasController#index as */*
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT "facturas".* FROM "facturas"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/facturas" for 170.246.148.52 at 2019-06-21 02:25:19 +0000
+Processing by FacturasController#index as */*
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT "facturas".* FROM "facturas"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/facturas/1?titulo=pachosa&creado_por=Alejandro%20Z" for 170.246.148.52 at 2019-06-21 02:26:22 +0000
+Processing by FacturasController#show as */*
+  Parameters: {"titulo"=>"pachosa", "creado_por"=>"Alejandro Z", "id"=>"1"}
+  [1m[36mFactura Load (0.3ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/facturas_controller.rb:41
+Completed 200 OK in 12ms (Views: 0.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/facturas" for 170.246.148.52 at 2019-06-21 02:35:55 +0000
+Processing by FacturasController#index as */*
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT "facturas".* FROM "facturas"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/facturas/2/productos?nombre=comida" for 170.246.148.52 at 2019-06-21 02:44:26 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#create as */*
+  Parameters: {"nombre"=>"comida", "factura_id"=>"2"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:40
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.7ms)
+
+
+  
+NoMethodError (undefined method `productos' for #<Factura:0x00007f4090becc60>):
+  
+app/controllers/productos_controller.rb:17:in `create'
+Started POST "/facturas/2/productos?nombre=comida&precio=200&cantidad=1" for 170.246.148.52 at 2019-06-21 02:52:12 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#create as */*
+  Parameters: {"nombre"=>"comida", "precio"=>"200", "cantidad"=>"1", "factura_id"=>"2"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:40
+Unpermitted parameter: :factura_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:17
+  [1m[36mProducto Create (1.7ms)[0m  [1m[32mINSERT INTO "productos" ("factura_id", "nombre", "cantidad", "precio", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["factura_id", 2], ["nombre", "comida"], ["cantidad", 1], ["precio", 200], ["created_at", "2019-06-21 02:52:12.753290"], ["updated_at", "2019-06-21 02:52:12.753290"]]
+  ↳ app/controllers/productos_controller.rb:17
+  [1m[35m (20.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:17
+Completed 201 Created in 59ms (Views: 0.9ms | ActiveRecord: 23.6ms)
+
+
+Started POST "/facturas/2/productos?nombre=comida&precio=200&cantidad=1" for 170.246.148.52 at 2019-06-21 02:52:33 +0000
+Processing by ProductosController#create as */*
+  Parameters: {"nombre"=>"comida", "precio"=>"200", "cantidad"=>"1", "factura_id"=>"2"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:40
+Unpermitted parameter: :factura_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:17
+  [1m[36mProducto Create (0.9ms)[0m  [1m[32mINSERT INTO "productos" ("factura_id", "nombre", "cantidad", "precio", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["factura_id", 2], ["nombre", "comida"], ["cantidad", 1], ["precio", 200], ["created_at", "2019-06-21 02:52:33.412131"], ["updated_at", "2019-06-21 02:52:33.412131"]]
+  ↳ app/controllers/productos_controller.rb:17
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:17
+Completed 201 Created in 12ms (Views: 0.6ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/facturas/2/productos?nombre=comida&precio=200&cantidad=1" for 170.246.148.52 at 2019-06-21 02:52:50 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"nombre"=>"comida", "precio"=>"200", "cantidad"=>"1", "factura_id"=>"2"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:40
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 2]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/facturas/2/productos?nombre=carro&precio=20000000&cantidad=1" for 170.246.148.52 at 2019-06-21 02:54:42 +0000
+Processing by ProductosController#create as */*
+  Parameters: {"nombre"=>"carro", "precio"=>"20000000", "cantidad"=>"1", "factura_id"=>"2"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:40
+Unpermitted parameter: :factura_id
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:17
+  [1m[36mProducto Create (1.6ms)[0m  [1m[32mINSERT INTO "productos" ("factura_id", "nombre", "cantidad", "precio", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["factura_id", 2], ["nombre", "carro"], ["cantidad", 1], ["precio", 20000000], ["created_at", "2019-06-21 02:54:42.716321"], ["updated_at", "2019-06-21 02:54:42.716321"]]
+  ↳ app/controllers/productos_controller.rb:17
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:17
+Completed 201 Created in 17ms (Views: 0.8ms | ActiveRecord: 7.7ms)
+
+
+Started GET "/facturas/2/productos?nombre=carro&precio=20000000&cantidad=1" for 170.246.148.52 at 2019-06-21 02:54:50 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"nombre"=>"carro", "precio"=>"20000000", "cantidad"=>"1", "factura_id"=>"2"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:40
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 2]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.3ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateToys (20190625024945)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to AddActivoToProductos (20190626001034)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "productos" ADD "activo" boolean[0m
+  ↳ db/migrate/20190626001034_add_activo_to_productos.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190626001034"]]
+  ↳ bin/rails:4
+  [1m[35m (4.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Started GET "/facturas/2/productos" for 190.10.52.249 at 2019-06-26 00:24:58 +0000
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+SyntaxError (/home/alejandro-z/progra2/ruby-progra-dos/my-api/app/controllers/productos_controller.rb:5: syntax error, unexpected [, expecting keyword_do or '{' or '('
+...tion :set_factura_total, only [update, :create, :destroy]
+...                              ^):
+  
+app/controllers/productos_controller.rb:5: syntax error, unexpected [, expecting keyword_do or '{' or '('
+Started GET "/facturas/2/productos" for 190.10.52.249 at 2019-06-26 00:28:36 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"2"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:55
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 2]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 31ms (Views: 11.8ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/facturas/2/productos?nombre=comida&cantidad=1" for 190.10.52.249 at 2019-06-26 00:30:39 +0000
+Processing by ProductosController#create as */*
+  Parameters: {"nombre"=>"comida", "cantidad"=>"1", "factura_id"=>"2"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:55
+Unpermitted parameter: :factura_id
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."nombre" = ? LIMIT ?[0m  [["factura_id", 2], ["nombre", "comida"], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:18
+Unpermitted parameter: :factura_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:23
+  [1m[36mProducto Create (1.5ms)[0m  [1m[32mINSERT INTO "productos" ("factura_id", "nombre", "cantidad", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["factura_id", 2], ["nombre", "comida"], ["cantidad", 1], ["created_at", "2019-06-26 00:30:39.551190"], ["updated_at", "2019-06-26 00:30:39.551190"]]
+  ↳ app/controllers/productos_controller.rb:23
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:23
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 2]]
+  ↳ app/controllers/productos_controller.rb:64
+Completed 500 Internal Server Error in 16ms (Views: 0.6ms | ActiveRecord: 6.7ms)
+
+
+  
+TypeError (nil can't be coerced into Integer):
+  
+app/controllers/productos_controller.rb:65:in `*'
+app/controllers/productos_controller.rb:65:in `block in set_factura_total'
+app/controllers/productos_controller.rb:64:in `set_factura_total'
+Started GET "/facturas/2/productos?nombre=comida&cantidad=1" for 190.10.52.249 at 2019-06-26 00:39:17 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#index as */*
+  Parameters: {"nombre"=>"comida", "cantidad"=>"1", "factura_id"=>"2"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:55
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 2]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 32ms (Views: 11.7ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/facturas/2/productos?nombre=comida&cantidad=1" for 190.10.52.249 at 2019-06-26 00:48:45 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#create as */*
+  Parameters: {"nombre"=>"comida", "cantidad"=>"1", "factura_id"=>"2"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:54
+Unpermitted parameter: :factura_id
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."nombre" = ? LIMIT ?[0m  [["factura_id", 2], ["nombre", "comida"], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:18
+Unpermitted parameter: :factura_id
+Unpermitted parameter: :factura_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:26
+  [1m[36mProducto Update (0.8ms)[0m  [1m[33mUPDATE "productos" SET "cantidad" = ?, "precio" = ?, "updated_at" = ? WHERE "productos"."id" = ?[0m  [["cantidad", 2], ["precio", nil], ["updated_at", "2019-06-26 00:48:45.919999"], ["id", 1]]
+  ↳ app/controllers/productos_controller.rb:26
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:26
+  [1m[36mProducto Load (0.3ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 2]]
+  ↳ app/controllers/productos_controller.rb:63
+Completed 500 Internal Server Error in 48ms (Views: 0.7ms | ActiveRecord: 6.8ms)
+
+
+  
+NoMethodError (undefined method `precioto_i' for #<Producto:0x00007f6a08dcb828>
+Did you mean?  precio):
+  
+app/controllers/productos_controller.rb:64:in `block in set_factura_total'
+app/controllers/productos_controller.rb:63:in `set_factura_total'
+Started POST "/facturas/2/productos?nombre=comida&cantidad=1" for 190.10.52.249 at 2019-06-26 00:51:23 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#create as */*
+  Parameters: {"nombre"=>"comida", "cantidad"=>"1", "factura_id"=>"2"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:54
+Unpermitted parameter: :factura_id
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."nombre" = ? LIMIT ?[0m  [["factura_id", 2], ["nombre", "comida"], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:18
+Unpermitted parameter: :factura_id
+Unpermitted parameter: :factura_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:26
+  [1m[36mProducto Update (0.3ms)[0m  [1m[33mUPDATE "productos" SET "cantidad" = ?, "updated_at" = ? WHERE "productos"."id" = ?[0m  [["cantidad", 3], ["updated_at", "2019-06-26 00:51:23.830649"], ["id", 1]]
+  ↳ app/controllers/productos_controller.rb:26
+  [1m[35m (24.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:26
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 2]]
+  ↳ app/controllers/productos_controller.rb:63
+Completed 500 Internal Server Error in 61ms (Views: 0.8ms | ActiveRecord: 26.6ms)
+
+
+  
+TypeError (nil can't be coerced into Integer):
+  
+app/controllers/productos_controller.rb:64:in `*'
+app/controllers/productos_controller.rb:64:in `block in set_factura_total'
+app/controllers/productos_controller.rb:63:in `set_factura_total'
+Started POST "/facturas/2/productos?nombre=comida&cantidad=1" for 190.10.52.249 at 2019-06-26 00:55:41 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#create as */*
+  Parameters: {"nombre"=>"comida", "cantidad"=>"1", "factura_id"=>"2"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:54
+Unpermitted parameter: :factura_id
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."nombre" = ? LIMIT ?[0m  [["factura_id", 2], ["nombre", "comida"], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:18
+Unpermitted parameter: :factura_id
+Unpermitted parameter: :factura_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:26
+  [1m[36mProducto Update (0.8ms)[0m  [1m[33mUPDATE "productos" SET "cantidad" = ?, "updated_at" = ? WHERE "productos"."id" = ?[0m  [["cantidad", 4], ["updated_at", "2019-06-26 00:55:41.765363"], ["id", 1]]
+  ↳ app/controllers/productos_controller.rb:26
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:26
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:61
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 2]]
+  ↳ app/controllers/productos_controller.rb:64
+Completed 500 Internal Server Error in 42ms (Views: 0.6ms | ActiveRecord: 6.7ms)
+
+
+  
+TypeError (nil can't be coerced into Integer):
+  
+app/controllers/productos_controller.rb:65:in `*'
+app/controllers/productos_controller.rb:65:in `block in set_factura_total'
+app/controllers/productos_controller.rb:64:in `set_factura_total'
+Started GET "/facturas/2/productos" for 190.10.52.249 at 2019-06-26 00:58:35 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"2"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:54
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 2]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 29ms (Views: 10.6ms | ActiveRecord: 1.4ms)
+
+
+Started PUT "/facturas/2/productos/1?precio=2000" for 190.10.52.249 at 2019-06-26 01:01:57 +0000
+Processing by ProductosController#update as */*
+  Parameters: {"precio"=>"2000", "factura_id"=>"2", "id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:54
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 2], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:58
+Unpermitted parameters: :factura_id, :id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:34
+  [1m[36mProducto Update (1.6ms)[0m  [1m[33mUPDATE "productos" SET "precio" = ?, "updated_at" = ? WHERE "productos"."id" = ?[0m  [["precio", 2000], ["updated_at", "2019-06-26 01:01:57.513257"], ["id", 1]]
+  ↳ app/controllers/productos_controller.rb:34
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:34
+Completed 204 No Content in 14ms (ActiveRecord: 6.4ms)
+
+
+Started GET "/facturas/2/productos" for 190.10.52.249 at 2019-06-26 01:02:14 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"2"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:54
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 2]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.3ms)
+
+
+Started PUT "/facturas/2/productos/4?precio=2500" for 190.10.52.249 at 2019-06-26 01:02:52 +0000
+Processing by ProductosController#update as */*
+  Parameters: {"precio"=>"2500", "factura_id"=>"2", "id"=>"4"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:54
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 2], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:58
+Unpermitted parameters: :factura_id, :id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:34
+  [1m[36mProducto Update (0.7ms)[0m  [1m[33mUPDATE "productos" SET "precio" = ?, "updated_at" = ? WHERE "productos"."id" = ?[0m  [["precio", 2500], ["updated_at", "2019-06-26 01:02:52.056679"], ["id", 4]]
+  ↳ app/controllers/productos_controller.rb:34
+  [1m[35m (3.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:34
+Completed 204 No Content in 10ms (ActiveRecord: 4.7ms)
+
+
+Started POST "/facturas/2/productos?nombre=carro" for 190.10.52.249 at 2019-06-26 01:05:01 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#create as */*
+  Parameters: {"nombre"=>"carro", "factura_id"=>"2"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:54
+Unpermitted parameter: :factura_id
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."nombre" = ? LIMIT ?[0m  [["factura_id", 2], ["nombre", "carro"], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:18
+Unpermitted parameter: :factura_id
+Unpermitted parameter: :factura_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:26
+  [1m[36mProducto Update (0.3ms)[0m  [1m[33mUPDATE "productos" SET "precio" = ?, "updated_at" = ? WHERE "productos"."id" = ?[0m  [["precio", nil], ["updated_at", "2019-06-26 01:05:01.891396"], ["id", 3]]
+  ↳ app/controllers/productos_controller.rb:26
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:26
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:61
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 2]]
+  ↳ app/controllers/productos_controller.rb:64
+Completed 500 Internal Server Error in 42ms (Views: 0.7ms | ActiveRecord: 8.2ms)
+
+
+  
+TypeError (nil can't be coerced into Integer):
+  
+app/controllers/productos_controller.rb:65:in `*'
+app/controllers/productos_controller.rb:65:in `block in set_factura_total'
+app/controllers/productos_controller.rb:64:in `set_factura_total'
+Started DELETE "/facturas/2" for 190.10.52.249 at 2019-06-26 01:10:32 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by FacturasController#destroy as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/facturas_controller.rb:41
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/facturas_controller.rb:29
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 2]]
+  ↳ app/controllers/facturas_controller.rb:29
+  [1m[36mProducto Destroy (0.4ms)[0m  [1m[31mDELETE FROM "productos" WHERE "productos"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/facturas_controller.rb:29
+  [1m[36mProducto Destroy (0.1ms)[0m  [1m[31mDELETE FROM "productos" WHERE "productos"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/facturas_controller.rb:29
+  [1m[36mProducto Destroy (0.1ms)[0m  [1m[31mDELETE FROM "productos" WHERE "productos"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/facturas_controller.rb:29
+  [1m[36mProducto Destroy (0.1ms)[0m  [1m[31mDELETE FROM "productos" WHERE "productos"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/facturas_controller.rb:29
+  [1m[36mFactura Destroy (0.1ms)[0m  [1m[31mDELETE FROM "facturas" WHERE "facturas"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/facturas_controller.rb:29
+  [1m[35m (23.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/facturas_controller.rb:29
+Completed 204 No Content in 58ms (ActiveRecord: 25.5ms)
+
+
+Started GET "/facturas/1" for 186.159.182.65 at 2019-06-26 01:11:07 +0000
+Processing by FacturasController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/facturas_controller.rb:41
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/facturas/1" for 186.159.182.65 at 2019-06-26 01:11:28 +0000
+Processing by FacturasController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/facturas_controller.rb:41
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/facturas/1" for 186.159.182.65 at 2019-06-26 01:11:51 +0000
+Processing by FacturasController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/facturas_controller.rb:41
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/facturas/1" for 186.159.182.65 at 2019-06-26 01:11:54 +0000
+Processing by FacturasController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/facturas_controller.rb:41
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/facturas/2" for 186.159.182.65 at 2019-06-26 01:11:59 +0000
+Processing by FacturasController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/facturas_controller.rb:41
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/facturas/1" for 186.159.182.65 at 2019-06-26 01:12:05 +0000
+Processing by FacturasController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/facturas_controller.rb:41
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/facturas/1/productos" for 186.159.182.65 at 2019-06-26 01:12:14 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"1"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/facturas?titulo=diario&creada_por=juanito&fecha=25/06/2019&total=0" for 190.10.52.249 at 2019-06-26 01:20:37 +0000
+Processing by FacturasController#create as */*
+  Parameters: {"titulo"=>"diario", "creada_por"=>"juanito", "fecha"=>"25/06/2019", "total"=>"0"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/facturas_controller.rb:12
+  [1m[36mFactura Create (1.5ms)[0m  [1m[32mINSERT INTO "facturas" ("titulo", "creada_por", "fecha", "total", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["titulo", "diario"], ["creada_por", "juanito"], ["fecha", "2019-06-25"], ["total", 0], ["created_at", "2019-06-26 01:20:37.952388"], ["updated_at", "2019-06-26 01:20:37.952388"]]
+  ↳ app/controllers/facturas_controller.rb:12
+  [1m[35m (6.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/facturas_controller.rb:12
+Completed 201 Created in 17ms (Views: 0.8ms | ActiveRecord: 8.1ms)
+
+
+Started GET "/facturas/3" for 186.159.182.65 at 2019-06-26 01:20:55 +0000
+Processing by FacturasController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mFactura Load (0.3ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/facturas_controller.rb:41
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/facturas?nombre=banano&cantidad=2&precio=100&activo=true" for 190.10.52.249 at 2019-06-26 01:23:22 +0000
+Processing by FacturasController#create as */*
+  Parameters: {"nombre"=>"banano", "cantidad"=>"2", "precio"=>"100", "activo"=>"true"}
+Unpermitted parameters: :nombre, :cantidad, :precio, :activo
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/facturas_controller.rb:12
+  [1m[36mFactura Create (1.1ms)[0m  [1m[32mINSERT INTO "facturas" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2019-06-26 01:23:22.205496"], ["updated_at", "2019-06-26 01:23:22.205496"]]
+  ↳ app/controllers/facturas_controller.rb:12
+  [1m[35m (19.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/facturas_controller.rb:12
+Completed 201 Created in 26ms (Views: 0.7ms | ActiveRecord: 20.5ms)
+
+
+Started GET "/facturas/3/productos/" for 186.159.182.65 at 2019-06-26 01:23:44 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"3"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 3]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/facturas/3/productos/" for 186.159.182.65 at 2019-06-26 01:23:46 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"3"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 3]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/facturas/3/productos/" for 186.159.182.65 at 2019-06-26 01:23:47 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"3"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 3]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/facturas/3/productos/" for 186.159.182.65 at 2019-06-26 01:23:48 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"3"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 3]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 12ms (Views: 10.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/facturas/3?nombre=banano&cantidad=2&precio=100&activo=true" for 190.10.52.249 at 2019-06-26 01:25:14 +0000
+  
+ActionController::RoutingError (No route matches [POST] "/facturas/3"):
+  
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/facturas/3/productos?nombre=banano&cantidad=2&precio=100&activo=true" for 190.10.52.249 at 2019-06-26 01:25:42 +0000
+Processing by ProductosController#create as */*
+  Parameters: {"nombre"=>"banano", "cantidad"=>"2", "precio"=>"100", "activo"=>"true", "factura_id"=>"3"}
+  [1m[36mFactura Load (0.3ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+Unpermitted parameter: :factura_id
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."nombre" = ? LIMIT ?[0m  [["factura_id", 3], ["nombre", "banano"], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:19
+Unpermitted parameter: :factura_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:23
+  [1m[36mProducto Create (1.0ms)[0m  [1m[32mINSERT INTO "productos" ("factura_id", "nombre", "cantidad", "precio", "created_at", "updated_at", "activo") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["factura_id", 3], ["nombre", "banano"], ["cantidad", 2], ["precio", 100], ["created_at", "2019-06-26 01:25:42.408344"], ["updated_at", "2019-06-26 01:25:42.408344"], ["activo", 1]]
+  ↳ app/controllers/productos_controller.rb:23
+  [1m[35m (27.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:23
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 3]]
+  ↳ app/controllers/productos_controller.rb:73
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[36mProducto Update (0.3ms)[0m  [1m[33mUPDATE "productos" SET "created_at" = ?, "updated_at" = ? WHERE "productos"."id" = ?[0m  [["created_at", "2019-06-26 01:25:42.408344"], ["updated_at", "2019-06-26 01:25:42.408344"], ["id", 5]]
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:62
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 3]]
+  ↳ app/controllers/productos_controller.rb:64
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:69
+  [1m[36mFactura Update (0.2ms)[0m  [1m[33mUPDATE "facturas" SET "total" = ?, "updated_at" = ? WHERE "facturas"."id" = ?[0m  [["total", 200], ["updated_at", "2019-06-26 01:25:42.453421"], ["id", 3]]
+  ↳ app/controllers/productos_controller.rb:69
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:69
+Completed 201 Created in 57ms (Views: 0.6ms | ActiveRecord: 38.6ms)
+
+
+Started GET "/facturas/3/productos" for 190.10.52.249 at 2019-06-26 01:26:17 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"3"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 3]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/facturas/3/productos?nombre=lechuga&cantidad=1&precio=200&activo=true" for 190.10.52.249 at 2019-06-26 01:27:11 +0000
+Processing by ProductosController#create as */*
+  Parameters: {"nombre"=>"lechuga", "cantidad"=>"1", "precio"=>"200", "activo"=>"true", "factura_id"=>"3"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+Unpermitted parameter: :factura_id
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."nombre" = ? LIMIT ?[0m  [["factura_id", 3], ["nombre", "lechuga"], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:19
+Unpermitted parameter: :factura_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:23
+  [1m[36mProducto Create (1.0ms)[0m  [1m[32mINSERT INTO "productos" ("factura_id", "nombre", "cantidad", "precio", "created_at", "updated_at", "activo") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["factura_id", 3], ["nombre", "lechuga"], ["cantidad", 1], ["precio", 200], ["created_at", "2019-06-26 01:27:11.918125"], ["updated_at", "2019-06-26 01:27:11.918125"], ["activo", 1]]
+  ↳ app/controllers/productos_controller.rb:23
+  [1m[35m (58.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:23
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 3]]
+  ↳ app/controllers/productos_controller.rb:73
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[36mProducto Update (0.3ms)[0m  [1m[33mUPDATE "productos" SET "created_at" = ?, "updated_at" = ? WHERE "productos"."id" = ?[0m  [["created_at", "2019-06-26 01:27:11.918125"], ["updated_at", "2019-06-26 01:27:11.918125"], ["id", 6]]
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:62
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 3]]
+  ↳ app/controllers/productos_controller.rb:64
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:69
+  [1m[36mFactura Update (0.2ms)[0m  [1m[33mUPDATE "facturas" SET "total" = ?, "updated_at" = ? WHERE "facturas"."id" = ?[0m  [["total", 400], ["updated_at", "2019-06-26 01:27:11.997136"], ["id", 3]]
+  ↳ app/controllers/productos_controller.rb:69
+  [1m[35m (5.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:69
+Completed 201 Created in 93ms (Views: 0.8ms | ActiveRecord: 71.7ms)
+
+
+Started GET "/facturas/3/productos" for 190.10.52.249 at 2019-06-26 01:27:26 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"3"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 3]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/facturas/3/productos?nombre=lechuga&cantidad=1&precio=200&activo=true" for 190.10.52.249 at 2019-06-26 01:27:55 +0000
+Processing by ProductosController#create as */*
+  Parameters: {"nombre"=>"lechuga", "cantidad"=>"1", "precio"=>"200", "activo"=>"true", "factura_id"=>"3"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+Unpermitted parameter: :factura_id
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."nombre" = ? LIMIT ?[0m  [["factura_id", 3], ["nombre", "lechuga"], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:19
+Unpermitted parameter: :factura_id
+Unpermitted parameter: :factura_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:27
+  [1m[36mProducto Update (0.8ms)[0m  [1m[33mUPDATE "productos" SET "cantidad" = ?, "updated_at" = ? WHERE "productos"."id" = ?[0m  [["cantidad", 2], ["updated_at", "2019-06-26 01:27:55.773425"], ["id", 6]]
+  ↳ app/controllers/productos_controller.rb:27
+  [1m[35m (4.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:27
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 3]]
+  ↳ app/controllers/productos_controller.rb:73
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:79
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:81
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:62
+  [1m[36mCACHE Producto Load (0.0ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 3]]
+  ↳ app/controllers/productos_controller.rb:64
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:69
+  [1m[36mFactura Update (0.2ms)[0m  [1m[33mUPDATE "facturas" SET "total" = ?, "updated_at" = ? WHERE "facturas"."id" = ?[0m  [["total", 600], ["updated_at", "2019-06-26 01:27:55.787944"], ["id", 3]]
+  ↳ app/controllers/productos_controller.rb:69
+  [1m[35m (3.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:69
+Completed 201 Created in 25ms (Views: 0.6ms | ActiveRecord: 10.2ms)
+
+
+Started GET "/facturas/3/productos?nombre=lechuga&cantidad=1&precio=200&activo=true" for 190.10.52.249 at 2019-06-26 01:28:02 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"nombre"=>"lechuga", "cantidad"=>"1", "precio"=>"200", "activo"=>"true", "factura_id"=>"3"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 3]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/facturas/3/productos/5" for 190.10.52.249 at 2019-06-26 01:28:49 +0000
+Processing by ProductosController#destroy as */*
+  Parameters: {"factura_id"=>"3", "id"=>"5"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 3], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:57
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:42
+  [1m[36mProducto Update (0.8ms)[0m  [1m[33mUPDATE "productos" SET "activo" = ?, "updated_at" = ? WHERE "productos"."id" = ?[0m  [["activo", 0], ["updated_at", "2019-06-26 01:28:49.318011"], ["id", 5]]
+  ↳ app/controllers/productos_controller.rb:42
+  [1m[35m (17.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:42
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:62
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 3]]
+  ↳ app/controllers/productos_controller.rb:64
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:69
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:69
+Completed 204 No Content in 29ms (ActiveRecord: 19.4ms)
+
+
+Started GET "/facturas/3/productos" for 190.10.52.249 at 2019-06-26 01:29:02 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"3"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:53
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 3]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/facturas/3/productos/5" for 190.10.52.249 at 2019-06-26 01:35:51 +0000
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#destroy as */*
+  Parameters: {"factura_id"=>"3", "id"=>"5"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:55
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT  "productos".* FROM "productos" WHERE "productos"."factura_id" = ? AND "productos"."id" = ? LIMIT ?[0m  [["factura_id", 3], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:59
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:44
+  [1m[36mProducto Update (0.3ms)[0m  [1m[33mUPDATE "productos" SET "cantidad" = ?, "updated_at" = ? WHERE "productos"."id" = ?[0m  [["cantidad", 0], ["updated_at", "2019-06-26 01:35:51.436422"], ["id", 5]]
+  ↳ app/controllers/productos_controller.rb:44
+  [1m[35m (19.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:44
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:64
+  [1m[36mProducto Load (0.2ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 3]]
+  ↳ app/controllers/productos_controller.rb:66
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:71
+  [1m[36mFactura Update (0.2ms)[0m  [1m[33mUPDATE "facturas" SET "total" = ?, "updated_at" = ? WHERE "facturas"."id" = ?[0m  [["total", 400], ["updated_at", "2019-06-26 01:35:51.462627"], ["id", 3]]
+  ↳ app/controllers/productos_controller.rb:71
+  [1m[35m (12.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:71
+Completed 204 No Content in 70ms (ActiveRecord: 35.1ms)
+
+
+Started GET "/facturas/3/productos" for 190.10.52.249 at 2019-06-26 01:36:01 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"3"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:55
+  [1m[36mProducto Load (0.1ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 3]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/facturas/3" for 190.10.52.249 at 2019-06-26 01:36:18 +0000
+Processing by FacturasController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/facturas_controller.rb:41
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/facturas" for 190.10.52.249 at 2019-06-27 04:16:59 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by FacturasController#index as */*
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT "facturas".* FROM "facturas"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 13ms (Views: 8.8ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/facturas/3?titulo=diario&total=600" for 190.10.52.249 at 2019-06-27 04:18:36 +0000
+  
+ActionController::RoutingError (No route matches [POST] "/facturas/3"):
+  
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started PUT "/facturas/3?titulo=diario&total=600" for 190.10.52.249 at 2019-06-27 04:18:51 +0000
+Processing by FacturasController#update as */*
+  Parameters: {"titulo"=>"diario", "total"=>"600", "id"=>"3"}
+  [1m[36mFactura Load (0.3ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/facturas_controller.rb:41
+Unpermitted parameter: :id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/facturas_controller.rb:23
+  [1m[36mFactura Update (1.2ms)[0m  [1m[33mUPDATE "facturas" SET "total" = ?, "updated_at" = ? WHERE "facturas"."id" = ?[0m  [["total", 600], ["updated_at", "2019-06-27 04:18:52.003147"], ["id", 3]]
+  ↳ app/controllers/facturas_controller.rb:23
+  [1m[35m (16.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/facturas_controller.rb:23
+Completed 204 No Content in 33ms (ActiveRecord: 17.8ms)
+
+
+Started GET "/facturas/3" for 190.10.52.249 at 2019-06-27 04:19:09 +0000
+Processing by FacturasController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/facturas_controller.rb:41
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/facturas/" for 190.10.52.249 at 2019-06-27 04:19:23 +0000
+Processing by FacturasController#index as */*
+  [1m[36mFactura Load (0.1ms)[0m  [1m[34mSELECT "facturas".* FROM "facturas"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/facturas" for 190.10.52.249 at 2019-06-27 04:19:27 +0000
+Processing by FacturasController#index as */*
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT "facturas".* FROM "facturas"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.2ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateHerencia (20190627194409)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateHerencia (20190627194409)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateCacas (20190627215346)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateCacas (20190627215346)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to AddActivoToProductos (20190626001034)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproductos" ("id" integer NOT NULL PRIMARY KEY, "factura_id" integer DEFAULT NULL, "nombre" varchar DEFAULT NULL, "cantidad" integer DEFAULT NULL, "precio" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "activo" boolean DEFAULT NULL)[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aproductos_on_factura_id" ON "aproductos" ("factura_id")[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aproductos" ("id","factura_id","nombre","cantidad","precio","created_at","updated_at","activo")
+                     SELECT "id","factura_id","nombre","cantidad","precio","created_at","updated_at","activo" FROM "productos"[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "productos"[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "productos" ("id" integer NOT NULL PRIMARY KEY, "factura_id" integer DEFAULT NULL, "nombre" varchar DEFAULT NULL, "cantidad" integer DEFAULT NULL, "precio" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_productos_on_factura_id" ON "productos" ("factura_id")[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "productos" ("id","factura_id","nombre","cantidad","precio","created_at","updated_at")
+                     SELECT "id","factura_id","nombre","cantidad","precio","created_at","updated_at" FROM "aproductos"[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aproductos"[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.2ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20190626001034"]]
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (17.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to AddActivoToProductos (20190626001034)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "productos" ADD "activo" boolean[0m
+  ↳ db/migrate/20190626001034_add_activo_to_productos.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190626001034"]]
+  ↳ bin/rails:4
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateCacas (20190627215346)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to AddActivoToProductos (20190626001034)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproductos" ("id" integer NOT NULL PRIMARY KEY, "factura_id" integer DEFAULT NULL, "nombre" varchar DEFAULT NULL, "cantidad" integer DEFAULT NULL, "precio" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "activo" boolean DEFAULT NULL)[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aproductos_on_factura_id" ON "aproductos" ("factura_id")[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aproductos" ("id","factura_id","nombre","cantidad","precio","created_at","updated_at","activo")
+                     SELECT "id","factura_id","nombre","cantidad","precio","created_at","updated_at","activo" FROM "productos"[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "productos"[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "productos" ("id" integer NOT NULL PRIMARY KEY, "factura_id" integer DEFAULT NULL, "nombre" varchar DEFAULT NULL, "cantidad" integer DEFAULT NULL, "precio" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_productos_on_factura_id" ON "productos" ("factura_id")[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "productos" ("id","factura_id","nombre","cantidad","precio","created_at","updated_at")
+                     SELECT "id","factura_id","nombre","cantidad","precio","created_at","updated_at" FROM "aproductos"[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aproductos"[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.2ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20190626001034"]]
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (5.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to AddActivoToProductos (20190626001034)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "productos" ADD "activo" boolean[0m
+  ↳ db/migrate/20190626001034_add_activo_to_productos.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190626001034"]]
+  ↳ bin/rails:4
+  [1m[35m (4.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateCacas (20190627221513)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190627221513_create_cacas.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "cacas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "title" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190627221513_create_cacas.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190627221513"]]
+  ↳ bin/rails:4
+  [1m[35m (8.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4

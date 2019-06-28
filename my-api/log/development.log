@@ -1,0 +1,436 @@
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:4
+  [1m[35m (25.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:4
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateTodos (20190612075304)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "todos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "created_by" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190612075304_create_todos.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190612075304"]]
+  ↳ bin/rails:4
+  [1m[35m (10.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateItems (20190612075315)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "items" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "done" boolean, "todo_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_c01e6b449d"
+FOREIGN KEY ("todo_id")
+  REFERENCES "todos" ("id")
+)[0m
+  ↳ db/migrate/20190612075315_create_items.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_items_on_todo_id" ON "items" ("todo_id")[0m
+  ↳ db/migrate/20190612075315_create_items.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190612075315"]]
+  ↳ bin/rails:4
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-06-13 17:12:58.707402"], ["updated_at", "2019-06-13 17:12:58.707402"]]
+  ↳ bin/rails:4
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Started GET "/todos" for 152.231.128.243 at 2019-06-13 17:17:57 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 6ms (Views: 1.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/favicon.ico" for 152.231.128.243 at 2019-06-13 17:17:58 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/todos" for 170.246.148.52 at 2019-06-14 01:54:08 +0000
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 6ms (Views: 1.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/favicon.ico" for 170.246.148.52 at 2019-06-14 01:54:08 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateTests (20190614021250)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (4.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190614021250_create_tests.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "tests" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "lastname" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190614021250_create_tests.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190614021250"]]
+  ↳ bin/rails:4
+  [1m[35m (7.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateDemos (20190614024913)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "demos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar, "usuario" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190614024913_create_demos.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190614024913"]]
+  ↳ bin/rails:4
+  [1m[35m (5.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Started GET "/favicon.ico" for 170.246.148.52 at 2019-06-14 03:08:03 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for 170.246.148.52 at 2019-06-14 03:08:09 +0000
+Processing by Rails::WelcomeController#index as HTML
+  Rendering vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb (2.6ms)
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/favicon.ico" for 170.246.148.52 at 2019-06-14 03:08:11 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for 170.246.148.52 at 2019-06-14 03:08:45 +0000
+Processing by Rails::WelcomeController#index as HTML
+  Rendering vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb (2.2ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 170.246.148.52 at 2019-06-14 03:10:58 +0000
+Processing by Rails::WelcomeController#index as HTML
+  Rendering vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb (2.5ms)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/todos" for 170.246.148.52 at 2019-06-14 03:13:26 +0000
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 7ms (Views: 1.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/demo" for 170.246.148.52 at 2019-06-14 03:13:59 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/demo"):
+  
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateRice (20190620200336)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateFacturas (20190621011840)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190621011840_create_facturas.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "facturas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar, "creada_por" varchar, "fecha" date, "total" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190621011840_create_facturas.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190621011840"]]
+  ↳ bin/rails:4
+  [1m[35m (16.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateProductos (20190621012045)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "productos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "factura_id" integer, "nombre" varchar, "cantidad" integer, "precio" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_d61a8cb563"
+FOREIGN KEY ("factura_id")
+  REFERENCES "facturas" ("id")
+)[0m
+  ↳ db/migrate/20190621012045_create_productos.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_productos_on_factura_id" ON "productos" ("factura_id")[0m
+  ↳ db/migrate/20190621012045_create_productos.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190621012045"]]
+  ↳ bin/rails:4
+  [1m[35m (8.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Started GET "/facturas" for 170.246.148.53 at 2019-06-21 01:40:34 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by FacturasController#index as HTML
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT "facturas".* FROM "facturas"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 6ms (Views: 1.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/favicon.ico" for 170.246.148.53 at 2019-06-21 01:40:34 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/facturas?titulo=mi%20primer%20factura&creada_por=Kervin&fecha=20/6/2019" for 170.246.148.53 at 2019-06-21 01:43:09 +0000
+Processing by FacturasController#create as */*
+  Parameters: {"titulo"=>"mi primer factura", "creada_por"=>"Kervin", "fecha"=>"20/6/2019"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/facturas_controller.rb:12
+  [1m[36mFactura Create (1.9ms)[0m  [1m[32mINSERT INTO "facturas" ("titulo", "creada_por", "fecha", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["titulo", "mi primer factura"], ["creada_por", "Kervin"], ["fecha", "2019-06-20"], ["created_at", "2019-06-21 01:43:09.469687"], ["updated_at", "2019-06-21 01:43:09.469687"]]
+  ↳ app/controllers/facturas_controller.rb:12
+  [1m[35m (60.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/facturas_controller.rb:12
+Completed 201 Created in 74ms (Views: 0.9ms | ActiveRecord: 62.6ms)
+
+
+Started GET "/facturas" for 170.246.148.53 at 2019-06-21 01:43:32 +0000
+Processing by FacturasController#index as */*
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT "facturas".* FROM "facturas"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 9ms (Views: 8.7ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/facturas/1/productos" for 170.246.148.53 at 2019-06-21 02:33:08 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductosController#create as */*
+  Parameters: {"factura_id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:40
+Unpermitted parameter: :factura_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:17
+  [1m[36mProducto Create (2.0ms)[0m  [1m[32mINSERT INTO "productos" ("factura_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["factura_id", 1], ["created_at", "2019-06-21 02:33:08.474508"], ["updated_at", "2019-06-21 02:33:08.474508"]]
+  ↳ app/controllers/productos_controller.rb:17
+  [1m[35m (5.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:17
+Completed 201 Created in 45ms (Views: 0.8ms | ActiveRecord: 9.3ms)
+
+
+Started POST "/facturas/1/productos" for 170.246.148.53 at 2019-06-21 02:33:22 +0000
+Processing by ProductosController#create as */*
+  Parameters: {"factura_id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:40
+Unpermitted parameter: :factura_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:17
+  [1m[36mProducto Create (0.8ms)[0m  [1m[32mINSERT INTO "productos" ("factura_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["factura_id", 1], ["created_at", "2019-06-21 02:33:22.281376"], ["updated_at", "2019-06-21 02:33:22.281376"]]
+  ↳ app/controllers/productos_controller.rb:17
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:17
+Completed 201 Created in 12ms (Views: 0.7ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/facturas/1/productos" for 170.246.148.53 at 2019-06-21 02:33:36 +0000
+Processing by ProductosController#index as */*
+  Parameters: {"factura_id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:40
+  [1m[36mProducto Load (0.3ms)[0m  [1m[34mSELECT "productos".* FROM "productos" WHERE "productos"."factura_id" = ?[0m  [["factura_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 8ms (Views: 4.0ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/facturas/2/" for 170.246.148.53 at 2019-06-21 02:35:09 +0000
+Processing by FacturasController#destroy as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/facturas_controller.rb:41
+Completed 404 Not Found in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/facturas" for 170.246.148.53 at 2019-06-21 02:35:19 +0000
+  
+ActionController::RoutingError (No route matches [DELETE] "/facturas"):
+  
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/facturas/1/productos" for 170.246.148.53 at 2019-06-21 02:35:40 +0000
+Processing by ProductosController#create as */*
+  Parameters: {"factura_id"=>"1"}
+  [1m[36mFactura Load (0.2ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/productos_controller.rb:40
+Unpermitted parameter: :factura_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/productos_controller.rb:17
+  [1m[36mProducto Create (1.0ms)[0m  [1m[32mINSERT INTO "productos" ("factura_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["factura_id", 1], ["created_at", "2019-06-21 02:35:40.047171"], ["updated_at", "2019-06-21 02:35:40.047171"]]
+  ↳ app/controllers/productos_controller.rb:17
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/productos_controller.rb:17
+Completed 201 Created in 13ms (Views: 0.7ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/facturas" for 170.246.148.53 at 2019-06-21 02:36:59 +0000
+Processing by FacturasController#index as */*
+  [1m[36mFactura Load (0.5ms)[0m  [1m[34mSELECT "facturas".* FROM "facturas"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.5ms)
+
+

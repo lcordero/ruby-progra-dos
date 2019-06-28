@@ -1,0 +1,56 @@
+class Animal
+    attr_accessor :color, :size
+end
+
+class Perro < Animal
+    attr_accessor :raza_id
+end
+    
+def Sonido
+    puts "#{@animal} did Sonido"
+end
+
+dog = Perro.new
+
+def initialize(ani_color, ani_size, ani_raza_id)
+    @color = ani_color
+    @size = ani_size
+    @raza_id = ani_raza_id
+end
+
+
+ani = Animal.new("Negro", "Grande")
+dog = Perro.new("Pitbull")
+
+
+
+ani.color = "Negro"
+ani.size = "Grande"
+ani2.raza = "Pitbull"
+
+puts "Desconocido!"
+puts "Guau"
+
+
+module notificaciones
+
+        
+  def mostrar_Exitos()
+    puts "#{@exitos} did Yeah"
+  end
+
+  def mostrar_Alerta()
+    puts "#{@alerta} did Hey Hey!"
+  end
+
+  def mostrar_Error()
+    puts "#{@error} did Sorry!"
+  end
+
+end
+
+
+class Llamamodulo
+    include notificaciones
+end
+

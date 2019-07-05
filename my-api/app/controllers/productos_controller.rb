@@ -49,7 +49,7 @@ class ProductosController < ApplicationController
     @factura_sub_total = 0
 
     @factura.productos.each do |producto|
-      @factura_sub_total = @factura_sub_total + (precio.cantidad * producto.precio)
+      @factura_sub_total = @factura_sub_total + (producto.cantidad * producto.precio)
 
     end
     @factura.total = @factura_sub_total

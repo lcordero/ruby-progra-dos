@@ -1,7 +1,7 @@
 class ProductosController < ApplicationController
   before_action :set_factura
   before_action :set_factura_producto, only: [:show, :update, :destroy]
-  
+  after_action :set_factura_total, only: [:update, :create, :destroy]  
   # after_action :set_factura_total, only: [:update, :create, :destroy]
 
   # GET /facturas/:factura_id/productos
@@ -57,15 +57,15 @@ class ProductosController < ApplicationController
     @producto = @factura.productos.find_by!(id: params[:id]) if @factura
   end
 
-#  def set_factura_total
-#    @factura_sub_total = 0
-#
-#    @factura.productos.each do |producto|
-#      @factura_sub_total = @factura_sub_total + (producto.cantidad * producto.precio)
-#    end
-#    @factura.total = @factura_sub_total
-#
-#    @factura = @factura.save
-#  end
+  def set_factura_total
+    @factura_sub_total = 0
+
+    @factura.productos.each do |producto|
+      @factura_sub_total = @factura_sub_total + (producto.cantidad * producto.precio)
+    end
+    @factura.total = @factura_sub_total
+
+     @factura.save
+  end
 
 end

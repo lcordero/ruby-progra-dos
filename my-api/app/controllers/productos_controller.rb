@@ -1,11 +1,17 @@
 class ProductosController < ApplicationController
-	  before_action :set_factura
+  before_action :set_factura
   before_action :set_factura_producto, only: [:show, :update, :destroy]
 
   after_action :set_factura_total, only: [:update, :create, :destroy]
 
   # GET /facturas/:factura_id/productos
   def index
+    temp_factura = @factura.attributes.merge({:productos => @factura.productos})
+    #factura_producto = {
+    # factura: @factura,
+    #producto: @factura.producto,
+    #alerta: "esta factura es mia"
+
     json_response(@factura.productos)
   end
 

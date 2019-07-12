@@ -8,9 +8,16 @@ class FacturasController < ApplicationController
   end
 
   # POST /facturas
-  def create
-    @factura = Factura.create!(factura_params)
-    json_response(@factura, :created)
+   def create
+     @producto_temp = @factura.productos.find_by(nombre: producto_params[:nombre])
+
+      if @producto_temp.nil?
+        @factura.productos.create!(producto_params)
+      else
+        @producto_temp[:cantidad] = @producto_temp[:cantidad] + producto_params[:cantidad].to_i
+        @producto_temp[:precio] = producto_params[:precio]
+        @producto_temp.save
+      end
   end
 
   # GET /facturas/:id

@@ -5,8 +5,12 @@ class ProductosController < ApplicationController
   after_action :set_factura_total, only: [:update, :create, :destroy]
 
   # GET /facturas/:factura_id/productos
-  def index
-    json_response(@factura.productos)
+  def index 
+    temp_factura = @factura.attributes.merge({:productos => @factura.productos})
+    #factura_producto = {
+      #factura: @factura, factura.productos,
+      #alerta: "Esta factura es mia"      
+    #json_response(@factura_productos)
   end
 
   # GET /facturas/:factura_id/productos/:id
@@ -21,10 +25,19 @@ class ProductosController < ApplicationController
   end
 
   # PUT /facturas/:factura_id/productos/:id
-  def update
-    @producto.update(producto_params)
-    head :no_content
+  def create
+    @producto_temp = @factura.productos.find_by(nombre: producto_params[:nombre])
+    
+    if @producto_temp.nil?
+	    @factura.productos.create!(producto_params)
+    else 
+	    @producto_temp[:cantidad] = @producto_temp[:cantidad] + producto_params[:cantidad].to_i
+            @producto_temp[:precio] = producto_params[:precio]
+	    @producto_temp.save
   end
+  # @factura.producto.create!(producto_params)
+  json_response(@factura, :created)
+ end
 
   # DELETE /facturas/:factura_id/productos/:id
   def destroy

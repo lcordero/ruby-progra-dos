@@ -14,7 +14,7 @@ class DrugsController < ApplicationController
   # POST /drugstores/:drugstore_id/suppliers
   def create
     @supplier.drugs.create!(drug_params)
-    json_response(@drugstore, :created)
+    json_response(@supplier, :created)
   end
 
   # PUT /drugstores/:drugstore_id/suppliers/:id
@@ -37,7 +37,7 @@ class DrugsController < ApplicationController
 
   def set_drugstore
     @drugstore = Drugstore.find(params[:drugstore_id])
-    @supplier = @drugstore.suppliers.find_by!(params[:supplier_id]) if @drugstore
+    @supplier = @drugstore.suppliers.find_by!(id: params[:supplier_id]) if @drugstore
   end
 
   def set_drug

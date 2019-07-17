@@ -35,8 +35,7 @@ class DrugstoresController < ApplicationController
     @temp_drugstore = Drugstore.find(params[:drugstore_id])
     @result=[]
     for supplier in @temp_drugstore.suppliers do
-	    @result.push(supplier) if supplier.drugs.exists?(name: params[:drug])
-	     
+      result.push(supplier) if supplier[:drugs].exists?(:name @drug) 
     end
     json_response(@result)
   end

@@ -2,11 +2,24 @@ class ProductosController < ApplicationController
   before_action :set_factura
   before_action :set_factura_producto, only: [:show, :update, :destroy]
   
-  # after_action :set_factura_total, only: [:update, :create, :destroy]
+  after_action :set_factura_total, only: [:update, :create, :destroy]
+
+  def my_custom_method
+    tem_var = {
+      alerta: "my custom Endpoint"
+    }
+    json_response(tem_var)
+  end
 
   # GET /facturas/:factura_id/productos
   def index
-    json_response(@factura.productos)
+    temp_factura = @factura.attributes.merge({:productos => @factura.productos})
+    #factura_producto = {
+    #  factura: @factura, 
+    #  productos: @factura.productos,
+    #  alerta: "Esta factura es mia"
+    #}
+    json_response(temp_factura)
   end
 
   # GET /facturas/:factura_id/productos/:id
@@ -57,15 +70,24 @@ class ProductosController < ApplicationController
     @producto = @factura.productos.find_by!(id: params[:id]) if @factura
   end
 
-#  def set_factura_total
-#    @factura_sub_total = 0
-#
-#    @factura.productos.each do |producto|
-#      @factura_sub_total = @factura_sub_total + (producto.cantidad * producto.precio)
-#    end
-#    @factura.total = @factura_sub_total
-#
-#    @factura = @factura.save
-#  end
+  def set_factura_total
+    @factura_sub_total = 0
+
+    @factura.productos.each do |producto|
+      @factura_sub_total = @factura_sub_total + (producto.cantidad * producto.precio)
+    end
+    @factura.total = @factura_sub_total
+
+    @factura.save
+  end
 
 end
+
+
+
+
+
+
+
+
+

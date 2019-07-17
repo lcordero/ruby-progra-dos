@@ -1,0 +1,102 @@
+make  all-recursive
+make[1]: Entering directory '/home/sebas-v/progra2/ruby-progra-dos/proyecto/vendor/ruby/2.5.0/gems/nokogiri-1.10.3/ext/nokogiri/tmp/x86_64-pc-linux-gnu/ports/libxml2/2.9.9/libxml2-2.9.9'
+Making all in include
+make[2]: Entering directory '/home/sebas-v/progra2/ruby-progra-dos/proyecto/vendor/ruby/2.5.0/gems/nokogiri-1.10.3/ext/nokogiri/tmp/x86_64-pc-linux-gnu/ports/libxml2/2.9.9/libxml2-2.9.9/include'
+Making all in libxml
+make[3]: Entering directory '/home/sebas-v/progra2/ruby-progra-dos/proyecto/vendor/ruby/2.5.0/gems/nokogiri-1.10.3/ext/nokogiri/tmp/x86_64-pc-linux-gnu/ports/libxml2/2.9.9/libxml2-2.9.9/include/libxml'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/sebas-v/progra2/ruby-progra-dos/proyecto/vendor/ruby/2.5.0/gems/nokogiri-1.10.3/ext/nokogiri/tmp/x86_64-pc-linux-gnu/ports/libxml2/2.9.9/libxml2-2.9.9/include/libxml'
+make[3]: Entering directory '/home/sebas-v/progra2/ruby-progra-dos/proyecto/vendor/ruby/2.5.0/gems/nokogiri-1.10.3/ext/nokogiri/tmp/x86_64-pc-linux-gnu/ports/libxml2/2.9.9/libxml2-2.9.9/include'
+make[3]: Nothing to be done for 'all-am'.
+make[3]: Leaving directory '/home/sebas-v/progra2/ruby-progra-dos/proyecto/vendor/ruby/2.5.0/gems/nokogiri-1.10.3/ext/nokogiri/tmp/x86_64-pc-linux-gnu/ports/libxml2/2.9.9/libxml2-2.9.9/include'
+make[2]: Leaving directory '/home/sebas-v/progra2/ruby-progra-dos/proyecto/vendor/ruby/2.5.0/gems/nokogiri-1.10.3/ext/nokogiri/tmp/x86_64-pc-linux-gnu/ports/libxml2/2.9.9/libxml2-2.9.9/include'
+Making all in .
+make[2]: Entering directory '/home/sebas-v/progra2/ruby-progra-dos/proyecto/vendor/ruby/2.5.0/gems/nokogiri-1.10.3/ext/nokogiri/tmp/x86_64-pc-linux-gnu/ports/libxml2/2.9.9/libxml2-2.9.9'
+  CC       SAX.lo
+  CC       entities.lo
+entities.c: In function ‘xmlEncodeEntitiesInternal’:
+entities.c:561:68: warning: unused parameter ‘attr’ [-Wunused-parameter]
+ xmlEncodeEntitiesInternal(xmlDocPtr doc, const xmlChar *input, int attr) {
+                                                                    ^~~~
+  CC       encoding.lo
+  CC       error.lo
+  CC       parserInternals.lo
+  CC       parser.lo
+  CC       tree.lo
+  CC       hash.lo
+  CC       list.lo
+  CC       xmlIO.lo
+  CC       xmlmemory.lo
+  CC       uri.lo
+  CC       valid.lo
+  CC       xlink.lo
+  CC       HTMLparser.lo
+  CC       HTMLtree.lo
+  CC       debugXML.lo
+  CC       xpath.lo
+  CC       xpointer.lo
+  CC       xinclude.lo
+  CC       nanohttp.lo
+  CC       nanoftp.lo
+  CC       catalog.lo
+  CC       globals.lo
+  CC       threads.lo
+  CC       c14n.lo
+  CC       xmlstring.lo
+  CC       buf.lo
+  CC       xmlregexp.lo
+  CC       xmlschemas.lo
+  CC       xmlschemastypes.lo
+  CC       xmlunicode.lo
+  CC       xmlreader.lo
+  CC       relaxng.lo
+  CC       dict.lo
+  CC       SAX2.lo
+  CC       xmlwriter.lo
+  CC       legacy.lo
+  CC       chvalid.lo
+  CC       pattern.lo
+  CC       xmlsave.lo
+  CC       xmlmodule.lo
+  CC       schematron.lo
+  CC       xzlib.lo
+  CCLD     libxml2.la
+ar: `u' modifier ignored since `D' is the default (see `U')
+  CC       testdso.lo
+  CCLD     testdso.la
+ar: `u' modifier ignored since `D' is the default (see `U')
+  CC       xmllint.o
+  CCLD     xmllint
+  CC       xmlcatalog.o
+  CCLD     xmlcatalog
+sed -e 's?\@XML_LIBDIR\@?-L/home/sebas-v/progra2/ruby-progra-dos/proyecto/vendor/ruby/2.5.0/gems/nokogiri-1.10.3/ports/x86_64-pc-linux-gnu/libxml2/2.9.9/lib?g' \
+    -e 's?\@XML_INCLUDEDIR\@?-I/home/sebas-v/progra2/ruby-progra-dos/proyecto/vendor/ruby/2.5.0/gems/nokogiri-1.10.3/ports/x86_64-pc-linux-gnu/libxml2/2.9.9/include/libxml2?g' \
+    -e 's?\@VERSION\@?2.9.9?g' \
+    -e 's?\@XML_LIBS\@?-lxml2 -lz     -lm ?g' \
+       < ./xml2Conf.sh.in > xml2Conf.tmp \
+&& mv xml2Conf.tmp xml2Conf.sh
+make[2]: Leaving directory '/home/sebas-v/progra2/ruby-progra-dos/proyecto/vendor/ruby/2.5.0/gems/nokogiri-1.10.3/ext/nokogiri/tmp/x86_64-pc-linux-gnu/ports/libxml2/2.9.9/libxml2-2.9.9'
+Making all in doc
+make[2]: Entering directory '/home/sebas-v/progra2/ruby-progra-dos/proyecto/vendor/ruby/2.5.0/gems/nokogiri-1.10.3/ext/nokogiri/tmp/x86_64-pc-linux-gnu/ports/libxml2/2.9.9/libxml2-2.9.9/doc'
+Making all in .
+make[3]: Entering directory '/home/sebas-v/progra2/ruby-progra-dos/proyecto/vendor/ruby/2.5.0/gems/nokogiri-1.10.3/ext/nokogiri/tmp/x86_64-pc-linux-gnu/ports/libxml2/2.9.9/libxml2-2.9.9/doc'
+make[3]: Nothing to be done for 'all-am'.
+make[3]: Leaving directory '/home/sebas-v/progra2/ruby-progra-dos/proyecto/vendor/ruby/2.5.0/gems/nokogiri-1.10.3/ext/nokogiri/tmp/x86_64-pc-linux-gnu/ports/libxml2/2.9.9/libxml2-2.9.9/doc'
+Making all in devhelp
+make[3]: Entering directory '/home/sebas-v/progra2/ruby-progra-dos/proyecto/vendor/ruby/2.5.0/gems/nokogiri-1.10.3/ext/nokogiri/tmp/x86_64-pc-linux-gnu/ports/libxml2/2.9.9/libxml2-2.9.9/doc/devhelp'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/sebas-v/progra2/ruby-progra-dos/proyecto/vendor/ruby/2.5.0/gems/nokogiri-1.10.3/ext/nokogiri/tmp/x86_64-pc-linux-gnu/ports/libxml2/2.9.9/libxml2-2.9.9/doc/devhelp'
+Making all in examples
+make[3]: Entering directory '/home/sebas-v/progra2/ruby-progra-dos/proyecto/vendor/ruby/2.5.0/gems/nokogiri-1.10.3/ext/nokogiri/tmp/x86_64-pc-linux-gnu/ports/libxml2/2.9.9/libxml2-2.9.9/doc/examples'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/sebas-v/progra2/ruby-progra-dos/proyecto/vendor/ruby/2.5.0/gems/nokogiri-1.10.3/ext/nokogiri/tmp/x86_64-pc-linux-gnu/ports/libxml2/2.9.9/libxml2-2.9.9/doc/examples'
+make[2]: Leaving directory '/home/sebas-v/progra2/ruby-progra-dos/proyecto/vendor/ruby/2.5.0/gems/nokogiri-1.10.3/ext/nokogiri/tmp/x86_64-pc-linux-gnu/ports/libxml2/2.9.9/libxml2-2.9.9/doc'
+Making all in example
+make[2]: Entering directory '/home/sebas-v/progra2/ruby-progra-dos/proyecto/vendor/ruby/2.5.0/gems/nokogiri-1.10.3/ext/nokogiri/tmp/x86_64-pc-linux-gnu/ports/libxml2/2.9.9/libxml2-2.9.9/example'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/sebas-v/progra2/ruby-progra-dos/proyecto/vendor/ruby/2.5.0/gems/nokogiri-1.10.3/ext/nokogiri/tmp/x86_64-pc-linux-gnu/ports/libxml2/2.9.9/libxml2-2.9.9/example'
+Making all in xstc
+make[2]: Entering directory '/home/sebas-v/progra2/ruby-progra-dos/proyecto/vendor/ruby/2.5.0/gems/nokogiri-1.10.3/ext/nokogiri/tmp/x86_64-pc-linux-gnu/ports/libxml2/2.9.9/libxml2-2.9.9/xstc'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/sebas-v/progra2/ruby-progra-dos/proyecto/vendor/ruby/2.5.0/gems/nokogiri-1.10.3/ext/nokogiri/tmp/x86_64-pc-linux-gnu/ports/libxml2/2.9.9/libxml2-2.9.9/xstc'
+make[1]: Leaving directory '/home/sebas-v/progra2/ruby-progra-dos/proyecto/vendor/ruby/2.5.0/gems/nokogiri-1.10.3/ext/nokogiri/tmp/x86_64-pc-linux-gnu/ports/libxml2/2.9.9/libxml2-2.9.9'

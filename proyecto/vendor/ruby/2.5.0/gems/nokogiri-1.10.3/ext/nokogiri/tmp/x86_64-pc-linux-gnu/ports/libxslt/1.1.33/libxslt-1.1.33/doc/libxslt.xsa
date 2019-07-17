@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE xsa PUBLIC "-//LM Garshol//DTD XML Software Autoupdate 1.0//EN//XML" "http://www.garshol.priv.no/download/xsa/xsa.dtd">
+<xsa>
+  <vendor>
+    <name>Daniel Veillard</name>
+    <email>daniel@veillard.com</email>
+    <url>http://veillard.com/</url>
+  </vendor>
+  <product id="libxslt">
+    <name>libxslt</name>
+    <version>1.1.32</version>
+    <last-release> Nov 02 2017</last-release>
+    <info-url>http://xmlsoft.org/XSLT/</info-url>
+    <changes>   - Portability:
+  Add missing limits.h include (Nick Wellnhofer),
+  Also run Windows tests with --maxdepth 200 (Nick Wellnhofer),
+  Disable some MSVC warnings (Nick Wellnhofer),
+  Fix deprecated Travis compiler flag (Nick Wellnhofer),
+  Run general tests with maxdepth=200 (Nick Wellnhofer),
+  Use _WIN32 macro instead of WIN32 (Nick Wellnhofer),
+  Fix xsltproc newlines on Windows (Nick Wellnhofer),
+  Fix Windows compiler warnings (Nick Wellnhofer),
+  Rework locale feature tests (Nick Wellnhofer)
+  
+   - Improvements:
+  Rebuild win32/libxslt.def.src (Nick Wellnhofer),
+  Fix compiler warnings in Python bindings (Nick Wellnhofer)
+  
+
+</changes>
+  </product>
+</xsa>

@@ -30,6 +30,18 @@ class DrugstoresController < ApplicationController
     head :no_content
   end
 
+  def filter_drugs
+    @drug=params.permit(:drug)
+    @temp_drugstore = Drugstore.find(params[:drugstore_id])
+    @result=[]
+    for supplier in @temp_drugstore.suppliers do
+            @checker=supplier.drugs.exists?(name: @drug) if @temp_drugstore
+	    @result.push(supplier) if @checker	
+            @checker=nil
+    end
+    json_response(@result)
+  end
+
   private
 
   def drugstore_params
@@ -39,20 +51,6 @@ class DrugstoresController < ApplicationController
 
   def set_drugstore
     @drugstore = Drugstore.find(params[:id])
-  end
-  
-  def filter_drugs
-    params.permit(:drug)
-    @temp_drugstore = Drugstore.find(params[:id])
-    @result=[]
-    for supplier in @temp_drugstore.suppliers do
-	    @checker=supplier.drugs.find_by(params[:drug]) if @temp_drugstore
-	    if !@temp_supplier.nil? do
-		    @result.push(supplier)
-	    end
-	    @checker=nil
-    end
-    end
   end
 
 end

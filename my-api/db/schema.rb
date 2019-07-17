@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_20_233443) do
+ActiveRecord::Schema.define(version: 2019_07_16_154716) do
 
   create_table "bets", force: :cascade do |t|
     t.string "usuario"
@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(version: 2019_06_20_233443) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "carros", force: :cascade do |t|
+    t.integer "factura_id"
+    t.string "color"
+    t.integer "poder_de_motor"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["factura_id"], name: "index_carros_on_factura_id"
+  end
+
   create_table "darks", force: :cascade do |t|
     t.string "usuario"
     t.string "titulo"
@@ -57,6 +66,17 @@ ActiveRecord::Schema.define(version: 2019_06_20_233443) do
   create_table "eldens", force: :cascade do |t|
     t.string "user"
     t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "factura_vaccines", force: :cascade do |t|
+    t.string "Nombre"
+    t.string "Apellidos"
+    t.integer "Cedula"
+    t.date "FechadeNacimiento"
+    t.integer "Total"
+    t.string "LugardeResidencia"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -140,6 +160,30 @@ ActiveRecord::Schema.define(version: 2019_06_20_233443) do
   create_table "todos", force: :cascade do |t|
     t.string "title"
     t.string "created_by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "vaccines", force: :cascade do |t|
+    t.integer "FacturaVaccine_id"
+    t.string "Enfermedad"
+    t.string "VacunaRecomendada"
+    t.integer "Dosis"
+    t.integer "TotaldelaVacunasusada"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["FacturaVaccine_id"], name: "index_vaccines_on_FacturaVaccine_id"
+  end
+
+  create_table "vacunas", force: :cascade do |t|
+    t.string "nombre"
+    t.string "apellidos"
+    t.integer "cedula"
+    t.string "lugarderesidencia"
+    t.string "enfermedad"
+    t.string "vacunarecomendada"
+    t.integer "dosisrecomendada"
+    t.string "totaldelavacunausada"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

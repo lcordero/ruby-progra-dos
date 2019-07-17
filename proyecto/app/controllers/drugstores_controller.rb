@@ -40,5 +40,19 @@ class DrugstoresController < ApplicationController
   def set_drugstore
     @drugstore = Drugstore.find(params[:id])
   end
+  
+  def filter_drugs
+    params.permit(:drug)
+    @temp_drugstore = Drugstore.find(params[:id])
+    @result=[]
+    for supplier in @temp_drugstore.suppliers do
+	    @checker=supplier.drugs.find_by(params[:drug]) if @temp_drugstore
+	    if !@temp_supplier.nil? do
+		    @result.push(supplier)
+	    end
+	    @checker=nil
+    end
+    end
+  end
 
 end

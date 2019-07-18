@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_17_060329) do
+ActiveRecord::Schema.define(version: 2019_07_18_163815) do
+
+  create_table "drugs", force: :cascade do |t|
+    t.integer "recipe_id"
+    t.string "nombre"
+    t.string "dosis"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_drugs_on_recipe_id"
+  end
 
   create_table "items", force: :cascade do |t|
     t.string "name"
@@ -19,6 +28,25 @@ ActiveRecord::Schema.define(version: 2019_07_17_060329) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["todo_id"], name: "index_items_on_todo_id"
+  end
+
+  create_table "pharmacies", force: :cascade do |t|
+    t.string "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.integer "pharmacy_id"
+    t.string "cliente"
+    t.date "fecha_emicion"
+    t.integer "edad"
+    t.string "sexo"
+    t.string "fecha_de_retiro"
+    t.string "cliente_ID"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pharmacy_id"], name: "index_recipes_on_pharmacy_id"
   end
 
   create_table "todos", force: :cascade do |t|

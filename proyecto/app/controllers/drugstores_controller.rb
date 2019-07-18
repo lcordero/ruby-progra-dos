@@ -38,7 +38,11 @@ class DrugstoresController < ApplicationController
 	    @result.push(supplier) if supplier.drugs.exists?(name: params[:drug])
 	     
     end
-    json_response(@result)
+    alerta = {
+	    alert: "No se encontro ningun resultado"
+    }
+    json_response(alerta) if @result[0].nil? 
+    json_response(@result) if !@result[0].nil?
   end
 
   private

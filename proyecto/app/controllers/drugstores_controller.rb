@@ -30,19 +30,23 @@ class DrugstoresController < ApplicationController
     head :no_content
   end
 
+  #Funcion para filtrar suppliers por medio de sus medicamentos
   def filter_drugs
-    @drug=params.permit(:drug)
-    @temp_drugstore = Drugstore.find(params[:drugstore_id])
-    @result=[]
-    for supplier in @temp_drugstore.suppliers do
-	    @result.push(supplier) if supplier.drugs.exists?(name: params[:drug])
+    @drug=params.permit(:drug)  #Aqui es donde obtenemos el input del usuario, variable la cual aplicara el filtro
+    @temp_drugstore = Drugstore.find(params[:drugstore_id])  #farmacia temporal la cual manipularemos
+    @result=[]            #lista vacia la cual llenaremos con los que cumplan los requisitos
+    for supplier in @temp_drugstore.suppliers do   #un for el cual recorrera la lista de la farmacia temporal buscando uno por uno
+	    @result.push(supplier) if supplier.drugs.exists?(name: params[:drug])  #aqui hacemos el push del supplier si se cumple la condicion de que el nombre del producto sea igual
 	     
     end
+    #esta es una var unicamente creada para dar una alerta si no se encuentra nada
     alerta = {
 	    alert: "No se encontro ningun resultado"
     }
-    json_response(alerta) if @result[0].nil? 
-    json_response(@result) if !@result[0].nil?
+    #devolveremos los datos dependiendo del resultado
+    json_response(alerta) if @result[0].nil?
+    print_drugstore = @temp_drugstore.attributes.merge({:suppliers => @result}) 
+    json_response(print_drugstore) if !@result[0].nil?
   end
 
   private

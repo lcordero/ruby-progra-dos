@@ -10,7 +10,7 @@ class ProductosController < ApplicationController
     #factura_producto = {
       #factura: @factura, factura.productos,
       #alerta: "Esta factura es mia"      
-    #json_response(@factura_productos)
+    json_response(temp_factura)
   end
 
   # GET /facturas/:factura_id/productos/:id

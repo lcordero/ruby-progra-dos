@@ -14,7 +14,10 @@ class SuppliersController < ApplicationController
 
   # POST /drugstores/:drugstore_id/suppliers
   def create
-    @drugstore.suppliers.create!(supplier_params)
+    @name_supplier=supplier_params
+    @name_supplier[:name]=@name_supplier[:name][0..14]
+    @name_supplier[:agent]=@name_supplier[:agent][0..14]
+    @drugstore.suppliers.create!(@name_supplier)
     json_response(@drugstore, :created)
   end
 

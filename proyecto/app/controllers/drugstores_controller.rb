@@ -9,7 +9,10 @@ class DrugstoresController < ApplicationController
 
   # POST /drugstores
   def create
-    @drugstore = Drugstore.create!(drugstore_params)
+    @name_drugstore=drugstore_params
+    @name_drugstore[:name]=@name_drugstore[:name][0..14]
+    puts @name_drugstore
+    @drugstore = Drugstore.create!(@name_drugstore)
     json_response(@drugstore, :created)
   end
 
@@ -50,7 +53,6 @@ class DrugstoresController < ApplicationController
   end
 
   private
-
   def drugstore_params
     # whitelist params
     params.permit(:name)

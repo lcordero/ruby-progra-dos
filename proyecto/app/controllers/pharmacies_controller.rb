@@ -29,6 +29,11 @@ end
 	@pharmacy.destroy
 	head :no_content
 end
+	def filter
+	@filter =Pharmacy.find(params[:name])
+                  
+
+	end		
 
 private
 

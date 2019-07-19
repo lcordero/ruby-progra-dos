@@ -2,6 +2,8 @@ class VacunasController < ApplicationController
   before_action :set_factura_vacuna
   before_action :set_factura_vacuna, only: [:show, :update, :destroy]
 
+  after_action :set_factura_vacuna_total, only: [:update, :create, :destroy]
+
   # GET /facturas/:factura_id/vaccine
   def index
    json_response(@factura_vacuna.vacuna)

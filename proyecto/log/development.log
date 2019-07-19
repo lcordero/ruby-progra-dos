@@ -1,0 +1,553 @@
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:4
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:4
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateTodos (20190717060314)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "todos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "created_by" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190717060314_create_todos.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190717060314"]]
+  ↳ bin/rails:4
+  [1m[35m (5.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateItems (20190717060329)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "items" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "done" boolean, "todo_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_c01e6b449d"
+FOREIGN KEY ("todo_id")
+  REFERENCES "todos" ("id")
+)[0m
+  ↳ db/migrate/20190717060329_create_items.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_items_on_todo_id" ON "items" ("todo_id")[0m
+  ↳ db/migrate/20190717060329_create_items.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190717060329"]]
+  ↳ bin/rails:4
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreatePharmacies (20190718162948)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "pharmacies" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nombre" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190718162948_create_pharmacies.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190718162948"]]
+  ↳ bin/rails:4
+  [1m[35m (5.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateRecipes (20190718163626)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "recipes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "pharmacy_id" integer, "cliente" varchar, "fecha_emicion" date, "edad" integer, "sexo" varchar, "fecha_de_retiro" varchar, "cliente_ID" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_39b080f417"
+FOREIGN KEY ("pharmacy_id")
+  REFERENCES "pharmacies" ("id")
+)[0m
+  ↳ db/migrate/20190718163626_create_recipes.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_recipes_on_pharmacy_id" ON "recipes" ("pharmacy_id")[0m
+  ↳ db/migrate/20190718163626_create_recipes.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190718163626"]]
+  ↳ bin/rails:4
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateDrugs (20190718163815)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "drugs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "recipe_id" integer, "nombre" varchar, "dosis" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_6c45644140"
+FOREIGN KEY ("recipe_id")
+  REFERENCES "recipes" ("id")
+)[0m
+  ↳ db/migrate/20190718163815_create_drugs.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_drugs_on_recipe_id" ON "drugs" ("recipe_id")[0m
+  ↳ db/migrate/20190718163815_create_drugs.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190718163815"]]
+  ↳ bin/rails:4
+  [1m[35m (4.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-07-18 16:58:49.195959"], ["updated_at", "2019-07-18 16:58:49.195959"]]
+  ↳ bin/rails:4
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Started POST "/pharmacies" for 190.10.52.249 at 2019-07-18 17:22:13 +0000
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by PharmaciesController#create as */*
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pharmacies_controller.rb:12
+  [1m[36mPharmacy Create (0.4ms)[0m  [1m[32mINSERT INTO "pharmacies" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2019-07-18 17:22:13.361513"], ["updated_at", "2019-07-18 17:22:13.361513"]]
+  ↳ app/controllers/pharmacies_controller.rb:12
+  [1m[35m (42.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pharmacies_controller.rb:12
+Completed 201 Created in 64ms (Views: 0.7ms | ActiveRecord: 43.3ms)
+
+
+Started GET "/pharmacies" for 190.10.52.249 at 2019-07-18 17:22:31 +0000
+Processing by PharmaciesController#index as */*
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started PUT "/pharmacies/1?nombre=drugs%20adicts" for 190.10.52.249 at 2019-07-18 17:23:43 +0000
+Processing by PharmaciesController#update as */*
+  Parameters: {"nombre"=>"drugs adicts", "id"=>"1"}
+  [1m[36mPharmacy Load (0.3ms)[0m  [1m[34mSELECT  "pharmacies".* FROM "pharmacies" WHERE "pharmacies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pharmacies_controller.rb:41
+Unpermitted parameters: :nombre, :id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pharmacies_controller.rb:23
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pharmacies_controller.rb:23
+Completed 204 No Content in 19ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/pharmacies/1?nombre=drugs%20adicts" for 190.10.52.249 at 2019-07-18 17:23:49 +0000
+Processing by PharmaciesController#show as */*
+  Parameters: {"nombre"=>"drugs adicts", "id"=>"1"}
+  [1m[36mPharmacy Load (0.1ms)[0m  [1m[34mSELECT  "pharmacies".* FROM "pharmacies" WHERE "pharmacies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pharmacies_controller.rb:41
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/pharmacies/1" for 190.10.52.249 at 2019-07-18 17:23:56 +0000
+Processing by PharmaciesController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPharmacy Load (0.2ms)[0m  [1m[34mSELECT  "pharmacies".* FROM "pharmacies" WHERE "pharmacies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pharmacies_controller.rb:41
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.2ms)
+
+
+Started PUT "/pharmacies/1?nombre=drugs%20adicts" for 190.10.52.249 at 2019-07-18 17:28:05 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by PharmaciesController#update as */*
+  Parameters: {"nombre"=>"drugs adicts", "id"=>"1"}
+  [1m[36mPharmacy Load (0.2ms)[0m  [1m[34mSELECT  "pharmacies".* FROM "pharmacies" WHERE "pharmacies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pharmacies_controller.rb:41
+Unpermitted parameter: :id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pharmacies_controller.rb:23
+  [1m[36mPharmacy Update (0.3ms)[0m  [1m[33mUPDATE "pharmacies" SET "nombre" = ?, "updated_at" = ? WHERE "pharmacies"."id" = ?[0m  [["nombre", "drugs adicts"], ["updated_at", "2019-07-18 17:28:05.657399"], ["id", 1]]
+  ↳ app/controllers/pharmacies_controller.rb:23
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pharmacies_controller.rb:23
+Completed 204 No Content in 21ms (ActiveRecord: 6.7ms)
+
+
+Started GET "/pharmacies/1" for 190.10.52.249 at 2019-07-18 17:28:24 +0000
+Processing by PharmaciesController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPharmacy Load (0.2ms)[0m  [1m[34mSELECT  "pharmacies".* FROM "pharmacies" WHERE "pharmacies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pharmacies_controller.rb:41
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/recipes/1" for 190.10.52.249 at 2019-07-18 17:36:05 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (No route matches [GET] "/recipes/1"):
+  
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/recipes" for 190.10.52.249 at 2019-07-18 17:36:12 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/recipes"):
+  
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started PUT "/recipes?cliente=Alejandro" for 190.10.52.249 at 2019-07-18 17:36:59 +0000
+  
+ActionController::RoutingError (No route matches [PUT] "/recipes"):
+  
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/recipes?cliente=Alejandro" for 190.10.52.249 at 2019-07-18 17:43:41 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (No route matches [GET] "/recipes"):
+  
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/recipes?cliente=Alejandro" for 190.10.52.249 at 2019-07-18 17:43:42 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/recipes"):
+  
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/recipe" for 190.10.52.249 at 2019-07-18 17:46:18 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (No route matches [GET] "/recipe"):
+  
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/recipes" for 190.10.52.249 at 2019-07-18 17:47:37 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/recipes"):
+  
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/pharmacies" for 190.10.52.249 at 2019-07-18 17:48:30 +0000
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/ruby/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by PharmaciesController#index as */*
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/pharmacies/recipes" for 190.10.52.249 at 2019-07-18 17:48:39 +0000
+Processing by PharmaciesController#show as */*
+  Parameters: {"id"=>"recipes"}
+  [1m[36mPharmacy Load (0.2ms)[0m  [1m[34mSELECT  "pharmacies".* FROM "pharmacies" WHERE "pharmacies"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/pharmacies_controller.rb:41
+Completed 404 Not Found in 6ms (Views: 0.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/pharmacies/recipes/1" for 190.10.52.249 at 2019-07-18 17:48:48 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/pharmacies/recipes/1"):
+  
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started PUT "/pharmacies/recipes?cliente=Alejandro" for 190.10.52.249 at 2019-07-18 17:49:06 +0000
+Processing by PharmaciesController#update as */*
+  Parameters: {"cliente"=>"Alejandro", "id"=>"recipes"}
+  [1m[36mPharmacy Load (0.1ms)[0m  [1m[34mSELECT  "pharmacies".* FROM "pharmacies" WHERE "pharmacies"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/pharmacies_controller.rb:41
+Completed 404 Not Found in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms)
+
+
+Started PUT "/pharmacies/1/recipes?cliente=Alejandro" for 190.10.52.249 at 2019-07-18 17:49:25 +0000
+  
+ActionController::RoutingError (No route matches [PUT] "/pharmacies/1/recipes"):
+  
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started PUT "/pharmacies/recipes?cliente=Alejandro" for 190.10.52.249 at 2019-07-18 17:49:39 +0000
+Processing by PharmaciesController#update as */*
+  Parameters: {"cliente"=>"Alejandro", "id"=>"recipes"}
+  [1m[36mPharmacy Load (0.5ms)[0m  [1m[34mSELECT  "pharmacies".* FROM "pharmacies" WHERE "pharmacies"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/pharmacies_controller.rb:41
+Completed 404 Not Found in 2ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/pharmacies" for 190.10.52.249 at 2019-07-18 17:50:07 +0000
+Processing by PharmaciesController#index as */*
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started PUT "/pharmacies/1?nombre=drugs%20adicts" for 190.10.52.249 at 2019-07-18 17:50:32 +0000
+Processing by PharmaciesController#update as */*
+  Parameters: {"nombre"=>"drugs adicts", "id"=>"1"}
+  [1m[36mPharmacy Load (0.3ms)[0m  [1m[34mSELECT  "pharmacies".* FROM "pharmacies" WHERE "pharmacies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pharmacies_controller.rb:41
+Unpermitted parameter: :id
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pharmacies_controller.rb:23
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pharmacies_controller.rb:23
+Completed 204 No Content in 28ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/pharmacies/1" for 190.10.52.249 at 2019-07-18 17:50:47 +0000
+Processing by PharmaciesController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPharmacy Load (0.2ms)[0m  [1m[34mSELECT  "pharmacies".* FROM "pharmacies" WHERE "pharmacies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pharmacies_controller.rb:41
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started PUT "/pharmacies/1/recipes" for 190.10.52.249 at 2019-07-18 17:51:08 +0000
+  
+ActionController::RoutingError (No route matches [PUT] "/pharmacies/1/recipes"):
+  
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/pharmacies/1/recipes" for 190.10.52.249 at 2019-07-18 17:51:14 +0000
+Processing by RecipesController#create as */*
+  Parameters: {"pharmacy_id"=>"1"}
+  [1m[36mPharmacy Load (0.2ms)[0m  [1m[34mSELECT  "pharmacies".* FROM "pharmacies" WHERE "pharmacies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:40
+Unpermitted parameter: :pharmacy_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/recipes_controller.rb:17
+  [1m[36mRecipe Create (1.2ms)[0m  [1m[32mINSERT INTO "recipes" ("pharmacy_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["pharmacy_id", 1], ["created_at", "2019-07-18 17:51:14.523360"], ["updated_at", "2019-07-18 17:51:14.523360"]]
+  ↳ app/controllers/recipes_controller.rb:17
+  [1m[35m (21.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/recipes_controller.rb:17
+Completed 201 Created in 54ms (Views: 0.8ms | ActiveRecord: 25.0ms)
+
+
+Started POST "/pharmacies/1/recipes?cliente=Alejandro" for 190.10.52.249 at 2019-07-18 17:51:30 +0000
+Processing by RecipesController#create as */*
+  Parameters: {"cliente"=>"Alejandro", "pharmacy_id"=>"1"}
+  [1m[36mPharmacy Load (0.2ms)[0m  [1m[34mSELECT  "pharmacies".* FROM "pharmacies" WHERE "pharmacies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:40
+Unpermitted parameter: :pharmacy_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/recipes_controller.rb:17
+  [1m[36mRecipe Create (1.4ms)[0m  [1m[32mINSERT INTO "recipes" ("pharmacy_id", "cliente", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["pharmacy_id", 1], ["cliente", "Alejandro"], ["created_at", "2019-07-18 17:51:30.750621"], ["updated_at", "2019-07-18 17:51:30.750621"]]
+  ↳ app/controllers/recipes_controller.rb:17
+  [1m[35m (29.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/recipes_controller.rb:17
+Completed 201 Created in 40ms (Views: 0.8ms | ActiveRecord: 31.5ms)
+
+
+Started GET "/pharmacies/1/recipes" for 190.10.52.249 at 2019-07-18 17:51:42 +0000
+Processing by RecipesController#index as */*
+  Parameters: {"pharmacy_id"=>"1"}
+  [1m[36mPharmacy Load (0.3ms)[0m  [1m[34mSELECT  "pharmacies".* FROM "pharmacies" WHERE "pharmacies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:40
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."pharmacy_id" = ?[0m  [["pharmacy_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 7ms (Views: 3.8ms | ActiveRecord: 0.7ms)
+
+
+Started PUT "/pharmacies/1/recipes?cliente=Alejandro&fecha_emicion=10/6/2019&edad=56&sexo=hombre&fecha_de_retiro=18/7/2019&cliente_ID=118130999" for 190.10.52.249 at 2019-07-18 17:56:04 +0000
+  
+ActionController::RoutingError (No route matches [PUT] "/pharmacies/1/recipes"):
+  
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:660:in `handle_request'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:474:in `process_client'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/pharmacies/1/recipes?cliente=Alejandro&fecha_emicion=10/6/2019&edad=56&sexo=hombre&fecha_de_retiro=18/7/2019&cliente_ID=118130999" for 190.10.52.249 at 2019-07-18 17:56:21 +0000
+Processing by RecipesController#create as */*
+  Parameters: {"cliente"=>"Alejandro", "fecha_emicion"=>"10/6/2019", "edad"=>"56", "sexo"=>"hombre", "fecha_de_retiro"=>"18/7/2019", "cliente_ID"=>"118130999", "pharmacy_id"=>"1"}
+  [1m[36mPharmacy Load (0.2ms)[0m  [1m[34mSELECT  "pharmacies".* FROM "pharmacies" WHERE "pharmacies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:40
+Unpermitted parameter: :pharmacy_id
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/recipes_controller.rb:17
+  [1m[36mRecipe Create (1.1ms)[0m  [1m[32mINSERT INTO "recipes" ("pharmacy_id", "cliente", "fecha_emicion", "edad", "sexo", "fecha_de_retiro", "cliente_ID", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["pharmacy_id", 1], ["cliente", "Alejandro"], ["fecha_emicion", "2019-06-10"], ["edad", 56], ["sexo", "hombre"], ["fecha_de_retiro", "18/7/2019"], ["cliente_ID", "118130999"], ["created_at", "2019-07-18 17:56:21.155896"], ["updated_at", "2019-07-18 17:56:21.155896"]]
+  ↳ app/controllers/recipes_controller.rb:17
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/recipes_controller.rb:17
+Completed 201 Created in 14ms (Views: 0.5ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/pharmacies/1/recipes" for 190.10.52.249 at 2019-07-18 17:56:40 +0000
+Processing by RecipesController#index as */*
+  Parameters: {"pharmacy_id"=>"1"}
+  [1m[36mPharmacy Load (0.2ms)[0m  [1m[34mSELECT  "pharmacies".* FROM "pharmacies" WHERE "pharmacies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:40
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."pharmacy_id" = ?[0m  [["pharmacy_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.3ms)
+
+

@@ -1,0 +1,2 @@
+class Compradetalle < ApplicationRecord
+end

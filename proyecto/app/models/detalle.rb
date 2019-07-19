@@ -1,0 +1,2 @@
+class Detalle < ApplicationRecord
+end

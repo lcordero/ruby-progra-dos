@@ -9,10 +9,9 @@ class DrugstoresController < ApplicationController
 
   # POST /drugstores
   def create
-    @name_drugstore=drugstore_params
-    @name_drugstore[:name]=@name_drugstore[:name][0..14]
-    puts @name_drugstore
-    @drugstore = Drugstore.create!(@name_drugstore)
+    name_drugstore=drugstore_params
+    name_drugstore[:name]=name_drugstore[:name][0..14]
+    @drugstore = Drugstore.create!(name_drugstore)
     json_response(@drugstore, :created)
   end
 

@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+#
+factura1 = Factura.create(titulo: "Test Seed", creada_por: "Alonso", fecha: "20/12/09", total: 1200)
+producto1 = Producto.create(factura_id: factura1[:id], nombre: "Atun", cantidad: 12, precio: 1200)
+

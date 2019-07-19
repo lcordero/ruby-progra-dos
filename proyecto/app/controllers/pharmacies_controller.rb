@@ -29,12 +29,12 @@ end
 	@pharmacy.destroy
 	head :no_content
 end
-	def filter
-	@filter =Pharmacy.find(params[:name])
-                  
+	def filter_recipes
+	@filter_recipes = Pharmacy.find(params[:nombre])
+	@temp_recipes = @filter_recipes.recipe
+        	
 
-	end		
-
+end	
 private
 
 def pharmacy_params

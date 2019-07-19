@@ -1,5 +1,5 @@
 class FacturasController < ApplicationController
-  before_action :set_factura, only: [:show, :update, :destroy]
+          before_action :set_factura, only: [:show, :update, :destroy]
 
   # GET /facturas
   def index

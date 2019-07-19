@@ -32,7 +32,7 @@ class DrugsController < ApplicationController
   private
 
   def drug_params
-    params.permit(:name)
+    params.permit(:nombre, :dosis)
   end
 
   def set_pharmacy

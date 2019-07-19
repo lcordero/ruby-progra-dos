@@ -14,7 +14,7 @@ before_action :set_usuario
 
   # POST /usuario/:usuario_id/datilusers
   def create
-    @usuario.datiluser.create!(datiluser_params)
+    @usuario.datilusers.create!(datiluser_params)
     json_response(@usuario, :created)
   end
 
@@ -33,7 +33,7 @@ before_action :set_usuario
   private
 
   def datiluser_params
-    params.permit(:direccion, :telefono, :sexo)
+    params.permit(:direction, :telf, :sex)
   end
 
   def set_usuario
@@ -41,6 +41,6 @@ before_action :set_usuario
   end
 
   def set_usuario_datiluser
-    @datiluser = @usuario.datilusers.find_by!(id: params[:id]) if @usuario
+	  @datiluser = @usuarios.datiluser.find_by!(id: params[:id]) if @usuario
   end
 end

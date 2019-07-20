@@ -3,8 +3,8 @@ class FacturasVacunasController < ApplicationController
   
   # GET /facturas
   def index
-    @facturas_vacuna = Factura_Vacuna.all
-    json_response(@facturas_vacuna)
+    @facturas_vacunas = Factura_Vacuna.all
+    json_response(@facturas_vacunas)
   end
   
   # POST /facturas

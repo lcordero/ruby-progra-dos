@@ -30,7 +30,7 @@ class FacturasVacunasController < ApplicationController
     head :no_content
   end
   
-    private
+  private
   
   def facturavacuna_params
     # whitelist params

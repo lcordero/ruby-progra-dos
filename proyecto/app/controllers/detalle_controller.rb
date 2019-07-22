@@ -1,46 +1,47 @@
 class DetalleController < ApplicationController
-   before_action :set_Pharmacy_detalle, only: [:show, :update, :destroy]
+   before_action :set_pharmacy_detalle, only: [:show, :update, :destroy]
    before_action :set_pharmacy
-  # GET /Pharmacys/:phamarcy_id/Detalle
+  # GET /Pharmacies/:phamarcy_id/detalle
   def index
-    @Pharmacys = Pharmacy.all
-    json_response(@Pharmacys)
+    
+	  json_response(@pharmacy.detalles)
   end
 
-  # POST /Pharmacys/:phamarcy_id/Detalle
+  # POST /Pharmacies/:phamarcy_id/detalle
   def create
-    @Pharmacy = Pharmacy.create!(Pharmacy_params)
-    json_response(@Pharmacy, :created)
+	  @pharmacy.detalles.create!(detalle_params)
+    json_response(@pharmacy, :created)
   end
 
-  # GET /Pharmacys/:pharmacy_id/Detalle/:id
+  # GET /Pharmacies/:pharmacy_id/detalle/:id
   def show
-    json_response(@Pharmacy)
+    json_response(@detalle)
   end
 
-  # PUT /Pharmacys/:phamacy_id/Detalle/:id
+  # PUT /Pharmacies/:pharmacy_id/detalle/:id
   def update
-    @Pharmacy.update(Pharmacy_params)
+    @pharmacy.update(detalle_params)
     head :no_content
   end
 
-  # DELETE /Pharmacys/:pharmacy_id/Detalle/:id
+  # DELETE /Pharmacies/:pharmacy_id/detalle/:id
   def destroy
-    @Pharmacy.destroy
+    @detalle.destroy
     head :no_content
   end
 
   private
 
-  def Detalle_params
+  def detalle_params
     # whitelist params
     params.permit(:especialidad)
   end
 
-  def set_Pharmacy
-    @Pharmacy = Pharmacy.find(params[:pharmacy_id])
+  def set_pharmacy
+    @pharmacy = Pharmacy.find(params[:pharmacy_id])
+    @medico = @pharmacy.medico.find_by!(id: params[:medico_id]) if @pharmacy
   end
-  def set_pharmacy_Pharmacy
-    @Detalle = @pharmacy.Detalle.find_by!(id: params[:id]) if @pharmacy
+  def set_pharmacy_detalle
+    @detalle = @pharmacy.detalle.find_by!(id: params[:id]) if @pharmacy
   end
 end

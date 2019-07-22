@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2019_07_22_204129) do
 
   create_table "exams", force: :cascade do |t|
-    t.integer "exam_id"
+    t.integer "pharmacy_id"
     t.string "tipo"
     t.string "muestra"
     t.integer "costo"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2019_07_22_204129) do
     t.string "resultado"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["exam_id"], name: "index_exams_on_exam_id"
+    t.index ["pharmacy_id"], name: "index_exams_on_pharmacy_id"
   end
 
   create_table "items", force: :cascade do |t|

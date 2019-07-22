@@ -1,3 +1,3 @@
 class Exam < ApplicationRecord
-	belongs_to :pharmacies
+	belongs_to :pharmacy
 end

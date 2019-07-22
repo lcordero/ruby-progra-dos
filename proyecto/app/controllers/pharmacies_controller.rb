@@ -1,4 +1,4 @@
-class PharmacyController < ApplicationController
+class PharmaciesController < ApplicationController
 before_action :set_pharmacy, only: [:show, :update, :destroy]
 
   # GET /Pharmacies
@@ -40,4 +40,5 @@ before_action :set_pharmacy, only: [:show, :update, :destroy]
   def set_pharmacy
     @pharmacy = Pharmacy.find(params[:id])
   end
+	
 end

@@ -1,4 +1,4 @@
-class ExamController < ApplicationController
+class ExamsController < ApplicationController
 before_action :set_pharmacy
   before_action :set_pharmacy_exam, only: [:show, :update, :destroy]
 
@@ -37,7 +37,7 @@ before_action :set_pharmacy
   end
 
   def set_pharmacy
-    @pharmacy = Pharmacy.find(params[:pharmacy_id])
+    @pharmacy = Pharmacy.find_by!(id: params[:pharmacy_id])
   end
 
   def set_pharmacy_exam

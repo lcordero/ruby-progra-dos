@@ -1,7 +1,7 @@
 class CreateVacunas < ActiveRecord::Migration[5.2]
   def change
-    create_table :vacunas do |t|
-      t.references :facturavacuna, foreign_key: true
+    create_table :Vacuna do |t|
+      t.references :FacturaVacuna, foreign_key: true
       t.string :Enfermedad
       t.string :Vacuna_Recomendada
       t.integer :Dosis

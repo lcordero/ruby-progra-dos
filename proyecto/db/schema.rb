@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_19_025646) do
+ActiveRecord::Schema.define(version: 2019_07_21_191024) do
 
   create_table "detalles", force: :cascade do |t|
+    t.integer "medicamento_id"
     t.string "informacion"
+    t.string "presentacion"
+    t.string "dosis"
+    t.string "efectos"
+    t.string "compania"
+    t.string "caducidad"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["medicamento_id"], name: "index_detalles_on_medicamento_id"
+  end
+
+  create_table "farmacia", force: :cascade do |t|
+    t.string "nombre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -28,9 +41,19 @@ ActiveRecord::Schema.define(version: 2019_07_19_025646) do
   end
 
   create_table "medicamentos", force: :cascade do |t|
+    t.integer "pharmacy_id"
     t.string "dato"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["pharmacy_id"], name: "index_medicamentos_on_pharmacy_id"
+  end
+
+  create_table "pharmacies", force: :cascade do |t|
+    t.string "nombre"
+    t.integer "pharmacies_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pharmacies_id"], name: "index_pharmacies_on_pharmacies_id"
   end
 
   create_table "todos", force: :cascade do |t|

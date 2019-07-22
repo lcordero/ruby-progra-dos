@@ -1,2 +1,0 @@
-class Farmacium < ApplicationRecord
-end

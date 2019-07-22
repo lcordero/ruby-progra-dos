@@ -12,13 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2019_06_20_233905) do
 
-  create_table "demos", force: :cascade do |t|
-    t.string "title"
-    t.string "user"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "facturas", force: :cascade do |t|
     t.string "titulo"
     t.string "creada_por"

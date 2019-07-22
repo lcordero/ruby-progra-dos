@@ -1,12 +1,12 @@
 class VacunasController < ApplicationController
-  before_action :set_factura_vacuna
-  before_action :set_factura_vacuna, only: [:show, :update, :destroy]
+  before_action :set_facturavacuna
+  before_action :set_facturavacuna, only: [:show, :update, :destroy]
 
-  after_action :set_factura_vacuna_total, only: [:update, :create, :destroy]
+  after_action :set_facturavacuna_total, only: [:update, :create, :destroy]
 
   # GET /facturas/:factura_id/vaccine
   def index
-    json_response(@factura_vacuna.vacuna)
+    json_response(@facturavacuna.vacuna)
   end
 
   # GET /facturas/:factura_id/vaccine/:id
@@ -16,8 +16,8 @@ class VacunasController < ApplicationController
 
   # POST /facturas/:factura_id/vaccine
   def create
-    @factura_vacuna.vacuna.create!(vacuna_params)
-    json_response(@factura_vacuna, :created)
+    @facturavacuna.vacuna.create!(vacuna_params)
+    json_response(@facturavacuna, :created)
   end
 
   # PUT /facturas/:factura_id/vaccine/:id
@@ -38,11 +38,11 @@ class VacunasController < ApplicationController
     params.permit(:Enfermedad, :Vacuna_Recomendada, :Dosis, :Total_de_la_Vacuna_Usada)
   end
 
-  def set_factura_vacuna
-    @factura_vacuna = Factura_Vacuna.find(params[:factura_vacuna_id])
+  def set_facturavacuna
+    @facturavacuna = FacturaVacuna.find(params[:facturavacuna_id])
   end
 
-  def set_factura_vacuna_vacuna
-    @vacuna = @factura_vacuna.vacuna.find_by!(id: params[:id]) if @factura_vacuna
+  def set_facturavacuna_vacuna
+    @vacuna = @facturavacuna.vacuna.find_by!(id: params[:id]) if @facturavacuna
   end
 end

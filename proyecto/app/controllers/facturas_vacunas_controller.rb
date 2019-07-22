@@ -1,43 +1,43 @@
 class FacturasVacunasController < ApplicationController
-  before_action :set_factura_vacuna, only: [:show, :update, :destroy]
+  before_action :set_facturavacuna, only: [:show, :update, :destroy]
   
   # GET /facturas
   def index
-    @facturas_vacunas = Factura_Vacuna.all
-    json_response(@facturas_vacunas)
+    @facturasvacunas = FacturaVacuna.all
+    json_response(@facturasvacunas)
   end
   
   # POST /facturas
   def create
-    @factura_vacuna = Factura_Vacuna.create!(factura_vacuna_params)
-    json_response(@factura_vacuna, :created)
+    @facturavacuna = FacturaVacuna.create!(facturavacuna_params)
+    json_response(@facturavacuna, :created)
   end
   
   # GET /facturas/:id
   def show
-    json_response(@factura_vacuna)
+    json_response(@facturavacuna)
   end  
   
   # PUT /facturas/:id
   def update
-    @factura_vacuna.update(factura_vacuna_params)
+    @facturavacuna.update(facturavacuna_params)
     head :no_content
   end
   
   # DELETE /facturas/:id
   def destroy
-    @factura_vacuna.destroy
+    @facturavacuna.destroy
     head :no_content
   end
   
     private
   
-  def factura_vacuna_params
+  def facturavacuna_params
     # whitelist params
     params.permit(:Nombre_del_Cliente, :Apellidos_del_Cliente, :Cedula, :Lugar_de_Residencia, :Fecha_de_Nacimiento, :Total)
   end
   
-  def set_factura_vacuna
-    @factura_vacuna = Factura_Vacuna.find(params[:id])
+  def set_facturavacuna
+    @facturavacuna = FacturaVacuna.find(params[:id])
   end
 end

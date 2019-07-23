@@ -5,7 +5,7 @@ class CreateDetalles < ActiveRecord::Migration[5.2]
       t.string :informacion
       t.string :presentacion
       t.string :dosis
-      t.string :efectos
+      t.string :efecto
       t.string :compania
       t.string :caducidad
       t.timestamps

@@ -5,7 +5,9 @@ class DetallesController < ApplicationController
 
   # GET /facturas/:pharmacy_id/detalles
   def index
-    json_response(@pharmacy.detalles)
+    temp_medicamento = @medicamento.attributes.merge({:detalles => @medicamento.detalles})
+    json_response(temp_medicamento)
+      #json_response(@medicamento.detalles)
   end
 
   # GET /pharmacies/:pharmacy_id/detalles/:id
@@ -15,8 +17,8 @@ class DetallesController < ApplicationController
 
   # POST /pharmacies/:pharmacy_id/detalles
   def create
-    @pharmacy.detalles.create!(detalle_params)
-    json_response(@pharmacy, :created)
+    @medicamento.detalles.create!(detalle_params)
+    json_response(@medicamento, :created)
   end
 
   # PUT /pharmacies/:pharmacy_id/detalles/:id
@@ -43,7 +45,7 @@ class DetallesController < ApplicationController
   end
 
   def set_pharmacy_detalle
-    @detalle = @pharmacy.detalles.find_by!(id: params[:id]) if @pharmacy
+    @detalle = @medicamento.detalles.find_by!(id: params[:id]) if @medicamento
   end
 
 

@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2019_07_21_191024) do
     t.string "informacion"
     t.string "presentacion"
     t.string "dosis"
-    t.string "efectos"
+    t.string "efecto"
     t.string "compania"
     t.string "caducidad"
     t.datetime "created_at", null: false

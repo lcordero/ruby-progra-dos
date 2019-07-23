@@ -30,6 +30,16 @@ before_action :set_drugstore, only: [:show, :update, :destroy]
     head :no_content
   end
 
+  def filtro_illness
+  @illness=params.permit(:illness)
+    @temp = Drugstore.find(params[:drugstore_id])  
+    @resultado=[]         
+    for vaccine in @temp.vaccines do  
+       @resultado.push(vaccine) if vaccine.illnesses.exists?(nombre: params[:illness]) 
+    end
+    json_response(@resultado)
+  end
+
   private
 
   def drugstore_params

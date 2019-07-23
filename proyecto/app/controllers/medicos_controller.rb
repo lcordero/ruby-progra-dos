@@ -1,13 +1,14 @@
-class MedicoController < ApplicationController
+class MedicosController < ApplicationController
    before_action :set_pharmacy
    before_action :set_pharmacy_medico, only: [:show, :update, :destroy]
   # GET /Pharmacies/:pharmacy_id/medicos
   def index
-    json_response(@pharmacy.medicos)
+    temp_pharmacy = @pharmacy.attributes.merge({:medicos => @pharmacy.medicos})
+    json_response(temp_pharmacy)
   end
 
   # POST /Pharmacies/:pharmacy_id/medicos
-  def create 
+  def create
     @pharmacy.medicos.create!(medico_params)
     json_response(@pharmacy, :created)
   end
@@ -39,6 +40,6 @@ class MedicoController < ApplicationController
     @pharmacy = Pharmacy.find(params[:pharmacy_id])
   end
   def set_pharmacy_medico
-    @medico = @pharmacy.medicos.find_by!(id: params[:id]) if @pharmacy 	    
+    @medico = @pharmacy.medicos.find_by!(id: params[:id]) if @pharmacy
   end
 end

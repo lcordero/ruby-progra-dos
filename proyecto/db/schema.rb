@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_19_191901) do
+ActiveRecord::Schema.define(version: 2019_07_23_020709) do
 
   create_table "detalles", force: :cascade do |t|
-    t.string "especialidad"
     t.integer "medico_id"
+    t.string "especialidad"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["medico_id"], name: "index_detalles_on_medico_id"

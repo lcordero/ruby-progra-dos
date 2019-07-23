@@ -1,0 +1,4 @@
+class Compra < ApplicationRecord
+	has_many :compradetalles, dependent: :destroy
+	belongs_to :drugstore
+end

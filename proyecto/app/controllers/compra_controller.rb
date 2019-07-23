@@ -1,2 +1,0 @@
-class CompraController < ApplicationController
-end

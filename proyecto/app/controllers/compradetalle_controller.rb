@@ -1,2 +1,0 @@
-class CompradetalleController < ApplicationController
-end

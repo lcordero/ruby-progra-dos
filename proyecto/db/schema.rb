@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_17_060329) do
+ActiveRecord::Schema.define(version: 2019_07_19_053321) do
+
+  create_table "compradetalles", force: :cascade do |t|
+    t.integer "compras_id"
+    t.string "nomprovee"
+    t.date "fecha"
+    t.integer "cantidad"
+    t.float "costo"
+    t.string "presentacion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["compras_id"], name: "index_compradetalles_on_compras_id"
+  end
+
+  create_table "compras", force: :cascade do |t|
+    t.integer "drugstore_id"
+    t.string "nombredrug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["drugstore_id"], name: "index_compras_on_drugstore_id"
+  end
+
+  create_table "drugstores", force: :cascade do |t|
+    t.string "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "items", force: :cascade do |t|
     t.string "name"

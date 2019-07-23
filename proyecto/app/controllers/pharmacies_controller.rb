@@ -29,6 +29,16 @@ class PharmaciesController < ApplicationController
     @pharmacy.destroy
     head :no_content
   end
+  def filtro
+    @detalle=params.permit(:detalle)
+    @temp_pharmacy = Pharmacy.find_by!(id: params[:pharmacy_id])
+    @result=[]
+    for medico in @temp_pharmacy.medicos do
+	 @result.push(medico) if medico.detalles.exists?(especialidad: params[:detalle])
+
+    end
+    json_response(@result)
+  end	  
 
   private
 

@@ -10,17 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_19_021949) do
+ActiveRecord::Schema.define(version: 2019_07_23_002849) do
 
-  create_table "factura_vacunas", force: :cascade do |t|
-    t.string "Nombre_del_Cliente"
-    t.string "Apellidos_del_Cliente"
-    t.integer "Cedula"
-    t.string "Lugar_de_Residencia"
-    t.date "Fecha_de_Nacimiento"
-    t.integer "Total"
+  create_table "drugstores", force: :cascade do |t|
+    t.string "nombre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "illnesses", force: :cascade do |t|
+    t.integer "vaccine_id"
+    t.string "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["vaccine_id"], name: "index_illnesses_on_vaccine_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -39,15 +42,12 @@ ActiveRecord::Schema.define(version: 2019_07_19_021949) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "vacunas", force: :cascade do |t|
-    t.integer "factura_vacuna_id"
-    t.string "Enfermedad"
-    t.string "Vacuna_Recomendada"
-    t.integer "Dosis"
-    t.integer "Total_de_la_Vacuna_Usada"
+  create_table "vaccines", force: :cascade do |t|
+    t.integer "drugstore_id"
+    t.integer "dosis"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["factura_vacuna_id"], name: "index_vacunas_on_factura_vacuna_id"
+    t.index ["drugstore_id"], name: "index_vaccines_on_drugstore_id"
   end
 
 end

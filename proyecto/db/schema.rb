@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2019_07_23_002849) do
 
   create_table "vaccines", force: :cascade do |t|
     t.integer "drugstore_id"
-    t.integer "dosis"
+    t.string "dosis"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["drugstore_id"], name: "index_vaccines_on_drugstore_id"

@@ -4,7 +4,7 @@ class VaccinesController < ApplicationController
 
   # GET /facturas/:factura_id/productos
   def index
-    json_response(@drugstore.productos)
+    json_response(@drugstore.vaccines)
   end
 
   # GET /facturas/:factura_id/productos/:id
@@ -14,7 +14,7 @@ class VaccinesController < ApplicationController
 
   # POST /facturas/:factura_id/productos
   def create
-    @drugstore.productos.create!(vaccine_params)
+    @drugstore.vaccines.create!(vaccine_params)
     json_response(@drugstore, :created)
   end
 
@@ -41,6 +41,6 @@ class VaccinesController < ApplicationController
   end
 
   def set_drugstore_vaccine
-    @vaccine = @drugstore.productos.find_by!(id: params[:id]) if @drugstore
+    @vaccine = @drugstore.vaccines.find_by!(id: params[:id]) if @drugstore
   end
 end

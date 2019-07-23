@@ -3,8 +3,8 @@ before_action :set_drugstore, only: [:show, :update, :destroy]
 
   # GET /facturas
   def index
-    @drugstore = Drugstore.all
-    json_response(@drugstore)
+    @drugstores = Drugstore.all
+    json_response(@drugstores)
   end
 
   # POST /facturas

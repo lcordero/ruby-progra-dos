@@ -40,13 +40,6 @@ ActiveRecord::Schema.define(version: 2019_06_19_042205) do
     t.index ["factura_id"], name: "index_productos_on_factura_id"
   end
 
-  create_table "tests", force: :cascade do |t|
-    t.string "name"
-    t.string "lastname"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "todos", force: :cascade do |t|
     t.string "title"
     t.string "created_by"

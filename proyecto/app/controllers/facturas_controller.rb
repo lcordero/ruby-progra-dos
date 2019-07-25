@@ -1,42 +1,42 @@
 class FacturasController < ApplicationController
-    before_action :set_factura, only: [:show, :update, :destroy]
+    before_action :set_ventas, only: [:show, :update, :destroy]
     # GET /facturas
   def index
-    @facturas = Factura.all
+    @facturas = Ventas.all
     json_response(@facturas)
   end
 
   # POST /facturas
   def create
-    @factura = Factura.create!(factura_params)
-    json_response(@factura, :created)
+    @ventas = Ventas.create!(ventas_params)
+    json_response(@ventas, :created)
   end
 
   # GET /facturas/:id
   def show
-    json_response(@factura)
+    json_response(@ventas)
   end
 
   # PUT /facturas/:id
   def update
-    @factura.update(factura_params)
+    @ventas.update(ventas_params)
     head :no_content
   end
 
   # DELETE /facturas/:id
   def destroy
-    @factura.destroy
+    @ventas.destroy
     head :no_content
   end
 
   private
 
-  def factura_params
+  def ventas_params
     # whitelist params
     params.permit(:farmacia, :nombre_paciente, :fecha,)
   end
 
-  def set_factura
-    @factura = Factura.find(params[:id])
-  endi
+  def set_venta
+    @ventas = Ventas.find(params[:id])
+  end
 end

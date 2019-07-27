@@ -1,3 +1,3 @@
 class Producto < ApplicationRecord
-	belongs_to :inventario
+    belongs_to :inventario
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_22_163743) do
+ActiveRecord::Schema.define(version: 2019_07_26_170458) do
 
   create_table "des", force: :cascade do |t|
     t.string "Venta"
@@ -18,6 +18,17 @@ ActiveRecord::Schema.define(version: 2019_07_22_163743) do
     t.date "fecha"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "detalles", force: :cascade do |t|
+    t.integer "factura_id"
+    t.string "Venta"
+    t.integer "cantidad"
+    t.string "nombre"
+    t.integer "precio"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["factura_id"], name: "index_detalles_on_factura_id"
   end
 
   create_table "facturas", force: :cascade do |t|
@@ -37,20 +48,17 @@ ActiveRecord::Schema.define(version: 2019_07_22_163743) do
     t.index ["todo_id"], name: "index_items_on_todo_id"
   end
 
-  create_table "productos", force: :cascade do |t|
-    t.integer "factura_id"
-    t.string "venta"
-    t.integer "cantidad"
-    t.string "nombre"
-    t.integer "precio"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["factura_id"], name: "index_productos_on_factura_id"
-  end
-
   create_table "todos", force: :cascade do |t|
     t.string "title"
     t.string "created_by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "venta", force: :cascade do |t|
+    t.string "farmacia"
+    t.string "nombre_paciente"
+    t.date "fecha"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

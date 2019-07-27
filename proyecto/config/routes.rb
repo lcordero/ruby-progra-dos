@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :todos do
-    resources :items
+  #for details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :ventas do
+    resources :detalles
   end
-end
+ end

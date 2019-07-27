@@ -1,8 +1,8 @@
-class CreateProductos < ActiveRecord::Migration[5.2]
+class CreateDetalles < ActiveRecord::Migration[5.2]
   def change
-    create_table :productos do |t|
+    create_table :detalles do |t|
       t.references :factura, foreign_key: true
-      t.string :venta
+      t.string :Venta
       t.integer :cantidad
       t.string :nombre
       t.integer :precio

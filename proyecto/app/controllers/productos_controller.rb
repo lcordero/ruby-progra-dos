@@ -37,7 +37,7 @@ class ProductosController < ApplicationController
   end
 
   def set_inventario
-    @inventario = Inventario.find(params[:factura_id])
+    @inventario = Inventario.find(params[:inventario_id])
   end
 
   def set_inventario_producto

@@ -1,11 +1,10 @@
-class CreateDetalles < ActiveRecord::Migration[5.2]
+class CreateDetails < ActiveRecord::Migration[5.2]
   def change
-    create_table :detalles do |t|
+    create_table :details do |t|
       t.references :factura, foreign_key: true
-      t.string :Venta
       t.integer :cantidad
       t.string :nombre
-      t.integer :precio
+      t.string :preciointeger
 
       t.timestamps
     end

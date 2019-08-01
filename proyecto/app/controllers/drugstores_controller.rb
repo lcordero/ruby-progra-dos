@@ -34,7 +34,7 @@ class DrugstoresController < ApplicationController
 
   def drugstore_params
     # whitelist params
-    params.permit(:titulo, :creada_por, :fecha, :total)
+    params.permit(:nombre)
   end
 
   def set_drugstore

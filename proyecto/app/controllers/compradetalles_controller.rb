@@ -1,5 +1,4 @@
 class CompradetallesController < ApplicationController
-	class DrugsController < ApplicationController
   before_action :set_drugstore
   before_action :set_drug, only: [:show, :update, :destroy]
   # GET /drugstores/:drugstore_id/suppliers
@@ -14,9 +13,7 @@ class CompradetallesController < ApplicationController
 
   # POST /drugstores/:drugstore_id/suppliers
   def create
-    @name_compradetalles=drug_params
-    @name_compradetalles[:name]=@name_compradetalles[:name][0..14]
-    @compras.compradetalles.create!(@name_compradetalles)
+    @compras.compradetalles.create!(drug_params)
     json_response(@compras, :created)
   end
 
@@ -35,12 +32,12 @@ class CompradetallesController < ApplicationController
   private
 
   def drug_params
-    params.permit(:name)
+    params.permit(:nomprovee, :fecha, :cantidad, :costo, :presentacio)
   end
 
   def set_drugstore
     @drugstore = Drugstore.find(params[:drugstore_id])
-    @compras = @drugstore.suppliers.find_by!(id: params[:compras_id]) if @drugstore
+    @compras = @drugstore.compras.find_by!(id: params[:compra_id]) if @drugstore
   end
 
   def set_drug

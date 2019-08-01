@@ -2,29 +2,29 @@ class ComprasController < ApplicationController
 	before_action :set_drugstore
   before_action :set_drugstore_producto, only: [:show, :update, :destroy]
 
-  # GET /drugstores/:drugstore_id/productos
+  # GET /drugstores/:drugstore_id/compras
   def index
-    json_response(@drugstore.productos)
+    json_response(@drugstore.compras)
   end
 
-  # GET /drugstores/:drugstore_id/productos/:id
+  # GET /drugstores/:drugstore_id/compras/:id
   def show
     json_response(@producto)
   end
 
-  # POST /drugstores/:drugstore_id/productos
+  # POST /drugstores/:drugstore_id/compras
   def create
-    @drugstore.productos.create!(producto_params)
+    @drugstore.compras.create!(compra_params)
     json_response(@drugstore, :created)
   end
 
-  # PUT /drugstores/:drugstore_id/productos/:id
+  # PUT /drugstores/:drugstore_id/compras/:id
   def update
-    @producto.update(producto_params)
+    @compra.update(compra_params)
     head :no_content
   end
 
-  # DELETE /drugstores/:drugstore_id/productos/:id
+  # DELETE /drugstores/:drugstore_id/compras/:id
   def destroy
     @producto.destroy
     head :no_content
@@ -32,15 +32,15 @@ class ComprasController < ApplicationController
 
   private
 
-  def producto_params
-    params.permit(:nombre, :cantidad, :precio)
+  def compra_params
+    params.permit(:nombredrug)
   end
 
   def set_drugstore
     @drugstore = Drugstore.find(params[:drugstore_id])
   end
 
-  def set_drugstore_producto
-    @producto = @drugstore.productos.find_by!(id: params[:id]) if @drugstore
+  def set_drugstore_compras
+    @compra = @drugstore.compras.find_by!(id: params[:id]) if @drugstore
   end
 end

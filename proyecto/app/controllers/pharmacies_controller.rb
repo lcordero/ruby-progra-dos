@@ -31,14 +31,14 @@ class PharmaciesController < ApplicationController
         end
 	def filter_recipes     #definir el filtro de recetas
 		@temp_pharmacy =Pharmacy.find(params[:pharmacy_id])	# buscar atravez de farmacia
-		@filter_recipes = params.permit(:nombre)  #aqui lo que se hace es decirle a filter_recipes es 
-		 @result =[]
-		 for recipe in @temp_pharmacy.recipes do 
+		@filter_recipes = params.permit(:nombre)  #aqui lo que se hace es decirle a filter_recipes que busque atravez del nombre(que lo filtre) 
+		 @result =[]           # definimos result y decimos que es igual a una lista 
+		 for recipe in @temp_pharmacy.recipes do #hacemos un for el cual  reciba @temp_pharmacy y sus parametros
 			 
-                   @result.push(recipe) if recipe.cliente = params[:nombre]
+			 @result.push(recipe) if recipe.cliente = params[:nombre]   # le decimos que ejecute el resultado si recipe.cliente es igual al nombre
 		 end
 
-	         json_response(@result)
+	         json_response(@result)    #aplicamos un json_response el  cual procese el resultado
 		
 
 	end	

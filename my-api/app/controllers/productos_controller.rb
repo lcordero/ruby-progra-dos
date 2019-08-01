@@ -14,11 +14,17 @@ class ProductosController < ApplicationController
   # GET /facturas/:factura_id/productos
   def index
     temp_factura = @factura.attributes.merge({:productos => @factura.productos})
+    puts "EJEMPLO PUTS"
+    logger.debug "EJEMPLO DEBUG"
+    logger.info "EJEMPLO INFO"
+    logger.error "EJEMPLO. FATAL"
+
     #factura_producto = {
     #  factura: @factura, 
     #  productos: @factura.productos,
     #  alerta: "Esta factura es mia"
     #}
+
     json_response(temp_factura)
   end
 

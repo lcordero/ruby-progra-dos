@@ -43,4 +43,5 @@ class DetailsController < ApplicationController
   def set_sale_detail
     @detail = @sale.details.find_by!(id: params[:id]) if @sale
   end
+
 end

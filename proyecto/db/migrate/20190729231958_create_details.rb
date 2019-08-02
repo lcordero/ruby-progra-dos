@@ -4,7 +4,8 @@ class CreateDetails < ActiveRecord::Migration[5.2]
       t.references :factura, foreign_key: true
       t.integer :cantidad
       t.string :nombre
-      t.string :preciointeger
+      t.integer :precio
+      
 
       t.timestamps
     end

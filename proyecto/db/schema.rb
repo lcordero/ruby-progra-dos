@@ -24,21 +24,10 @@ ActiveRecord::Schema.define(version: 2019_07_29_231958) do
     t.integer "factura_id"
     t.integer "cantidad"
     t.string "nombre"
-    t.string "preciointeger"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["factura_id"], name: "index_details_on_factura_id"
-  end
-
-  create_table "detalles", force: :cascade do |t|
-    t.integer "factura_id"
-    t.string "Venta"
-    t.integer "cantidad"
-    t.string "nombre"
     t.integer "precio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["factura_id"], name: "index_detalles_on_factura_id"
+    t.index ["factura_id"], name: "index_details_on_factura_id"
   end
 
   create_table "facturas", force: :cascade do |t|
@@ -69,14 +58,6 @@ ActiveRecord::Schema.define(version: 2019_07_29_231958) do
   create_table "todos", force: :cascade do |t|
     t.string "title"
     t.string "created_by"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "venta", force: :cascade do |t|
-    t.string "farmacia"
-    t.string "nombre_paciente"
-    t.date "fecha"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

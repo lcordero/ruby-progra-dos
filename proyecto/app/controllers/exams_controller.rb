@@ -30,10 +30,19 @@ before_action :set_pharmacy
     head :no_content
   end
 
+  def filtro
+      @valores=params.permit(:valor1, :valor2)
+  @resultado=[]
+  for exam in @temp_pharmacy do
+    resultado.push(exams) if params[:valor1]<exams.costo<params[:valor2]
+  end
+  json_response(@resultado)
+  end
+
   private
 
   def exam_params
-    params.permit(:indicación, :muestra, :costo, :tiempo, :resultado, :tipo)
+    params.permit(:indicacion, :muestra, :costo, :tiempo, :resultado, :tipo)
   end
 
   def set_pharmacy

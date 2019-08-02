@@ -3,8 +3,11 @@ class PharmaciesController < ApplicationController
 
 # GET /pharmacies
 	def index
+           temp_pharmacy=@pharmacy.attributes.merge({:recipes=> @pharmacy.recipes})
+	   #temp_pharmacy=@pharmacy.attributes.merge({:drugs=>@pharmacy.drugs})		
 		@pharmacies = Pharmacy.all
 		json_response(@pharmacys)
+		
         end
 
 # POST /pharmacies

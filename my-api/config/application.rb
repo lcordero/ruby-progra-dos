@@ -19,6 +19,9 @@ Bundler.require(*Rails.groups)
 
 module MyApi
   class Application < Rails::Application
+    #unless Rails.application.config.consider_all_requests_local
+    #  rescue_from ActionController::RoutingError, with: -> { errors#not_found  }
+    #end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
@@ -32,5 +35,6 @@ module MyApi
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
     config.i18n.fallbacks = [I18n.default_locale]
+    config.exceptions_app = routes
   end
 end

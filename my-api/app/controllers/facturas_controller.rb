@@ -3,8 +3,10 @@ class FacturasController < ApplicationController
 
   # GET /facturas
   def index
-    @facturas = Factura.all
-    json_response(@facturas)
+    puts "asdasdas"
+    alert('Test')
+    # @facturas = Factura.all
+    # json_response(@facturas)
   end
 
   # POST /facturas

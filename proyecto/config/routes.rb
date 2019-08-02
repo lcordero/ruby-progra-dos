@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-	 resources :sales
+  resources :sales do
     resources :details
   end
-
+end

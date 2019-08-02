@@ -37,7 +37,7 @@ class DetailsController < ApplicationController
   end
 
   def set_sale
-    @sale = Sale.find_by!(id:|params[:sale_id])
+    @sale = Sale.find(params[:sale_id])
   end
 
   def set_sale_detail

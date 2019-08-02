@@ -1,4 +1,3 @@
 class Sale < ApplicationRecord
-  has_many :productos, dependent: :destroy
-
+  has_many :detail, dependent: :destroy
 end

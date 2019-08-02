@@ -1,3 +1,3 @@
 class Detail < ApplicationRecord
-	belongs_to :factura
+	belongs_to :sale
 end

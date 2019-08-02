@@ -1,0 +1,20 @@
+current directory: /home/katherine-g/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/ruby/2.5.0/gems/bootsnap-1.4.4/ext/bootsnap
+/usr/bin/ruby2.5 -I /usr/local/lib/site_ruby/2.5.0 -r ./siteconf20190802-18354-12h1lxx.rb extconf.rb
+creating Makefile
+
+current directory: /home/katherine-g/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/ruby/2.5.0/gems/bootsnap-1.4.4/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: /home/katherine-g/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/ruby/2.5.0/gems/bootsnap-1.4.4/ext/bootsnap
+make "DESTDIR="
+compiling bootsnap.c
+bootsnap.c: In function ‘bs_cache_path’:
+bootsnap.c:245:39: warning: format ‘%llx’ expects argument of type ‘long long unsigned int’, but argument 5 has type ‘uint64_t {aka long unsigned int}’ [-Wformat=]
+   sprintf(*cache_path, "%s/%02x/%014llx", cachedir, first_byte, remainder);
+                                 ~~~~~~^
+                                 %014lx
+linking shared-object bootsnap/bootsnap.so
+
+current directory: /home/katherine-g/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/ruby/2.5.0/gems/bootsnap-1.4.4/ext/bootsnap
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bootsnap.so ./.gem.20190802-18354-1l27wqr/bootsnap

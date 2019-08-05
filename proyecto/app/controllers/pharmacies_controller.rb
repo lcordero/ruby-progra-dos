@@ -3,10 +3,9 @@ class PharmaciesController < ApplicationController
 
 # GET /pharmacies
 	def index
-           temp_pharmacy=@pharmacy.attributes.merge({:recipes=> @pharmacy.recipes})
-	   #temp_pharmacy=@pharmacy.attributes.merge({:drugs=>@pharmacy.drugs})		
+           		
 		@pharmacies = Pharmacy.all
-		json_response(@pharmacys)
+		json_response(tem_pharmacys)
 		
         end
 
@@ -30,7 +29,7 @@ class PharmaciesController < ApplicationController
 # DELETE /pharmacies/:id
 	def destroy
 		@pharmacy.destroy
-		head :no_content
+	i	head :no_content
         end
 	def filter_recipes     #definir el filtro de recetas
 		@temp_pharmacy =Pharmacy.find(params[:pharmacy_id])	# buscar atravez de farmacia

@@ -5,7 +5,7 @@ class PharmaciesController < ApplicationController
 	def index
            		
 		@pharmacies = Pharmacy.all
-		json_response(tem_pharmacys)
+		json_response(@pharmacies)
 		
         end
 

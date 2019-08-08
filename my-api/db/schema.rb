@@ -10,87 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_17_171917) do
-
-  create_table "bets", force: :cascade do |t|
-    t.string "usuario"
-    t.string "titulo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "bits", force: :cascade do |t|
-    t.string "usuario"
-    t.string "titulo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "bornes", force: :cascade do |t|
-    t.string "usuario"
-    t.string "titulo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "bots", force: :cascade do |t|
-    t.string "usuario"
-    t.string "titulo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "carros", force: :cascade do |t|
-    t.integer "factura_id"
-    t.string "color"
-    t.integer "poder_de_motor"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["factura_id"], name: "index_carros_on_factura_id"
-  end
-
-  create_table "darks", force: :cascade do |t|
-    t.string "usuario"
-    t.string "titulo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "demos", force: :cascade do |t|
-    t.string "titulo"
-    t.string "usuario"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "eldens", force: :cascade do |t|
-    t.string "user"
-    t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "factura_vaccines", force: :cascade do |t|
-    t.string "Nombre"
-    t.string "Apellidos"
-    t.integer "Cedula"
-    t.date "FechadeNacimiento"
-    t.integer "Total"
-    t.string "LugardeResidencia"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "factura_vacunas", force: :cascade do |t|
-    t.string "Nombre_del_Cliente"
-    t.string "Apellidos_del_Cliente"
-    t.integer "Cedula"
-    t.string "Lugar_de_Residencia"
-    t.date "Fecha_de_Nacimiento"
-    t.integer "Total"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 2019_06_20_233443) do
 
   create_table "facturas", force: :cascade do |t|
     t.string "titulo"
@@ -134,67 +54,9 @@ ActiveRecord::Schema.define(version: 2019_07_17_171917) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "rings", force: :cascade do |t|
-    t.string "usuario"
-    t.string "titulo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "sekiros", force: :cascade do |t|
-    t.string "user"
-    t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "souls", force: :cascade do |t|
-    t.string "usuario"
-    t.string "titulo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "test2s", force: :cascade do |t|
-    t.string "titulo"
-    t.string "usuario"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "tests", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "todos", force: :cascade do |t|
     t.string "title"
     t.string "created_by"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "vaccines", force: :cascade do |t|
-    t.integer "FacturaVaccine_id"
-    t.string "Enfermedad"
-    t.string "VacunaRecomendada"
-    t.integer "Dosis"
-    t.integer "TotaldelaVacunasusada"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["FacturaVaccine_id"], name: "index_vaccines_on_FacturaVaccine_id"
-  end
-
-  create_table "vacunas", force: :cascade do |t|
-    t.string "nombre"
-    t.string "apellidos"
-    t.integer "cedula"
-    t.string "lugarderesidencia"
-    t.string "enfermedad"
-    t.string "vacunarecomendada"
-    t.integer "dosisrecomendada"
-    t.string "totaldelavacunausada"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

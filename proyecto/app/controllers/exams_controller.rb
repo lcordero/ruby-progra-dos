@@ -32,8 +32,8 @@ before_action :set_pharmacy
 
   def filtro
       @valores=params.permit(:valor1, :valor2)
-  @resultado=[]
-  for exam in @temp_pharmacy do
+      @resultado=[]
+      for exam in @temp_pharmacy do
     resultado.push(exams) if params[:valor1]<exams.costo<params[:valor2]
   end
   json_response(@resultado)

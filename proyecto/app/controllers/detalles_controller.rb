@@ -4,7 +4,8 @@ class DetallesController < ApplicationController
   # GET /Pharmacies/:phamarcy_id/detalle
   def index
    temp_medico = @medico.attributes.merge({:detalles => @medico.detalles})
-   json_response(temp_medico)
+   temp_pharmacy=@pharmacy.attributes.merge({:medicos => temp_medico})
+   json_response(temp_pharmacy)
   end
 
   # POST /Pharmacies/:phamarcy_id/detalle

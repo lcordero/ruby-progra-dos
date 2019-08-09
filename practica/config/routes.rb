@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   resources :todos do
     resources :items
   end
+  resources :users
+  get "custom/:id" , to: "users#custom"
 end

@@ -1,0 +1,2 @@
+class Televisor < ApplicationRecord
+end

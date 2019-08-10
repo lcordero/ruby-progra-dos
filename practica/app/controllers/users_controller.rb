@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 	 head :no_content
 	end
 
-	# GET#custom
+	# GET#custom/custom/:id
 	def custom
 	 alerta = {"Alerta":"Mi usuario: " + @user[:Nombre]}
 	 json_response(alerta)

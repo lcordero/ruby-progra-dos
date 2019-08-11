@@ -1,5 +1,5 @@
 class TelevisorController < ApplicationController
-	before_action :set_televisor, only: [:show, :update, :destroy]
+	before_action :set_televisor, only: [:show, :update, :destroy, :custom]
 
 
 #GET#televisor
@@ -28,6 +28,14 @@ class TelevisorController < ApplicationController
 	  def destroy
 		@televisor.destroy
 		head :no_content
+	  end
+
+#GET#televisor#custom
+	  def custom
+		  alerta = {
+		  "alerta": "canal no displonible:"
+		  }
+		  json_response(alerta)
 	  end
 
 

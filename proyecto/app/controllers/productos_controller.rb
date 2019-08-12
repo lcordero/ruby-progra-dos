@@ -4,7 +4,10 @@ class ProductosController < ApplicationController
 
   # GET /inventarios/:inventario_id/productos
   def index
-    json_response(@inventario.productos)
+    temp_inventario = @inventario.attributes.merge({:productos => @inventario.productos})
+    #.where('created_at BETWEEN 10 AND 11', '13/08/2019' , @selected_date.end_of_day)
+    #json_response(@inventario.productos)
+    json_response(temp_inventario)
   end
 
   # GET /inventarios/:inventario_id/productos/:id

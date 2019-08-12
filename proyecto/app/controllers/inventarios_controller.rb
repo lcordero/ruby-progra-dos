@@ -15,7 +15,9 @@ class InventariosController < ApplicationController
 
   # GET /inventarios/:id
   def show
-    json_response(@inventario)
+    temp_inventario = @inventario.attributes.merge({:productos => @inventario.productos})
+    json_response(temp_inventario)
+    #json_response(@inventario)
   end
 
   # PUT /inventarios/:id

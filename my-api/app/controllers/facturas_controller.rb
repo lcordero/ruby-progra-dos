@@ -6,7 +6,7 @@ class FacturasController < ApplicationController
     @facturas = Factura.all
     json_response(@facturas)
   end
-
+  
   # POST /facturas
   def create
     @factura = Factura.create!(factura_params)
@@ -40,4 +40,5 @@ class FacturasController < ApplicationController
   def set_factura
     @factura = Factura.find(params[:id])
   end
+
 end

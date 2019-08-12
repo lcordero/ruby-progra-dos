@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   resources :todos do
     resources :items
   end
-  resources :users
-  get "custom/:id", to: "users#custom"
+  #resources :users
+  #get "custom/:id", to: "users#custom"
+  #resources :gokus
+  #get "custom/:id", to: "gokus#custom"
+  resources :games
+  get "custom/:id", to: "games#custom"
 end

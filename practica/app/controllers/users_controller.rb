@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.create!(user_params)
-    json_response(@user, :created)
+    json_response(@user)
   end
 
   # GET /users/:id
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   end
   #GET #custom/custom/:id
   def custom
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
     alerta = {
 	    "alerta": "mi usuario: " + @user[:nombre]
     }

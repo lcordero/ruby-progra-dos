@@ -1,0 +1,2 @@
+class Goku < ApplicationRecord
+end

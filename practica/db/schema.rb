@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_08_235028) do
+ActiveRecord::Schema.define(version: 2019_08_12_175246) do
+
+  create_table "autos", force: :cascade do |t|
+    t.string "nombre"
+    t.integer "modelo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "gokus", force: :cascade do |t|
+    t.string "hijo"
+    t.string "fase"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "items", force: :cascade do |t|
     t.string "name"

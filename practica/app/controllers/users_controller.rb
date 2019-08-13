@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 
   # GET /users/:id
   def show
+    #@user[:edad] = @user[:edad] + "a_os"
     json_response(@user)
   end
   # DELETE /facturas/:id

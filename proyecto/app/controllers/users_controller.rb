@@ -3,9 +3,9 @@ class UsersController < ApplicationController
 
 #GET#index/User
 	def index
-	 	
-		@User = User.all
-		json_response(@User)
+
+		@user = User.all
+		json_response(@user)
 
 
 
@@ -17,15 +17,15 @@ class UsersController < ApplicationController
 #GET#show/User/:id
 
 	def show
-	 	json_response(@User)
+	 	json_response(@user)
 
 	end
 
 
 #POST#create/User
 	def create
-		@User = User.create!(user_params)
-		json_response(@User, :created)
+		@user = User.create!(user_params)
+		json_response(@user, :created)
 
 
 
@@ -35,18 +35,18 @@ class UsersController < ApplicationController
 #DELETE/#destroy/User/:id
 
 	def destroy
-		@User.destroy
+		@user.destroy
 	        head :no_content
-	
+
 
 	end
 
 #GET#custom/custom/:id
 	def custom
-		 @User = User.find(params[:id])
-		
+		 @user = User.find(params[:id])
+
 		alerta = {
-	       "alerta": "mi user:"  + @User[:nombre]
+	       "alerta": "mi user:"  + @user[:nombre]
               }
                 json_response(alerta)		
 
@@ -59,6 +59,6 @@ private
 	end
 
 	def set_User
-		@User = User.find(params[:id])
+		@user = User.find(params[:id])
 	end
 end

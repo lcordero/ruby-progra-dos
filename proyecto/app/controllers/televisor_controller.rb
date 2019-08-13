@@ -1,51 +1,53 @@
 class TelevisorController < ApplicationController
-	before_action :set_televisor, only: [:show, :update, :destroy, :custom]
+	before_action :set_televisor, only:  [:show, :update, :destroy]
 
 
-#GET#televisor
-        def index
-                @televisor = Televisor.all
-                json_response(@televisor)
-        end
-#GET#:id
+
+#GET/#Index/#televisor
+	def index
+		
+		@televisor = Televisor.all
+		json_response(@televisor)
+	end
+
+
+#POST/#Create/#televisor
+	def create
+		@televisor = Televisor.create(televisor_params)
+		json_response(@televisor, :created)
+	end
+
+
+#GET/#show/#televisor
 	def show
 		json_response(@televisor)
 	end
-	
-#POST#create
-        def create
-		@televisor = Televisor.create! (televisor_params)
-        json_response(@televisor, :created)
-	end
-
-#PUT#id
-	def update
-		@televisor.update(televisor_params)
-		head :no_content
-	end
-
-#DELETE#id
-	  def destroy
+			    	
+#DELETE/#Destroy/#televisor
+	def destroy
 		@televisor.destroy
 		head :no_content
-	  end
+	end
 
-#GET#televisor#custom
-	  def custom
-		  alerta = {
-		  "alerta": "canal no displonible:"
-		  }
-		  json_response(alerta)
-	  end
+#GET#custom/custom/:id
+	def custom
+		alerta = {
+		"alerta": "mi channel:" + @televisor[:name , :number]
+		}
+		json_response(alerta)
+	end
+
 
 
 private
 
-	def televisor_params
-		params.permit(:name, :number)
+ 	def televisor_params
+		params.permit( :name , :number)
 	end
-		     
+
+
 	def set_televisor
-		@televisor =Televisor.find(params[:id])
+
+		@televisor = Televisor.find(params[:id])
 	end
 end

@@ -14,7 +14,7 @@ class GamesController < ApplicationController
 
 	#Get /games/:id
 	def show
-	  json_response(@factura)
+	  json_response(@game)
 	end 
 
 	#Put /games/:id

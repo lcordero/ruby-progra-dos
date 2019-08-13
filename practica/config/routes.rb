@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   resources :todos do
     resources :items
   end
-  resources :users 
-     resources:autos
-     get "custom/:id", to: "autos#custom"
-  
+  resources :users
+     resources :bikes
+     get "custom/:id", to: "bikes#custom"
 end

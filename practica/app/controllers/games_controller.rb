@@ -20,13 +20,15 @@ class GamesController < ApplicationController
 	#Put /games/:id
 	def update
 	  @game.update(game_params)
-	  head :no_content
+	  #head :no_content
+	  json_response("los parametros han sido actualizados")
 	end
 
 	#Delete /game/:id
 	def destroy
  	  @game.destroy
-	  head :no_conent
+	  #head :no_conent
+         json_response("los juegos han sido eliminados")
 	end
 
 	#Get /custom/:id

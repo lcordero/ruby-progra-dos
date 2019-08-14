@@ -1,0 +1,26 @@
+class ZapatosController < ApplicationController
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+end

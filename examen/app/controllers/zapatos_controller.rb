@@ -21,26 +21,27 @@ class ZapatosController < ApplicationController
   # PUT
   def update
     @zapato.update(zapato_params)
-    head :no_content
+    msj="updated the info succesfully :D"
+    json_response(msj)
   end
 
   # DELETE
   def destroy
     @zapato.destroy
-    head :no_content
+    msj="zapato deleted, it no longer exist D:"
+    json_response(msj)
   end
   
   def zapatito
-    @mensaje=""
+    mensaje=""
     temp_zapato=Zapato.find_by(id: params[:id])
     if temp_zapato.nil? 
-      @mensaje="Zapatito no existe ='("
-      json_response(@mensaje)
+      mensaje="Zapatito no existe ='("
+      json_response(mensaje)
     else
-      @mensaje="Zapatito de tipo: "+temp_zapato.tipo + " /talla: "+temp_zapato.tamano.to_s + " /made of: "+temp_zapato.material + "   =D"
-      json_response(@mensaje)
+      mensaje="Zapatito de tipo: "+temp_zapato.tipo + " /talla: "+temp_zapato.tamano.to_s + " /made of: "+temp_zapato.material + "   =D"
+      json_response(mensaje)
     end
-    @mensaje=""
   end
   private
 

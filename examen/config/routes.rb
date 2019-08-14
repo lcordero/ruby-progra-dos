@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   resources :todos do
     resources :items
   end
+  resources :zapatos
+  get "zapatito/:id", to: "zapatos#zapatito"
 end

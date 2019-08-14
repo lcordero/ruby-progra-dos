@@ -1,0 +1,2 @@
+class Zapato < ApplicationRecord
+end

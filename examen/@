@@ -1,0 +1,57 @@
+class ZapatosController < ApplicationController
+  before_action :set_zapato, only: [:zapatito, :show, :update, :destroy]
+
+  # GET /zapatos
+  def index
+    @zapatos = Zapato.all
+    json_response(@zapatos)
+  end
+
+  # POST /zapatos
+  def create
+    @zapato = Zapato.create!(zapato_params)
+    json_response(@zapato, :created)
+  end
+
+  # GET /zapatos/:id
+  def show
+    json_response(@zapato)
+  end
+
+  # PUT /zapatos/:id
+  def update
+    @zapato.update(zapato_params)
+    head :no_content
+  end
+
+  # DELETE /zapatos/:id
+  def destroy
+    @zapato.destroy
+    head :no_content
+  end
+  
+  def zapatito
+    @mensaje={
+      :msj=""
+    }
+    if @zapato.nil? 
+      @mensaje.msj="Zapatito no existe ='("
+      json_response(@mensaje)
+    else
+      @mensaje.msj="Zapatito de tipo: "+@zapato.tipo + " /talla: "+@zapato.tamano.to_s + " /made of: "+@zapato.material + "   =D"
+      json_response(@mensaje)
+    end
+
+  end
+  private
+
+  def zapato_params
+    # whitelist params
+    params.permit(:tipo, :tamano, :material)
+  end
+
+  def set_zapato
+    @zapato = Zapato.find(params[:id])
+  end
+
+end

@@ -4,6 +4,6 @@ Rails.application.routes.draw do
     resources :items
   end
   resources :zapatos
-  resources :zapatitos
+    resources :zapatitos
   get "zapatito/:id" , to: "zapatos#zapatito"
 end

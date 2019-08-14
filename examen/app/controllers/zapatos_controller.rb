@@ -21,9 +21,9 @@ class ZapatosController < ApplicationController
     head :no_content
   end
   
-   def zapatito
+  def zapatito
     zapatito = {
-        "zapatito" "Zapatito de tipo 'botas',talla'12' y hecho de 'cuero' =D" + @zapato[:tipo, :tamano, :material]
+	    "zapatito":"Zapatito de tipo tacones, talla 39 y hecho de cuero =D" + @zapato[:tipo] + @zapato[:tamano].to_s + @zapato[:material] 
     }
     json_response(zapatito)
   end

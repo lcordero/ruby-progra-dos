@@ -1,5 +1,5 @@
 class SalesController < ApplicationController
-	 before_action :set_sale, only: [:show, :update, :destroy]
+	before_action :set_sale, only: [:show, :update, :destroy]
 
   # GET /sales
   def index
@@ -34,7 +34,7 @@ class SalesController < ApplicationController
 
   def sale_params
     # whitelist params
-    params.permit(:fecha, :paciente, :edad)
+    params.permit(:pharmacy, :fecha, :paciente, :edad)
   end
 
   def set_sale

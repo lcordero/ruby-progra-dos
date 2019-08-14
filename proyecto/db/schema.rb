@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_29_231958) do
+ActiveRecord::Schema.define(version: 2019_08_14_181542) do
 
   create_table "des", force: :cascade do |t|
     t.string "Venta"
@@ -21,21 +21,13 @@ ActiveRecord::Schema.define(version: 2019_07_29_231958) do
   end
 
   create_table "details", force: :cascade do |t|
-    t.integer "factura_id"
+    t.integer "sale_id"
     t.integer "cantidad"
     t.string "nombre"
     t.integer "precio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["factura_id"], name: "index_details_on_factura_id"
-  end
-
-  create_table "facturas", force: :cascade do |t|
-    t.string "farmacia"
-    t.string "nombre_paciente"
-    t.date "fecha"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["sale_id"], name: "index_details_on_sale_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -48,9 +40,10 @@ ActiveRecord::Schema.define(version: 2019_07_29_231958) do
   end
 
   create_table "sales", force: :cascade do |t|
+    t.string "pharmacy"
     t.date "fecha"
     t.string "paciente"
-    t.date "edad"
+    t.integer "edad"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

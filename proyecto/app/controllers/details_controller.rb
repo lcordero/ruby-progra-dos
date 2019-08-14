@@ -1,5 +1,5 @@
 class DetailsController < ApplicationController
- before_action :set_sale
+	 before_action :set_sale
   before_action :set_sale_detail, only: [:show, :update, :destroy]
 
   # GET /sales/:sale_id/details
@@ -7,7 +7,7 @@ class DetailsController < ApplicationController
     json_response(@sale.details)
   end
 
-  # GET /sales/:_id/details/:id
+  # GET /sales/:sale_id/details/:id
   def show
     json_response(@detail)
   end
@@ -43,5 +43,4 @@ class DetailsController < ApplicationController
   def set_sale_detail
     @detail = @sale.details.find_by!(id: params[:id]) if @sale
   end
-
 end

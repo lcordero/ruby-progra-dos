@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 	before_action :set_user, only: [:show, :destroy, :custom]
+	after_action :set_user_Edad, only: [:pdate, :create, :destroy]
 
 	# GET /users
 	def index
@@ -15,7 +16,11 @@ class UsersController < ApplicationController
 	# POST /user
 	def create
 	 @user = User.create!(user_params)
+	 #if user_params = nil
+	  #json.response(alerta)
+	 #else
 	 json_response(@user, :created)
+	 #end
 	end
 
 	# DELETE /user
@@ -30,13 +35,14 @@ class UsersController < ApplicationController
 	 json_response(alerta)
 	end
 
-	private
+        private
 
-	def user_params
-	 params.permit(:Nombre, :Edad + "años",)
-	end
+	 def user_params
+	  params.permit(:Nombre, :Edad,)
+	 end
 	
-	def set_user
-		@user = User.find(params[:id])
-	end
+	 def set_user
+	  @user = User.find(params[:id])
+	 end
+          	
 end

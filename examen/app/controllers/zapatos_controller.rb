@@ -1,6 +1,8 @@
 class ZapatosController < ApplicationController
   before_action :set_zapato, only: [:show, :update, :destroy]
 
+#--------------------------------------------------------------------------------------------------------------------------------------------
+#Funciones para  hacer post/delete/get/put
   # GET
   def index
     @zapatos = Zapato.all
@@ -13,7 +15,7 @@ class ZapatosController < ApplicationController
     json_response(@zapato, :created)
   end
 
-  # GET
+  # GET individual
   def show
     json_response(@zapato)
   end
@@ -31,18 +33,23 @@ class ZapatosController < ApplicationController
     msj="zapato deleted, it no longer exist D:"
     json_response(msj)
   end
-  
+#--------------------------------------------------------------------------------------------------------------------------------------------
+#Funcion para imprimir el mensaje dando los datos del zapato solicitado
+  #ZAPATITO  
   def zapatito
     mensaje=""
     temp_zapato=Zapato.find_by(id: params[:id])
     if temp_zapato.nil? 
       mensaje="Zapatito no existe ='("
-      json_response(mensaje)
     else
       mensaje="Zapatito de tipo: "+temp_zapato.tipo + " /talla: "+temp_zapato.tamano.to_s + " /made of: "+temp_zapato.material + "   =D"
-      json_response(mensaje)
     end
+    json_response(mensaje)
   end
+
+#--------------------------------------------------------------------------------------------------------------------------------------------
+
+#Funciones para permitir los parametros y para buscar el zapato :v
   private
 
   def zapato_params
@@ -54,3 +61,5 @@ class ZapatosController < ApplicationController
   end
 
 end
+#
+#--------------------------------------------------------------------------------------------------------------------------------------------

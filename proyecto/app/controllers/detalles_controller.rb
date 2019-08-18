@@ -1,7 +1,7 @@
 class DetallesController < ApplicationController
     before_action :set_pharmacy_detalle, only: [:show, :update, :destroy]
     before_action :set_pharmacy
-  # GET /Pharmacies/:phamarcy_id/detalle
+	  # GET /Pharmacies/:phamarcy_id/detalle
   def index
    temp_medico = @medico.attributes.merge({:detalles => @medico.detalles})
    temp_pharmacy=@pharmacy.attributes.merge({:medicos => temp_medico})

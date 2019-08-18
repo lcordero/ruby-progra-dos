@@ -1,4 +1,4 @@
-class PharmaciesController < ApplicationController
+	class PharmaciesController < ApplicationController
   before_action :set_pharmacy, only: [:show, :update, :destroy]
 
   # GET /Pharmacies

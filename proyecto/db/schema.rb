@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2019_07_21_191024) do
     t.string "dosis"
     t.string "efecto"
     t.string "compania"
-    t.string "caducidad"
+    t.date "caducidad"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["medicamento_id"], name: "index_detalles_on_medicamento_id"

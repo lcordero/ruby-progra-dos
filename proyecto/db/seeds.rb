@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+#
+	#pharmacie1= Parmacie.create (nombre: "la buena medicina")
+	#medicina1 = Medicina.create (pharmicie_id: pharmacie1[:id], dato: "cura de tos")
+	#detalle1 = Detalle.create (medicina_id: medicina1[:id], detalle_id: detalle1[:id])

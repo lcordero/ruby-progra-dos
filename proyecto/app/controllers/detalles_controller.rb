@@ -33,6 +33,7 @@ class DetallesController < ApplicationController
     head :no_content
   end
 
+
   private
 
   def detalle_params

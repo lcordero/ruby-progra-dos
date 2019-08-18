@@ -30,6 +30,24 @@ class PharmaciesController < ApplicationController
     head :no_content
   end
 
+  # GET /filtro
+  def filtro
+   #@detalles = Medicamento.detalles.find.each(id: params[:id])
+    @month_two = Detalle.where(caducidad: Date.today..(Date.today + 62.days)).each do |some_number|
+    @month_six = Detalle.where(caducidad: Date.today..(Date.today + 186.days)).each do |some_number|
+    @year = Detalle.where(caducidad: Date.today..(Date.today + 365.days)).each do |some_number| 
+    end
+    end
+    end
+
+    json_response("productos que vencen en 2 meses": @month_two)
+    json_response("productos que vencen en 6 meses": @month_six)
+    json_response("productos que vencen en 1 a_o": @year)
+
+  end
+    
+
+
   private
 
   def pharmacy_params

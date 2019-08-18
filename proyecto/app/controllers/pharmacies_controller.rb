@@ -3,9 +3,9 @@ class PharmaciesController < ApplicationController
 
 # GET /pharmacies
 	def index
-           		
-		@pharmacies = Pharmacy.all
-		json_response(@pharmacies)
+		@temp_pharmacy = @temp_pharmacy.attributes.merge({:recipes => @pharmacy.recipes})	
+	#	@pharmacies = Pharmacy.all
+		json_response(@temp_pharmacy)
 		
         end
 

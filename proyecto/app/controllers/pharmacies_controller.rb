@@ -3,10 +3,8 @@ class PharmaciesController < ApplicationController
 
 # GET /pharmacies
 	def index
-		@temp_pharmacy = @temp_pharmacy.attributes.merge({:recipes => @pharmacy.recipes})	
-	#	@pharmacies = Pharmacy.all
-		json_response(@temp_pharmacy)
-		
+		@pharmacy = Pharmacy.all
+		json_response(@pharmacy)
         end
 
 # POST /pharmacies
@@ -29,17 +27,16 @@ class PharmaciesController < ApplicationController
 # DELETE /pharmacies/:id
 	def destroy
 		@pharmacy.destroy
-	i	head :no_content
+		head :no_content
         end
 	def filter_recipes     #definir el filtro de recetas
-		@temp_pharmacy =Pharmacy.find(params[:pharmacy_id])	# buscar atravez de farmacia
-		@filter_recipes = params.permit(:nombre)  #aqui lo que se hace es decirle a filter_recipes que busque atravez del nombre(que lo filtre) 
+		 @temp_pharmacy =Pharmacy.find(params[:pharmacy_id])	# buscar atravez de farmacia
+		 filter_recipes = params.permit(:nombre)  #aqui lo que se hace es decirle a filter_recipes que busque atravez del nombre(que lo filtre) 
 		 @result =[]           # definimos result y decimos que es igual a una lista 
-		 for recipe in @temp_pharmacy.recipes do #hacemos un for el cual  reciba @temp_pharmacy y sus parametros
-			 
-			 @result.push(recipe) if recipe.cliente = params[:nombre]   # le decimos que ejecute el resultado si recipe.cliente es igual al nombre
+		 for search_recipe in @temp_pharmacy.recipes do #hacemos un for el cual  reciba @temp_pharmacy y sus parametros
+			 puts()
+			 @result.push(search_recipe) if search_recipe.cliente == params[:nombre]   # le decimos que ejecute el resultado si recipe.cliente es igual al nombre
 		 end
-
 	         json_response(@result)    #aplicamos un json_response el  cual procese el resultado
 		
 

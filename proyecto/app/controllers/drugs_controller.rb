@@ -3,11 +3,10 @@ class DrugsController < ApplicationController
   before_action :set_drug, only: [:show, :update, :destroy]
   # GET /pharmacys/:pharmacy_id/recipes
   def index
-	  @temp_pharmacy = @pharmacy.attributes.merge({:recipes => @pharmacy.recipe,:drugs => @temp_pharmacy.recipe.drug})
-	  #@temp_ =@recipe.attributes.merge({:drugs => @temp_pharmacy}) 
+	  @temp_recipe = @recipe.attributes.merge({:drugs=>@recipe.drugs})
+	  @temp_pharmacy =@pharmacy.attributes.merge({:recipes => @temp_recipe}) 
           json_response(@temp_pharmacy)
 	  
-  
 	  
   end
 

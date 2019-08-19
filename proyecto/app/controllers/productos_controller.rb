@@ -1,8 +1,9 @@
 class ProductosController < ApplicationController
   before_action :set_inventario
-  before_action :set_inventario_producto, only: [:show, :update, :destroy]
+  before_action :set_inventario_producto, only: [:show]
 
-  after_action :set_producto_id, only: [:show, :update, :destroy]
+  before_action :set_producto_id, only: [:update, :destroy]
+  after_action :set_producto_id, only: [:update, :destroy]
 
   # GET /inventarios/:inventario_id/productos
   def index
@@ -54,4 +55,9 @@ class ProductosController < ApplicationController
      json_response(@producto)
       end
   end
+
+  def set_producto_id
+  @producto = @inventario.productos.find_by!(id: params[:id]) if @inventario
+  end
+
 end

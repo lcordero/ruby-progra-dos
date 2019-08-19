@@ -32,18 +32,23 @@ class PharmaciesController < ApplicationController
 
   # GET /filtro
   def filtro
-   #@detalles = Medicamento.detalles.find.each(id: params[:id])
-    @month_two = Detalle.where(caducidad: Date.today..(Date.today + 62.days)).each do |some_number|
-    @month_six = Detalle.where(caducidad: Date.today..(Date.today + 186.days)).each do |some_number|
-    @year = Detalle.where(caducidad: Date.today..(Date.today + 365.days)).each do |some_number| 
-    end
-    end
-    end
+    
+     @pharmacy_temp = Pharmacy.all
+     @medicamento_temp = Pharmacy.medicamento.all 
+     @detalle_temp_temp = Medicamento.detalles.all(caducidad: params[caducidad])
+    
+     for fil in @detalle_temp do 
+         month2 = Detalles.Medicamento.where("caducidad BETWEEN ? and ": Date.today..(Date.today + 62.days))
+   
+         month6 =  Detalles.Medicamento.where("caducidad BETWEEN ? and ": Date.today..(Date.today + 124.days))
 
-    json_response("productos que vencen en 2 meses": @month_two)
-    json_response("productos que vencen en 6 meses": @month_six)
-    json_response("productos que vencen en 1 a_o": @year)
+         year =  Detalles.Medicamento.where("caducidad BETWEEN ? and ": Date.today..(Date.today + 360.days))
 
+   json_response("productos que vencen en 2 meses ": month2)
+   json_response("productos que vencen en 6 meses ": month6)
+   json_response("productos que vencen en un a_o": year)
+
+  end 
   end
     
 

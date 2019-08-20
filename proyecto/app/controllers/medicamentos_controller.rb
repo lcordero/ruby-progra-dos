@@ -7,7 +7,7 @@ class MedicamentosController < ApplicationController
     temp_pharmacy = @pharmacy.attributes.merge({:medicamentos => @pharmacy.medicamentos})
 	  
      #json_response(@pharmacy.medicamentos)
-    jsoon_reponse(temp_pharmacy)
+    json_response(temp_pharmacy)
   end
 
   # GET /pharmacies/:pharmacy_id/medicamentos/:id

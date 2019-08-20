@@ -34,21 +34,35 @@ class PharmaciesController < ApplicationController
   def filtro
     
      @pharmacy_temp = Pharmacy.all
-     @medicamento_temp = Pharmacy.medicamento.all 
-     @detalle_temp_temp = Medicamento.detalles.all(caducidad: params[caducidad])
-    
-     for fil in @detalle_temp do 
-         month2 = Detalles.Medicamento.where("caducidad BETWEEN ? and ": Date.today..(Date.today + 62.days))
+     @resultado=[]
+     parametro=params.permit(:filtro)
+     for pharmacy in @pharmacy_temp do
+	     check=false
+	     for med in pharmacy.medicamentos do
+		     if params[:filtro] == 1
+			     check=true if med.detalles.where("caducidad BETWEEN ? and ": Date.today..(Date.today + 62.days))
+		     
+		     end
+		     if params[:filtro]==2 
+			     check=true if med.detalles.where("caducidad BETWEEN ? and ": Date.today..(Date.today + 124.days))
+		     
+		     end
+		     if params[:filtro] == 3 
+			     check=true if med.detalles.where("caducidad BETWEEN ? and ": Date.today..(Date.today + 360.days))
+		     
+	             end
+		     @resultado.push(med)
+	     end
+
+         #month2 = pharmacy.where("caducidad BETWEEN ? and ": Date.today..(Date.today + 62.days))
    
-         month6 =  Detalles.Medicamento.where("caducidad BETWEEN ? and ": Date.today..(Date.today + 124.days))
+         #month6 =  Detalles.Medicamento.where("caducidad BETWEEN ? and ": Date.today..(Date.today + 124.days))
 
-         year =  Detalles.Medicamento.where("caducidad BETWEEN ? and ": Date.today..(Date.today + 360.days))
+         #year =  Detalles.Medicamento.where("caducidad BETWEEN ? and ": Date.today..(Date.today + 360.days))
 
-   json_response("productos que vencen en 2 meses ": month2)
-   json_response("productos que vencen en 6 meses ": month6)
-   json_response("productos que vencen en un a_o": year)
-
-  end 
+    #json_response(@resultado)
+    end
+    json_response(@resultado)
   end
     
 

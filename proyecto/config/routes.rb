@@ -3,7 +3,7 @@ Rails.application.routes.draw do
    get "filtro", controller: "pharmacies", action: :filtro
   resources :pharmacies do
   resources :medicamentos do
-      resources :detalles
+  resources :detalles
     end
   end
 end

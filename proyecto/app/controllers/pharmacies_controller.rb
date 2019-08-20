@@ -33,39 +33,35 @@ class PharmaciesController < ApplicationController
   # GET /filtro
   def filtro
     
-     @pharmacy_temp = Pharmacy.all
-     @resultado=[]
+#     @pharmacy_temp = Pharmacy.all
+     
      parametro=params.permit(:filtro)
+      @resultado=[]
+      @pharmacy_temp = Pharmacy.all
+
      for pharmacy in @pharmacy_temp do
-	     check=false
-	     for med in pharmacy.medicamentos do
-		     if params[:filtro] == 1
-			     check=true if med.detalles.where("caducidad BETWEEN ? and ": Date.today..(Date.today + 62.days))
+	      check=false
+	       for med in pharmacy.medicamentos do
+		     if parametro == 1
+			     check=true if med.detalle.lambda {{ :conditions => ["caducidad <= ? AND caducidad >= ?", Date.today + 100]}}
+		       
+		     end
+		     if parametro == 2 
+			     check=true if med.detalle.where("caducidad BETWEEN ? and ?": Date.today..(Date.today + 124.days))
 		     
 		     end
-		     if params[:filtro]==2 
-			     check=true if med.detalles.where("caducidad BETWEEN ? and ": Date.today..(Date.today + 124.days))
+		     if parametro == 3 
+			     check=true if med.detalle.where("caducidad BETWEEN ? and ?": Date.today..(Date.today + 360.days))
 		     
-		     end
-		     if params[:filtro] == 3 
-			     check=true if med.detalles.where("caducidad BETWEEN ? and ": Date.today..(Date.today + 360.days))
-		     
-	             end
-		     @resultado.push(med)
+	            end
+		     end		     
+		  #@resultado.push(med.detalles[:informacion])  
+		  @resultado.push(med.detalles)
 	     end
-
-         #month2 = pharmacy.where("caducidad BETWEEN ? and ": Date.today..(Date.today + 62.days))
-   
-         #month6 =  Detalles.Medicamento.where("caducidad BETWEEN ? and ": Date.today..(Date.today + 124.days))
-
-         #year =  Detalles.Medicamento.where("caducidad BETWEEN ? and ": Date.today..(Date.today + 360.days))
-
-    #json_response(@resultado)
-    end
     json_response(@resultado)
   end
     
-
+ 
 
   private
 

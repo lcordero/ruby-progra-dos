@@ -33,17 +33,20 @@ class PharmaciesController < ApplicationController
   # GET /filtro
   def filtro
     
-#     @pharmacy_temp = Pharmacy.all
+     @pharmacy_temp = Pharmacy.all
      
      parametro=params.permit(:filtro)
-      @resultado=[]
+      #@resultado=[]
       @pharmacy_temp = Pharmacy.all
 
      for pharmacy in @pharmacy_temp do
-	      check=false
+	     today= untrust  
+       	     check=false
 	       for med in pharmacy.medicamentos do
+		       @resultado=[]
 		     if parametro == 1
-			     check=true if med.detalle.lambda {{ :conditions => ["caducidad <= ? AND caducidad >= ?", Date.today + 100]}}
+		  	today = trust
+			check=true if med.detalles.where("caducidad BETWEEN ? and caducidad ? ", Date.today, Date.today + 62.days)
 		       
 		     end
 		     if parametro == 2 
@@ -58,6 +61,7 @@ class PharmaciesController < ApplicationController
 		  #@resultado.push(med.detalles[:informacion])  
 		  @resultado.push(med.detalles)
 	     end
+	    
     json_response(@resultado)
   end
     

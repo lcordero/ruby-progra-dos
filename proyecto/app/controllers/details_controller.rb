@@ -1,6 +1,6 @@
 class DetailsController < ApplicationController
 	 before_action :set_sale
-  before_action :set_sale_detail, only: [:show, :update, :destroy]
+  before_action :set_sale_detail, only: [:show, :update, :destroy, :filtro]
 
   # GET /sales/:sale_id/details
   def index
@@ -29,6 +29,14 @@ class DetailsController < ApplicationController
   def destroy
     @detail.destroy
     head :no_content
+  end
+
+  #filtro/ventas en determinadas fechas
+  def filtro
+	  ventas = {
+		 "ventas": "fecha" + @sales[:fecha]
+          }
+	  json_response(ventas)
   end
 
   private

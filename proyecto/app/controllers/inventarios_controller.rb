@@ -36,7 +36,7 @@ class InventariosController < ApplicationController
 
   def inventario_params
     # whitelist params
-    params.permit(:sistema, :via, :fecha_ingreso)
+    params.permit(:sistema, :via, :fecha_ingreso, :total_productos)
   end
 
   def set_inventario

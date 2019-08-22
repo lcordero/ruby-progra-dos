@@ -3,7 +3,7 @@ class ProductosController < ApplicationController
   before_action :set_inventario_producto, only: [:show]
 
   before_action :set_producto_id, only: [:update, :destroy]
-  after_action :set_producto_id, only: [:update, :destroy]
+  after_action :set_productos_total, only: [:update, :create, :destroy]
 
   # GET /inventarios/:inventario_id/productos
   def index
@@ -18,8 +18,16 @@ class ProductosController < ApplicationController
 
   # POST /inventarios/:inventario_id/productos
   def create
-    @inventario.productos.create!(producto_params)
-    json_response(@inventario, :created)
+      @producto_temp = @inventario.productos.find_by(nombre: producto_params[:nombre])
+
+    if @producto_temp.nil?
+       @inventario.productos.create!(producto_params)
+    else
+       @producto_temp[:cantidad] = @producto_temp[:cantidad] + producto_params[:cantidad].to_i
+       @producto_temp.save
+    end
+    #@inventario.productos.create!(producto_params)
+    json_response(producto_params)
   end
 
   # PUT /inventarios/:inventario_id/productos/:id
@@ -56,8 +64,14 @@ class ProductosController < ApplicationController
       end
   end
 
-  def set_producto_id
-  @producto = @inventario.productos.find_by!(id: params[:id]) if @inventario
+  def set_productos_total
+     @inventario_total_productos = 0
+     @inventario.productos.each do |producto|
+     @inventario_total_productos = @inventario_total_productos + (producto.cantidad)
+     end
+     @inventario.total_productos = @inventario_total_productos
+     @inventario.save
+      #@producto = @inventario.productos.find_by!(id: params[:id]) if @inventario
   end
 
 end

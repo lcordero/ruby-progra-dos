@@ -1,30 +1,30 @@
 class DrugstoresController < ApplicationController
 before_action :set_drugstore, only: [:show, :update, :destroy]
 
-  # GET /facturas
+  
   def index
     @drugstores = Drugstore.all
     json_response(@drugstores)
   end
 
-  # POST /facturas
+  
   def create
     @drugstore = Drugstore.create!(drugstore_params)
     json_response(@drugstore, :created)
   end
 
-  # GET /facturas/:id
+
   def show
     json_response(@drugstore)
   end
 
-  # PUT /facturas/:id
+  
   def update
     @drugstore.update(drugstore_params)
     head :no_content
   end
 
-  # DELETE /facturas/:id
+  
   def destroy
     @drugstore.destroy
     head :no_content

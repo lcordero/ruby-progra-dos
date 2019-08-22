@@ -1,29 +1,29 @@
 class IllnessesController < ApplicationController
   before_action :set_drugstore
   before_action :set_vaccine_illness, only: [:show, :update, :destroy]
-  # GET /drugstores/:drugstore_id/suppliers
+  
   def index
     json_response(@vaccine.illnesses)
   end
 
-  # GET /drugstores/:drugstore_id/suppliers/:id
+  
   def show
     json_response(@illness)
   end
 
-  # POST /drugstores/:drugstore_id/suppliers
+  
   def create
     @vaccine.illnesses.create!(illness_params)
     json_response(@vaccine, :created)
   end
 
-  # PUT /drugstores/:drugstore_id/suppliers/:id
+
   def update
     @illness.update(illness_params)
     head :no_content
   end
 
-  # DELETE /drugstores/:drugstore_id/suppliers/:id
+
   def destroy
     @illness.destroy
     head :no_content

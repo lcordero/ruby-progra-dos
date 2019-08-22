@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_10_222152) do
+ActiveRecord::Schema.define(version: 2019_08_22_180745) do
 
   create_table "drugs", force: :cascade do |t|
     t.integer "recipe_id"
@@ -49,13 +49,6 @@ ActiveRecord::Schema.define(version: 2019_08_10_222152) do
     t.index ["pharmacy_id"], name: "index_recipes_on_pharmacy_id"
   end
 
-  create_table "televisors", force: :cascade do |t|
-    t.string "name"
-    t.integer "number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "todos", force: :cascade do |t|
     t.string "title"
     t.string "created_by"
@@ -65,7 +58,7 @@ ActiveRecord::Schema.define(version: 2019_08_10_222152) do
 
   create_table "users", force: :cascade do |t|
     t.string "nombre"
-    t.string "edad"
+    t.integer "edad"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

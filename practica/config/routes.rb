@@ -4,6 +4,5 @@ Rails.application.routes.draw do
     resources :items
   end
   resources :users
-     resources :bikes
-     get "custom/:id", to: "bikes#custom"
+     get "custom/:id", to: "users#custom"
 end

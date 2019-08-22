@@ -1,32 +1,40 @@
 class UsersController < ApplicationController
+	before_action :set_user , only: [:show, :destroy, :custom]
 	 # GET /users
   def index
     @users = User.all
     json_response(@users)
   end
 
-  # POST /facturas
+  # POST /users
   def create
     @user = User.create!(user_params)
     json_response(@user, :created)
   end
 
-  # GET /facturas/:id
+  # GET /users/:id
   def show
     json_response(@user)
   end
 
-  # PUT /facturas/:id
+  # PUT /users/:id
   def update
     @user.update(user_params)
     head :no_content
   end
 
-  # DELETE /facturas/:id
+  # DELETE /users/:id
   def destroy
     @user.destroy
     head :no_content
   end
+  #custom
+  def custom
+    alerta={"alerta":"mi usuario es-----" + @user[:nombre]}
+
+     json_response(alerta)
+  end
+
 
   private
 

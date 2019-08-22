@@ -1,5 +1,5 @@
 class ClientesController < ApplicationController
-	 before_action :set_factura, only: [:show, :update, :destroy]
+	 before_action :set_factura, :only [:show, :update, :destroy]
 
   # GET /clientes
   def index

@@ -1,10 +1,11 @@
 class ExamsController < ApplicationController
 before_action :set_pharmacy
-  before_action :set_pharmacy_exam, only: [:show, :update, :destroy]
+  before_action :set_pharmacy_exam, only: [:show, :update, :destroy, :filtro]
 
   # GET /pharmacies/:pharmacy_id/exams
   def index
-    json_response(@pharmacy.exams)
+     tem_pharmacy=@pharmacy.attributes.merge({:exams => @pharmacy.exams})
+    json_response(tem_pharmacy)
   end
 
   # GET /pharmacies/:pharmacy_id/exams/:id
@@ -29,14 +30,23 @@ before_action :set_pharmacy
     @exam.destroy
     head :no_content
   end
+   
+  def filtroexamenes
+	  @resultado=[]
+	  @temp_pharmacy=Pharmacy.find_by!(id: params[:pharmacy_id])
+	  @preciocomparador1=params.permit[:costomayor]
+	  @preciocomparador2=params.permit[:costomenor]
+	if params[:costomenor].to_i > params[:costomayor].to_i
+   		 @resultado = ["Ingrese el costo con su respectivo orden"]
 
-  def filtro
-      @valores=params.permit(:valor1, :valor2)
-      @resultado=[]
-      for exam in @temp_pharmacy do
-    resultado.push(exams) if params[:valor1]<exams.costo<params[:valor2]
-  end
-  json_response(@resultado)
+    		json_response(@resultado)
+
+	else 
+		for exam in @temp_pharmacy.exams do
+			@resultado.push(exam) if params[:costomenor].to_i < exam.costo &&  exam.costo < params[:costomayor].to_i
+    	end
+        json_response(@resultado)
+      end
   end
 
   private

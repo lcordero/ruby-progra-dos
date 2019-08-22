@@ -1,5 +1,5 @@
 current directory: /home/gabriel-m/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/ruby/2.5.0/gems/nokogiri-1.10.3/ext/nokogiri
-/usr/bin/ruby2.5 -I /usr/local/lib/site_ruby/2.5.0 -r ./siteconf20190718-27127-1tufbtr.rb extconf.rb
+/usr/bin/ruby2.5 -I /usr/local/lib/site_ruby/2.5.0 -r ./siteconf20190819-8918-mwuvev.rb extconf.rb
 checking if the C compiler accepts ... yes
 Building nokogiri using packaged libraries.
 Using mini_portile version 2.4.0
@@ -133,4 +133,4 @@ rm -rf /home/gabriel-m/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/ruby/
 
 current directory: /home/gabriel-m/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/ruby/2.5.0/gems/nokogiri-1.10.3/ext/nokogiri
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 nokogiri.so ./.gem.20190718-27127-14khq09/nokogiri
+/usr/bin/install -c -m 0755 nokogiri.so ./.gem.20190819-8918-1l4k07k/nokogiri

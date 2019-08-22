@@ -1,5 +1,5 @@
 current directory: /home/gabriel-m/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/ruby/2.5.0/gems/byebug-11.0.1/ext/byebug
-/usr/bin/ruby2.5 -I /usr/local/lib/site_ruby/2.5.0 -r ./siteconf20190718-27127-yg7rmz.rb extconf.rb
+/usr/bin/ruby2.5 -I /usr/local/lib/site_ruby/2.5.0 -r ./siteconf20190819-8918-5l1o4x.rb extconf.rb
 creating Makefile
 
 current directory: /home/gabriel-m/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/ruby/2.5.0/gems/byebug-11.0.1/ext/byebug
@@ -16,4 +16,4 @@ linking shared-object byebug/byebug.so
 
 current directory: /home/gabriel-m/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/ruby/2.5.0/gems/byebug-11.0.1/ext/byebug
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 byebug.so ./.gem.20190718-27127-6ffcew/byebug
+/usr/bin/install -c -m 0755 byebug.so ./.gem.20190819-8918-xd4dxs/byebug

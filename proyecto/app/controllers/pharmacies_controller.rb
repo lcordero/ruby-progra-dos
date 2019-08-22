@@ -1,4 +1,4 @@
-	class PharmaciesController < ApplicationController
+class PharmaciesController < ApplicationController
   before_action :set_pharmacy, only: [:show, :update, :destroy]
 
   # GET /Pharmacies
@@ -47,7 +47,7 @@
     params.permit(:nombre)
   end
 
-  def set_factura
+  def set_pharmacy
     @pharmacy = Pharmacy.find(params[:id])
   end
 end 

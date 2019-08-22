@@ -1,5 +1,5 @@
 current directory: /home/gabriel-m/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/ruby/2.5.0/gems/nio4r-2.4.0/ext/nio4r
-/usr/bin/ruby2.5 -I /usr/local/lib/site_ruby/2.5.0 -r ./siteconf20190718-27127-p17w33.rb extconf.rb
+/usr/bin/ruby2.5 -I /usr/local/lib/site_ruby/2.5.0 -r ./siteconf20190819-8918-165i6p4.rb extconf.rb
 checking for unistd.h... yes
 checking for sys/select.h... yes
 checking for port_event_t in poll.h... no
@@ -70,4 +70,4 @@ linking shared-object nio4r_ext.so
 
 current directory: /home/gabriel-m/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/ruby/2.5.0/gems/nio4r-2.4.0/ext/nio4r
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 nio4r_ext.so ./.gem.20190718-27127-73a9it
+/usr/bin/install -c -m 0755 nio4r_ext.so ./.gem.20190819-8918-1g98xzw

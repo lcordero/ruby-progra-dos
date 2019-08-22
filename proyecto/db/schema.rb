@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2019_07_22_220640) do
     t.string "sistema"
     t.string "via"
     t.date "fecha_ingreso"
+    t.integer "cantidad_productos"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

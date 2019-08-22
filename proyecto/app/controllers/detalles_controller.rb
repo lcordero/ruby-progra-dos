@@ -1,48 +1,49 @@
 class DetallesController < ApplicationController
 
-  before_action :set_detalle
-  before_action :set_detalle_producto, only: [:show, :update, :destroy]
+  before_action :set_cliente
+  before_action :set_cliente_detalle, only: [:show, :update, :destroy]
 
-  # GET /detalles/:detalle_id/productos
+  # GET /clientes/:detalle_id/detalles
   def index
-    json_response(@detalle.productos)
+	  @temp_detalles = @cliente.attributes.merge({:detalles=>@cliente.detalles}) 
+    json_response(@temp_detalles)
   end
 
-  # GET /detalles/:detalle_id/productos/:id
+  # GET /clientes/:detalle_id/detalles/:id
   def show
-    json_response(@producto)
+    json_response(@detalle)
   end
 
-  # POST /detalles/:detalle_id/productos
+  # POST /clientes/:detalle_id/detalles
   def create
-    @detalle.productos.create!(producto_params)
+    @cliente.detalles.create!(detalle_params)
     json_response(@detalle, :created)
   end
 
-  # PUT /detalles/:detalle_id/productos/:id
+  # PUT /clientes/:detalle_id/detalles/:id
   def update
-    @producto.update(producto_params)
+    @detalle.update(detalle_params)
     head :no_content
   end
 
-  # DELETE /detalles/:detalle_id/productos/:id
+  # DELETE /clientes/:detalle_id/detalles/:id
   def destroy
-    @producto.destroy
+    @detalle.destroy
     head :no_content
   end
 
   private
 
-  def producto_params
-    params.permit(:nombre, :cantidad, :precio)
+  def detalle_params
+    params.permit(:enfermedad, :sintomas, :medicacion)
   end
 
-  def set_detalle
-    @detalle = Detalle.find(params[:detalle_id])
+  def set_cliente
+    @cliente = Cliente.find(params[:id])
   end
 
-  def set_detalle_producto
-    @producto = @detalle.productos.find_by!(id: params[:id]) if @detalle
+  def set_cliente_detalle
+    @detalle = @cliente.detalles.find_by!(id: params[:id]) if @detalle
   end
 
 end

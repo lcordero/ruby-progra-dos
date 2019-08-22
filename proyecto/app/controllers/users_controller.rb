@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
-	before_action :set_User, only: [:show, :destroy, :custom]
+	before_action :set_user, only: [:show, :destroy, :custom]
 
 #GET#index/User
 	def index
-
-		@user = User.all
+	   @user = User.all
 		json_response(@user)
 
 
@@ -14,21 +13,20 @@ class UsersController < ApplicationController
 	end
 
 
-#GET#show/User/:id
 
-	def show
-	 	json_response(@user)
+
+#POST#create/#user
+	def create
+		@user= User.create!(user_params)
+		json_response(@user)
+
+
 
 	end
 
-
-#POST#create/User
-	def create
-		@user = User.create!(user_params)
-		json_response(@user, :created)
-
-
-
+#GET#show
+	def show
+		json_response(@user)
 	end
 
 
@@ -58,7 +56,7 @@ private
 		params.permit(:nombre, :edad)
 	end
 
-	def set_User
+	def set_user
 		@user = User.find(params[:id])
 	end
 end

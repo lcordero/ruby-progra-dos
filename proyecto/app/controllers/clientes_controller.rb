@@ -30,6 +30,23 @@ class ClientesController < ApplicationController
     head :no_content
   end
 
+  def filtroClientes
+    @temp_clientes=Cliente.all
+    @edadMenor=params.permit[:minimo]
+    @edadMayor=params.permit[:maximo]
+    @respuesta=[]
+    if params[:minimo].to_i > params[:maximo].to_i
+	    @respuesta=["Introdusca correctamente las edades"]
+	    json_response(@respuesta)
+    else
+	    for cliente in @temp_clientes do
+		    @respuesta.push(cliente) if cliente.edad < params[:maximo].to_i && cliente.edad > params[:minimo].to_i
+	    end
+	    json_response(@respuesta)
+    end
+
+  end
+
   private
 
   def cliente_params

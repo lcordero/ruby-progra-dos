@@ -4,7 +4,8 @@ before_action :set_usuario
 
   # GET /usuario/:usuario_id/datilusers
   def index
-    json_response(@usuario.datilusers)
+    @temp_usuario = @usuario.attributes.merge({:datilusers => @usuario.datilusers})
+    json_response(@temp_usuario)
   end
 
   # GET /usuario/:usuario_id/datilusers/:id

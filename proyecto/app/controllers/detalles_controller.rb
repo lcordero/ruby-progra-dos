@@ -2,6 +2,7 @@ class DetallesController < ApplicationController
 
   before_action :set_pharmacy
   before_action :set_pharmacy_detalle, only: [:show, :update, :destroy]
+  after_action :set_date, only: [:create]
 
   # GET /facturas/:pharmacy_id/detalles
   def index
@@ -38,6 +39,13 @@ class DetallesController < ApplicationController
 
   def detalle_params
     params.permit(:informacion, :presentacion, :dosis, :efecto ,:compania ,:caducidad)
+    if params.permit[:caducidad]; on_or_before; Date.today do
+	    msg = {
+		    "mensaje": "caducidad can't be in the past"
+	   }
+	    json_response(msg)
+    end
+    end
   end
 
   def set_pharmacy
@@ -49,5 +57,11 @@ class DetallesController < ApplicationController
     @detalle = @medicamento.detalles.find_by!(id: params[:id]) if @medicamento
   end
 
+#  def set_date
+#	  for date in detalle_params[:caducidad] do
+ #   errors.add(:caducidad, "can't be in the past") if
+ #     date < Date.today
+  #end 
+  #end
 
 end

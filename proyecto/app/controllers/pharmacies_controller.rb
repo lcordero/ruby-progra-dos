@@ -44,6 +44,7 @@ class PharmaciesController < ApplicationController
        	     check=false
 	       for med in pharmacy.medicamentos do
 		       @resultado=[]
+		       date.to_formatted_s(:long)
 		     if parametro == 1
 		  	today = trust
 			check=true if med.detalles.where("caducidad BETWEEN ? and caducidad ? ", Date.today, Date.today + 62.days)

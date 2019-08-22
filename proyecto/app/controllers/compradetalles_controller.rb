@@ -32,7 +32,7 @@ class CompradetallesController < ApplicationController
   private
 
   def drug_params
-    params.permit(:nomprovee, :fecha, :cantidad, :costo, :presentacio)
+    params.permit(:nomprovee, :fecha, :cantidad, :costo, :presentacion)
   end
 
   def set_drugstore

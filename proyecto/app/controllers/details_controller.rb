@@ -4,7 +4,8 @@ class DetailsController < ApplicationController
 
   # GET /sales/:sale_id/details
   def index
-    json_response(@sale.details)
+    temp_sale = @sale.attributes.merge({:details => @sale.details})
+    json_response(temp_sale)
   end
 
   # GET /sales/:sale_id/details/:id

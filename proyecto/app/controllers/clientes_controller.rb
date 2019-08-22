@@ -29,7 +29,7 @@ class ClientesController < ApplicationController
     @cliente.destroy
     head :no_content
   end
-
+  #esta es la funcion del filtro...que breteada en esto!!!
   def filtroClientes
     @temp_clientes=Cliente.all
     @edadMenor=params.permit[:minimo]

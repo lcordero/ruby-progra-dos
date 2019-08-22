@@ -1,7 +1,7 @@
 class CreateCompradetalles < ActiveRecord::Migration[5.2]
   def change
     create_table :compradetalles do |t|
-      t.references :compras, foreign_key: true
+      t.references :compra, foreign_key: true
       t.string :nomprovee
       t.date :fecha
       t.integer :cantidad

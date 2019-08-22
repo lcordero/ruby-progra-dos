@@ -1,6 +1,6 @@
 class ComprasController < ApplicationController
-	before_action :set_drugstore
-  before_action :set_drugstore_producto, only: [:show, :update, :destroy]
+  before_action :set_drugstore
+  before_action :set_drugstore_compras, only: [:show, :update, :destroy]
 
   # GET /drugstores/:drugstore_id/compras
   def index
@@ -9,7 +9,7 @@ class ComprasController < ApplicationController
 
   # GET /drugstores/:drugstore_id/compras/:id
   def show
-    json_response(@producto)
+    json_response(@compra)
   end
 
   # POST /drugstores/:drugstore_id/compras
@@ -26,7 +26,7 @@ class ComprasController < ApplicationController
 
   # DELETE /drugstores/:drugstore_id/compras/:id
   def destroy
-    @producto.destroy
+    @compra.destroy
     head :no_content
   end
 

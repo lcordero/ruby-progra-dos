@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2019_07_19_053321) do
 
   create_table "compradetalles", force: :cascade do |t|
-    t.integer "compras_id"
+    t.integer "compra_id"
     t.string "nomprovee"
     t.date "fecha"
     t.integer "cantidad"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2019_07_19_053321) do
     t.string "presentacion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["compras_id"], name: "index_compradetalles_on_compras_id"
+    t.index ["compra_id"], name: "index_compradetalles_on_compra_id"
   end
 
   create_table "compras", force: :cascade do |t|

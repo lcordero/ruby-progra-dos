@@ -29,6 +29,18 @@ class DrugstoresController < ApplicationController
     @drugstore.destroy
     head :no_content
   end
+  
+  def filtro
+    @temp_drugstore=Drugstore.find(params[:drugstore_id])
+    @result=[]
+    @filtro=params.permit[:nombreProve]
+    for compra in @temp_drugstore.compras
+	    @detalles=compra.compradetalles.find_by!(id: 1)
+        puts(@detalles)	
+    	@result.push(compra) if @detalles.nomprovee == params[:nombreProve]
+    end
+    json_response(@result)
+  end
 
   private
 

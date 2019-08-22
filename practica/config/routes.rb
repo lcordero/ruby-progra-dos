@@ -4,12 +4,12 @@ Rails.application.routes.draw do
     resources :items
   end
   resources :users
-  #get "custom/:id", to: "users#custom"
-  resources :gokus
+  get "custom/:id", to: "users#custom"
+  #resources :gokus
   
   #get "custom/:id", to: "gokus#custom"
-  resources :autos
-  get "custom/:id", to: "autos#custom"
+  #resources :autos
+  #get "custom/:id", to: "autos#custom"
 end
 
 

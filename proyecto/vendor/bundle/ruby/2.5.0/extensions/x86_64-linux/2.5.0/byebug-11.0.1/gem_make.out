@@ -1,11 +1,11 @@
-current directory: /home/leandro-c/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/byebug-11.0.1/ext/byebug
-/usr/bin/ruby2.5 -I /usr/local/lib/site_ruby/2.5.0 -r ./siteconf20190717-19018-1voiaow.rb extconf.rb
+current directory: /home/anthony-r/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/byebug-11.0.1/ext/byebug
+/usr/bin/ruby2.5 -I /usr/local/lib/site_ruby/2.5.0 -r ./siteconf20190822-6353-ow4cji.rb extconf.rb
 creating Makefile
 
-current directory: /home/leandro-c/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/byebug-11.0.1/ext/byebug
+current directory: /home/anthony-r/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/byebug-11.0.1/ext/byebug
 make "DESTDIR=" clean
 
-current directory: /home/leandro-c/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/byebug-11.0.1/ext/byebug
+current directory: /home/anthony-r/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/byebug-11.0.1/ext/byebug
 make "DESTDIR="
 compiling breakpoint.c
 compiling byebug.c
@@ -14,6 +14,6 @@ compiling locker.c
 compiling threads.c
 linking shared-object byebug/byebug.so
 
-current directory: /home/leandro-c/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/byebug-11.0.1/ext/byebug
+current directory: /home/anthony-r/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/byebug-11.0.1/ext/byebug
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 byebug.so ./.gem.20190717-19018-5sqbi/byebug
+/usr/bin/install -c -m 0755 byebug.so ./.gem.20190822-6353-5hnp3n/byebug

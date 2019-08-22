@@ -1,5 +1,5 @@
-current directory: /home/leandro-c/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/nio4r-2.4.0/ext/nio4r
-/usr/bin/ruby2.5 -I /usr/local/lib/site_ruby/2.5.0 -r ./siteconf20190717-19018-19yx5xi.rb extconf.rb
+current directory: /home/anthony-r/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/nio4r-2.4.0/ext/nio4r
+/usr/bin/ruby2.5 -I /usr/local/lib/site_ruby/2.5.0 -r ./siteconf20190822-6353-1d6l1jl.rb extconf.rb
 checking for unistd.h... yes
 checking for sys/select.h... yes
 checking for port_event_t in poll.h... no
@@ -9,10 +9,10 @@ checking for port_event_t in port.h... no
 checking for sys/resource.h... yes
 creating Makefile
 
-current directory: /home/leandro-c/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/nio4r-2.4.0/ext/nio4r
+current directory: /home/anthony-r/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/nio4r-2.4.0/ext/nio4r
 make "DESTDIR=" clean
 
-current directory: /home/leandro-c/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/nio4r-2.4.0/ext/nio4r
+current directory: /home/anthony-r/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/nio4r-2.4.0/ext/nio4r
 make "DESTDIR="
 compiling bytebuffer.c
 compiling monitor.c
@@ -68,6 +68,6 @@ selector.c:484:5: warning: ignoring return value of ‘write’, declared with a
      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 linking shared-object nio4r_ext.so
 
-current directory: /home/leandro-c/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/nio4r-2.4.0/ext/nio4r
+current directory: /home/anthony-r/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/nio4r-2.4.0/ext/nio4r
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 nio4r_ext.so ./.gem.20190717-19018-c8gty8
+/usr/bin/install -c -m 0755 nio4r_ext.so ./.gem.20190822-6353-11suk12

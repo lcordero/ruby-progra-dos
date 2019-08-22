@@ -34,34 +34,35 @@ class PharmaciesController < ApplicationController
   def filtro
     
      @pharmacy_temp = Pharmacy.all
-     
-     parametro=params.permit(:filtro)
-      #@resultado=[]
-      @pharmacy_temp = Pharmacy.all
-
+     #params by postman
+     parametro = params.permit(:filtro)
+      @resultado=[]
      for pharmacy in @pharmacy_temp do
-	     today= untrust  
+	       
        	     check=false
 	       for med in pharmacy.medicamentos do
-		       @resultado=[]
-		       date.to_formatted_s(:long)
-		     if parametro == 1
-		  	today = trust
-			check=true if med.detalles.where("caducidad BETWEEN ? and caducidad ? ", Date.today, Date.today + 62.days)
+		       if parametro == 1
+			       check=true if med.detalles.where("caducidad BETWEEN ? and caducidad ? ", Date.today..( Date.today + 62.days))
 		       
-		     end
-		     if parametro == 2 
-			     check=true if med.detalle.where("caducidad BETWEEN ? and ?": Date.today..(Date.today + 124.days))
 		     
 		     end
-		     if parametro == 3 
-			     check=true if med.detalle.where("caducidad BETWEEN ? and ?": Date.today..(Date.today + 360.days))
+		     if parametro == 2
+			     check=true if med.detalle.where("caducidad BETWEEN ? and ?", Date.today..(Date.today + 124.days))
 		     
-	            end
-		     end		     
+		     
+		     end
+	       
+		     if parametro == 3
+			     check=true if med.detalle.where("caducidad BETWEEN ? and ?", Date.today..(Date.today + 360.days))
+		     
+	             
+	              
+		      end
+	                   
 		  #@resultado.push(med.detalles[:informacion])  
 		  @resultado.push(med.detalles)
 	     end
+     end
 	    
     json_response(@resultado)
   end

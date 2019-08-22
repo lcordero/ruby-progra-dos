@@ -1,5 +1,5 @@
-current directory: /home/leandro-c/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/ffi-1.11.1/ext/ffi_c
-/usr/bin/ruby2.5 -I /usr/local/lib/site_ruby/2.5.0 -r ./siteconf20190717-19018-1v7vn6w.rb extconf.rb
+current directory: /home/anthony-r/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/ffi-1.11.1/ext/ffi_c
+/usr/bin/ruby2.5 -I /usr/local/lib/site_ruby/2.5.0 -r ./siteconf20190822-6353-97lzm3.rb extconf.rb
 checking for ffi_call() in -lffi... yes
 checking for ffi_closure_alloc()... yes
 checking for shlwapi.h... no
@@ -12,10 +12,10 @@ checking for ffi_prep_raw_closure()... yes
 creating extconf.h
 creating Makefile
 
-current directory: /home/leandro-c/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/ffi-1.11.1/ext/ffi_c
+current directory: /home/anthony-r/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/ffi-1.11.1/ext/ffi_c
 make "DESTDIR=" clean
 
-current directory: /home/leandro-c/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/ffi-1.11.1/ext/ffi_c
+current directory: /home/anthony-r/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/ffi-1.11.1/ext/ffi_c
 make "DESTDIR="
 compiling AbstractMemory.c
 compiling ArrayType.c
@@ -42,6 +42,6 @@ compiling Variadic.c
 compiling ffi.c
 linking shared-object ffi_c.so
 
-current directory: /home/leandro-c/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/ffi-1.11.1/ext/ffi_c
+current directory: /home/anthony-r/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/ffi-1.11.1/ext/ffi_c
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 ffi_c.so ./.gem.20190717-19018-1wyx4au
+/usr/bin/install -c -m 0755 ffi_c.so ./.gem.20190822-6353-3lp873

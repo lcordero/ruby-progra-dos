@@ -1,5 +1,5 @@
-current directory: /home/leandro-c/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/bundler/gems/sqlite3-ruby-b6a9d731c200/ext/sqlite3
-/usr/bin/ruby2.5 -I /usr/local/lib/site_ruby/2.5.0 -r ./siteconf20190717-29889-r30niv.rb extconf.rb
+current directory: /home/anthony-r/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/bundler/gems/sqlite3-ruby-b6a9d731c200/ext/sqlite3
+/usr/bin/ruby2.5 -I /usr/local/lib/site_ruby/2.5.0 -r ./siteconf20190822-6353-o9di1p.rb extconf.rb
 checking for sqlite3.h... yes
 checking for pthread_create() in -lpthread... yes
 checking for -ldl... yes
@@ -17,10 +17,10 @@ checking for sqlite3_int64 in sqlite3.h... yes
 checking for sqlite3_uint64 in sqlite3.h... yes
 creating Makefile
 
-current directory: /home/leandro-c/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/bundler/gems/sqlite3-ruby-b6a9d731c200/ext/sqlite3
+current directory: /home/anthony-r/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/bundler/gems/sqlite3-ruby-b6a9d731c200/ext/sqlite3
 make "DESTDIR=" clean
 
-current directory: /home/leandro-c/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/bundler/gems/sqlite3-ruby-b6a9d731c200/ext/sqlite3
+current directory: /home/anthony-r/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/bundler/gems/sqlite3-ruby-b6a9d731c200/ext/sqlite3
 make "DESTDIR="
 compiling aggregator.c
 compiling backup.c
@@ -63,6 +63,6 @@ compiling sqlite3.c
 compiling statement.c
 linking shared-object sqlite3/sqlite3_native.so
 
-current directory: /home/leandro-c/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/bundler/gems/sqlite3-ruby-b6a9d731c200/ext/sqlite3
+current directory: /home/anthony-r/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/bundler/gems/sqlite3-ruby-b6a9d731c200/ext/sqlite3
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 sqlite3_native.so ./.gem.20190717-29889-5kldes/sqlite3
+/usr/bin/install -c -m 0755 sqlite3_native.so ./.gem.20190822-6353-hfqpbu/sqlite3

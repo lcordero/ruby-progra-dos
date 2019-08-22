@@ -1,14 +1,14 @@
-current directory: /home/leandro-c/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/ext/puma_http11
-/usr/bin/ruby2.5 -I /usr/local/lib/site_ruby/2.5.0 -r ./siteconf20190717-19018-1739od7.rb extconf.rb
+current directory: /home/anthony-r/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/ext/puma_http11
+/usr/bin/ruby2.5 -I /usr/local/lib/site_ruby/2.5.0 -r ./siteconf20190822-6353-l5sxlo.rb extconf.rb
 checking for BIO_read() in -lcrypto... yes
 checking for SSL_CTX_new() in -lssl... yes
 checking for openssl/bio.h... yes
 creating Makefile
 
-current directory: /home/leandro-c/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/ext/puma_http11
+current directory: /home/anthony-r/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/ext/puma_http11
 make "DESTDIR=" clean
 
-current directory: /home/leandro-c/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/ext/puma_http11
+current directory: /home/anthony-r/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/ext/puma_http11
 make "DESTDIR="
 compiling http11_parser.c
 compiling io_buffer.c
@@ -26,6 +26,6 @@ In file included from /usr/include/openssl/e_os2.h:13:0,
 compiling puma_http11.c
 linking shared-object puma/puma_http11.so
 
-current directory: /home/leandro-c/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/ext/puma_http11
+current directory: /home/anthony-r/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/2.5.0/gems/puma-3.12.1/ext/puma_http11
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 puma_http11.so ./.gem.20190717-19018-a2fdo9/puma
+/usr/bin/install -c -m 0755 puma_http11.so ./.gem.20190822-6353-1damc54/puma

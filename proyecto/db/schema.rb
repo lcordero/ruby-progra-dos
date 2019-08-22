@@ -20,7 +20,8 @@ ActiveRecord::Schema.define(version: 2019_07_23_002849) do
 
   create_table "illnesses", force: :cascade do |t|
     t.integer "vaccine_id"
-    t.string "nombre"
+    t.string "enfermedad"
+    t.string "dosis"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["vaccine_id"], name: "index_illnesses_on_vaccine_id"
@@ -44,7 +45,7 @@ ActiveRecord::Schema.define(version: 2019_07_23_002849) do
 
   create_table "vaccines", force: :cascade do |t|
     t.integer "drugstore_id"
-    t.string "dosis"
+    t.string "nombre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["drugstore_id"], name: "index_vaccines_on_drugstore_id"

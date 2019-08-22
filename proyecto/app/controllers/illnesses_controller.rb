@@ -1,6 +1,6 @@
 class IllnessesController < ApplicationController
   before_action :set_drugstore
-  before_action :set_illness, only: [:show, :update, :destroy]
+  before_action :set_vaccine_illness, only: [:show, :update, :destroy]
   # GET /drugstores/:drugstore_id/suppliers
   def index
     json_response(@vaccine.illnesses)
@@ -32,7 +32,7 @@ class IllnessesController < ApplicationController
   private
 
   def illness_params
-    params.permit(:nombre)
+    params.permit(:enfermedad, :dosis)
   end
 
   def set_drugstore

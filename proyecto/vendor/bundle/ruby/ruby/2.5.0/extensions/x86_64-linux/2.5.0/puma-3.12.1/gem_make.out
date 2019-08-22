@@ -1,5 +1,5 @@
 current directory: /home/alonso-v/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/ext/puma_http11
-/usr/bin/ruby2.5 -I /usr/local/lib/site_ruby/2.5.0 -r ./siteconf20190718-15534-1nezwpe.rb extconf.rb
+/usr/bin/ruby2.5 -I /usr/local/lib/site_ruby/2.5.0 -r ./siteconf20190819-24277-r9bfkd.rb extconf.rb
 checking for BIO_read() in -lcrypto... yes
 checking for SSL_CTX_new() in -lssl... yes
 checking for openssl/bio.h... yes
@@ -28,4 +28,4 @@ linking shared-object puma/puma_http11.so
 
 current directory: /home/alonso-v/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/ruby/2.5.0/gems/puma-3.12.1/ext/puma_http11
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 puma_http11.so ./.gem.20190718-15534-a0rrwe/puma
+/usr/bin/install -c -m 0755 puma_http11.so ./.gem.20190819-24277-1jv57eh/puma

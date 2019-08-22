@@ -1,5 +1,5 @@
 current directory: /home/alonso-v/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/ruby/2.5.0/bundler/gems/sqlite3-ruby-b6a9d731c200/ext/sqlite3
-/usr/bin/ruby2.5 -I /usr/local/lib/site_ruby/2.5.0 -r ./siteconf20190718-15534-1pshq7v.rb extconf.rb
+/usr/bin/ruby2.5 -I /usr/local/lib/site_ruby/2.5.0 -r ./siteconf20190819-24277-ijjlv2.rb extconf.rb
 checking for sqlite3.h... yes
 checking for pthread_create() in -lpthread... yes
 checking for -ldl... yes
@@ -65,4 +65,4 @@ linking shared-object sqlite3/sqlite3_native.so
 
 current directory: /home/alonso-v/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/ruby/2.5.0/bundler/gems/sqlite3-ruby-b6a9d731c200/ext/sqlite3
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 sqlite3_native.so ./.gem.20190718-15534-1152n2o/sqlite3
+/usr/bin/install -c -m 0755 sqlite3_native.so ./.gem.20190819-24277-mdk8bk/sqlite3

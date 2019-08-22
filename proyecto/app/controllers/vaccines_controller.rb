@@ -33,7 +33,7 @@ class VaccinesController < ApplicationController
   private
 
   def vaccine_params
-    params.permit(:dosis)
+    params.permit(:nombre)
   end
 
   def set_drugstore

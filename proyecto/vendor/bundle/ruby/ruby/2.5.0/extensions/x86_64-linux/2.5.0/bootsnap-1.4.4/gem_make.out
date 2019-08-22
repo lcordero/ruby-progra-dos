@@ -1,5 +1,5 @@
 current directory: /home/alonso-v/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/ruby/2.5.0/gems/bootsnap-1.4.4/ext/bootsnap
-/usr/bin/ruby2.5 -I /usr/local/lib/site_ruby/2.5.0 -r ./siteconf20190718-15534-kazgud.rb extconf.rb
+/usr/bin/ruby2.5 -I /usr/local/lib/site_ruby/2.5.0 -r ./siteconf20190819-24277-1w4t229.rb extconf.rb
 creating Makefile
 
 current directory: /home/alonso-v/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/ruby/2.5.0/gems/bootsnap-1.4.4/ext/bootsnap
@@ -17,4 +17,4 @@ linking shared-object bootsnap/bootsnap.so
 
 current directory: /home/alonso-v/progra2/ruby-progra-dos/proyecto/vendor/bundle/ruby/ruby/2.5.0/gems/bootsnap-1.4.4/ext/bootsnap
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 bootsnap.so ./.gem.20190718-15534-1kwb0fr/bootsnap
+/usr/bin/install -c -m 0755 bootsnap.so ./.gem.20190819-24277-1a9iwv1/bootsnap

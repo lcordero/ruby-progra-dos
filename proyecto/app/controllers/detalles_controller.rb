@@ -1,6 +1,6 @@
 class DetallesController < ApplicationController
 
-  before_action :set_cliente
+  before_action :set_cliente , only: [:index, :create]
   before_action :set_cliente_detalle, only: [:show, :update, :destroy]
 
   # GET /clientes/:detalle_id/detalles

@@ -1,0 +1,44 @@
+class UserController < ApplicationController
+# GET /User
+def idex 
+  @user = User.all
+  json.response(@user)
+
+end
+
+# GET SHOW /User
+def show
+   @user = User.find(params.[id])
+   json.response (@user)
+
+
+# POST /User
+def create 
+   @user = @User.create!(user_params)
+   json_response(@user, :created)
+
+end
+
+ private 
+
+ def my_params
+ params.permit(:nombre, :edad)
+
+end
+
+# Delete /User
+def destroy 
+    @user.destroy
+    head :no_content
+end
+
+# GET CUSTOM /User
+def custom
+ my_variable {
+	 "alerta": "mi user: "+@user[:nombre]
+ }
+ json_response(my_variable)
+
+end
+   
+

@@ -1,7 +1,7 @@
 class LocalsController < ApplicationController
   before_action :set_drugstore
   before_action :set_drugstore_local, only: [:show, :update, :destroy]
-  before_action :log_request
+  #before_action :log_request
 
   # GET /drugstores/:drugstore_id/locals
   def index
@@ -30,16 +30,6 @@ class LocalsController < ApplicationController
     @local.destroy
     head :no_content
   end
-
-  #Filtro
-  def filter_locals
-	  local_params.permit(local)
-          group_by:local
-  
-
-
-
-
 
   private
 

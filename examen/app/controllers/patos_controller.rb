@@ -1,5 +1,5 @@
 class PatosController < ApplicationController
-	before_action :set_pato, only: [:show, :create]
+	before_action :set_pato, only: [:show, :destroy]
 
 	#get 
 	def index
@@ -35,12 +35,12 @@ class PatosController < ApplicationController
 	if temp_pato.nil?
 	mensaje = "Patito no existe ='("
 	else
-	mensaje = "El patito '+temp_pato.nombre+'  tiene  '+temp_pato.edad.to_s+' a_os de edad y es de color '+temp_pato.color'"
+	mensaje = "El patito temp_pato.nombre tiene temp_pato.edad.to_s a_os de edad y es de color temp_pato.color"
 	end
         json_response(mensaje)
 	end
 
-	Private
+	private
 	def pato_params
 	params.permit(:nombre, :edad, :color)
 	end

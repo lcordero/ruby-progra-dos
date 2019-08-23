@@ -35,7 +35,7 @@ class PatosController < ApplicationController
 	if temp_pato.nil?
 	mensaje = "Patito no existe ='("
 	else
-	mensaje = "El patito temp_pato.nombre tiene temp_pato.edad.to_s a_os de edad y es de color temp_pato.color"
+	mensaje = "El patito "+temp_pato.nombre + " tiene: "+temp_pato.edad.to_s + " a_os de edad y es de color "+temp_pato.color + " "
 	end
         json_response(mensaje)
 	end
@@ -48,5 +48,4 @@ class PatosController < ApplicationController
 	def set_pato
 	@pato = Pato.find(params[:id])
 	end
-	 #{"El patito"+ @pato[:nombre] + "tiene" + @pato[:edad] + "a_os de edad y es "+ @pato[:color]}
 end

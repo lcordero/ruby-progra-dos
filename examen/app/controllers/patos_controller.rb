@@ -1,10 +1,10 @@
 class PatosController < ApplicationController
-	before_action :set_pato, only: [:show, :create]
+	before_action :set_pato, only: [:show, :update]
 
 	#get 
 	def index
 	@pato = Pato.all
-	json_responce(@patos)
+	json_response(@patos)
 	end
 
 	#post
@@ -22,7 +22,8 @@ class PatosController < ApplicationController
         def update
         @pato.update(pato_params)
         head :no_content
-        
+	end
+
         #delete	
 	def destroy
         @pato.destroy
@@ -32,11 +33,11 @@ class PatosController < ApplicationController
         def my_patito
 	temp_pato = Pato.find_by(id: params[:id])
 	if temp_pato.nil?
-	mensaje = "Patitono existe ='("
+	mensaje = "Patito no existe ='("
 	else
-	mensaje = " El patito "+ temp_pato.nombre+" tiene " + temp_pato.edad.to_s + 'a_os de edad' y es de color "+ temp_pato.color"
+	mensaje = "El patito '+temp_pato.nombre+'  tiene  '+temp_pato.edad.to_s+' a_os de edad y es de color '+temp_pato.color'"
 	end
-        json_responce(mensaje)
+        json_response(mensaje)
 	end
 
 	Private
@@ -46,8 +47,7 @@ class PatosController < ApplicationController
 	end
 
 	def set_pato
-	@pato = Pato.find(params [:id])
+	@pato = Pato.find (params [:id])
 	end
-
-
+	 #{"El patito"+ @pato[:nombre] + "tiene" + @pato[:edad] + "a_os de edad y es "+ @pato[:color]}
 end

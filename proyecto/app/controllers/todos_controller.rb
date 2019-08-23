@@ -30,6 +30,10 @@ class TodosController < ApplicationController
     head :no_content
   end
 
+  #Filtro
+  def filtro_locals
+	  
+
   private
 
   def todo_params

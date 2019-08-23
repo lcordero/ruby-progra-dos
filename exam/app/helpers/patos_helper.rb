@@ -1,0 +1,2 @@
+module PatosHelper
+end

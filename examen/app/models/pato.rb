@@ -1,0 +1,2 @@
+class Pato < ApplicationRecord
+end

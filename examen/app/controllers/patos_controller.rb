@@ -1,5 +1,5 @@
 class PatosController < ApplicationController
-	before_action :set_pato, only: [:show, :update]
+	before_action :set_pato, only: [:show, :create]
 
 	#get 
 	def index
@@ -19,10 +19,10 @@ class PatosController < ApplicationController
         end
 
         #put
-        def update
-        @pato.update(pato_params)
-        head :no_content
-	end
+        #def update
+        #@pato.update(pato_params)
+        #head :no_content
+	#end
 
         #delete	
 	def destroy
@@ -41,13 +41,12 @@ class PatosController < ApplicationController
 	end
 
 	Private
-
 	def pato_params
 	params.permit(:nombre, :edad, :color)
 	end
 
 	def set_pato
-	@pato = Pato.find (params [:id])
+	@pato = Pato.find(params[:id])
 	end
 	 #{"El patito"+ @pato[:nombre] + "tiene" + @pato[:edad] + "a_os de edad y es "+ @pato[:color]}
 end
